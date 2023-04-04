@@ -1,4 +1,7 @@
 import './styles.css';
+import '@popperjs/core';
+import 'bootstrap/js/src/collapse';
+
 
 function Header() {
   return (
@@ -8,7 +11,7 @@ function Header() {
                 <a href="link logo" className='texto-logo'>
                     <h3>Logo Melhoramentos</h3>
                 </a>
-                <div className='collapse navbar-collapse'>
+                <div className='collapse navbar-collapse'>                    
                     <ul className='menu-principal navbar-nav offset-md-3'>
                         <li>
                             <a href="link home" className='ativo'>
