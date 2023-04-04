@@ -18,8 +18,9 @@
   --white-color: #fff;
 }
 
-a {
+a, a:hover {
   text-decoration: none;  
+  color: --var(--light-color);
 }
 
 li {

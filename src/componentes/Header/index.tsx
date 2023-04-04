@@ -3,16 +3,15 @@ import './styles.css';
 function Header() {
   return (
 
-    <nav className='cabecalho'>
-        <header>
-            <div>
-                <a href="link logo">
+    <nav className='navbar navbar-expand-md cabecalho'>
+        <header className='container-fluid' >            
+                <a href="link logo" className='texto-logo'>
                     <h3>Logo Melhoramentos</h3>
                 </a>
-                <div>
-                    <ul>
+                <div className='collapse navbar-collapse'>
+                    <ul className='menu-principal navbar-nav offset-md-3'>
                         <li>
-                            <a href="link home">
+                            <a href="link home" className='ativo'>
                                 HOME
                             </a>
                         </li>
@@ -37,8 +36,7 @@ function Header() {
                             </a>
                         </li>                        
                     </ul>
-                </div>
-            </div>            
+                </div>                     
         </header>
     </nav>
   

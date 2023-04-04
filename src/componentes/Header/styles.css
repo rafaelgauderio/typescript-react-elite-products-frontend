@@ -1,3 +1,37 @@
 .cabecalho {
-    background-color: var(--primary-color);    
+    background-color: var(--primary-color);
+    padding-left: 30px;
+    min-height: 100px;    
 }
+
+.texto-logo {
+    color: var(--white-color);
+}
+
+.texto-logo:hover, .menu-principal a:hover {
+    color:var(--light-color);
+    
+}
+
+.menu-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 650px;     
+}
+
+.menu-principal a.ativo {
+    color: var(--white-color);
+}
+
+.menu-principal li{
+    transition: transform .4s;
+}
+
+.menu-principal li:hover{
+    transform: scale(1.1);
+}
+
+
+
