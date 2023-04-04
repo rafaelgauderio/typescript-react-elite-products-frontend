@@ -2,6 +2,20 @@
 
 * {
   font-family: 'Ubuntu', 'Roboto','Open Sans';
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3dcc70 ;
+  --secondary-color: #ffb500;
+  --tertiary-color: #001466;
+  --backgound-color : #e6e6e6;
+  --light-color: #e9e9e9;
+  --gray-less-light-color: #949494;
+  --gray-less-dark-color: #72849A;
+  --gray-dark-color: #384460;
+  --green-light-color: #08b976;
+  --white-color: #fff;
 }
 
 a {
@@ -16,6 +30,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   margin-bottom: 0;
   margin-top: 0;
+}
+
+.card-basico {
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
 

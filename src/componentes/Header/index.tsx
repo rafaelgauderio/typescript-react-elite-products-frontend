@@ -3,7 +3,7 @@ import './styles.css';
 function Header() {
   return (
 
-    <nav className='bg-primary'>
+    <nav className='cabecalho'>
         <header>
             <div>
                 <a href="link logo">
