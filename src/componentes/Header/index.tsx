@@ -1,15 +1,16 @@
 import './styles.css';
 import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
+import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 
 
 function Header() {
     return (
 
-        <nav className='navbar navbar-expand-md navbar-light cabecalho'>
+        <nav className='navbar navbar-expand-lg navbar-light cabecalho'>
             <header className='container-fluid' >
                 <a href="link logo" className='texto-logo'>
-                    <h3>Logo Melhoramentos</h3>
+                    <LogoBranco className="logo-branco" width="80%" height="100%" />
                 </a>
                 
                     <button
