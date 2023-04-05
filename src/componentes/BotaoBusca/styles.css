@@ -3,5 +3,6 @@
     width: 260px;
     margin-top: 20px;
     background-color: var(--botao-busca);
-    color: var(--white-color); 
+    color: var(--white-color);
+    border-radius: 15px; 
 }

@@ -5,7 +5,7 @@ function BotaoBusca () {
     return (
 
         <button className="btn botao-busca">
-            <h5>Busque seu produto</h5>
+            <h5>Catálogo de Produtos</h5>
         </button>
     )
     
