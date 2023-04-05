@@ -77,3 +77,11 @@
   }
 
 }
+
+@media (max-width: 576px) {
+  .logo-branco {
+    width: 70%;
+  }
+}
+
+

@@ -1,0 +1,7 @@
+.botao-busca {
+    height: 60px;
+    width: 260px;
+    margin-top: 20px;
+    background-color: var(--botao-busca);
+    color: var(--white-color); 
+}
