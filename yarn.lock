@@ -1615,6 +1615,11 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
+"@popperjs/core@^2.11.7":
+  version "2.11.7"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
+  integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
@@ -2776,13 +2781,13 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-autoprefixer@^10.4.13:
-  version "10.4.14"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.14.tgz#e28d49902f8e759dd25b153264e862df2705f79d"
-  integrity sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==
+autoprefixer@10.4.5, autoprefixer@^10.4.13:
+  version "10.4.5"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.5.tgz#662193c744094b53d3637f39be477e07bd904998"
+  integrity sha512-Fvd8yCoA7lNX/OUllvS+aS1I7WRBclGXsepbvT8ZaPgrH24rgXpZzF0/6Hh3ZEkwg+0AES/Osd196VZmYoEFtw==
   dependencies:
-    browserslist "^4.21.5"
-    caniuse-lite "^1.0.30001464"
+    browserslist "^4.20.2"
+    caniuse-lite "^1.0.30001332"
     fraction.js "^4.2.0"
     normalize-range "^0.1.2"
     picocolors "^1.0.0"
@@ -3058,7 +3063,7 @@ browser-process-hrtime@^1.0.0:
   resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz#3c9b4b7d782c8121e56f10106d84c0d0ffc94626"
   integrity sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
 
-browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.18.1, browserslist@^4.21.3, browserslist@^4.21.4, browserslist@^4.21.5:
+browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.18.1, browserslist@^4.20.2, browserslist@^4.21.3, browserslist@^4.21.4, browserslist@^4.21.5:
   version "4.21.5"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.21.5.tgz#75c5dae60063ee641f977e00edd3cfb2fb7af6a7"
   integrity sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==
@@ -3174,7 +3179,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001449, caniuse-lite@^1.0.30001464:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001449:
   version "1.0.30001473"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001473.tgz#3859898b3cab65fc8905bb923df36ad35058153c"
   integrity sha512-ewDad7+D2vlyy+E4UJuVfiBsU69IL+8oVmTuZnH5Q6CIUbxNfI50uVpRHbUPDD6SUaN2o0Lh4DhTrvLG/Tn1yg==

@@ -1,0 +1,9 @@
+.botao-whats {
+  height: 60px;
+  width: 260px;
+  margin-top: 20px;
+  color: var(--white-color);
+  border-radius: 15px;
+}
+
+

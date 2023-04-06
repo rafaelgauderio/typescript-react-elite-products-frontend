@@ -1,0 +1,136 @@
+.home-container {
+  padding: 20px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.home-caixa {  
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;  
+}
+
+.home-container-logo {
+  padding-left: 5px;
+  padding-right: 5px;  
+}
+
+.home-container-logo svg {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;  
+}
+
+.home-container-conteudo h1,
+h2,
+h3 {
+  font-size: 1.1em;
+}
+
+.home-container-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 30px 10px;  
+}
+
+@media (min-width: 576px) {
+  .home-container {
+    font-size: 32px;
+    padding: 10px;
+  }
+
+  .home-container-logo svg {
+    width: 450px;
+  }
+  .home-container-conteudo button {
+    width: 450px;
+  }
+
+  .home-container-conteudo h1,
+  h2,
+  h3 {
+    width: 450px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-container-conteudo {
+    padding: 10px 30px 50px 30px;
+  }
+
+  .home-container-logo {
+    padding: 20px 20px 50px 20px;
+  }
+
+  .home-container-logo svg,
+  .home-container-conteudo button,
+  .home-container-conteudo h1,
+  h2,
+  h3 {
+    width: 520px;
+    height: auto;
+  }
+
+  .home-container-conteudo h5 {
+    font-size: 27px;
+  }
+
+  @media (min-width: 992px) {
+    .home-container {
+      font-size: 45px;
+      padding: 30px;
+    }
+
+    .home-container-conteudo {
+      padding-bottom: 80px;
+    }
+  }
+
+  .home-container-logo svg,
+  .home-container-conteudo button,
+  .home-container-conteudo h1,
+  h2,
+  h3 {
+    width: 650px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-caixa {
+    display: flex;
+    flex-direction: row;
+    padding: calc((70vh - 450px) / 2 ) 10px ;
+    justify-content: space-around;
+    align-items: center;    
+  }
+  .home-container-conteudo {
+    flex-direction: column;
+    justify-content: center;
+    width: 650px;
+    height: 450px;
+  }
+
+  .home-container-conteudo button {
+    width: 450px;
+  }
+
+  .home-container-logo {
+    padding-bottom: 20px;
+  }
+
+  .home-container-logo svg {      
+    padding-left: 50px;   
+    width: 100%;
+    height: auto;
+    
+  }
+}
