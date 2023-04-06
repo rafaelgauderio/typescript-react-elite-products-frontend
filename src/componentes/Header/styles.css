@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 20px;
-  width: 650px;
+  width: 700px;
 }
 
 .menu-principal a.ativo {
@@ -41,6 +41,10 @@
   color: var(--light-color);
 }
 
+.navbar.navbar .navbar-toggler-icon {    
+  background-image: url('../../assets/imagens/hamburger.svg');
+}
+
 @media (max-width: 992px) { 
   
 
@@ -55,7 +59,7 @@
   }
 
   p {
-    font-size: 16px;
+    font-size: 20px;
     margin: 0;
     padding: 0;
   }
