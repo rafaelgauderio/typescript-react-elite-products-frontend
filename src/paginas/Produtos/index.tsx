@@ -1,4 +1,5 @@
 
+import CardProduto from '../../componentes/CardProduto/intex';
 import Header from '../../componentes/Header';
 import Rodape from '../../componentes/Rodape/intex';
 import './styles.css';
@@ -9,6 +10,7 @@ function Produtos () {
         <Header />
             <div className="container w-100 h-100 my-5 produtos-container">
                 <h2>Listagem de Produtos</h2>
+                <CardProduto />
             </div>
         <Rodape />
         </>

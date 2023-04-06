@@ -1,0 +1,32 @@
+.produto-card {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: var(--white-color);
+    border-radius: 15px;    
+    border: 1px solid var(--secondary-color);
+    padding: 20px 0;    
+}
+
+.produto-container-superior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    border-bottom: 2px solid var(--gray-less-light-color);
+    padding: 20px 0;
+}
+
+.produto-container-superior img {
+    width: 200px;
+    height: 200px;
+}
+
+.produto-container-inferior h4 {
+    font-weight: bold;
+    color: var(--gray-less-dark-color);
+}
+
+.produto-container-inferior {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
