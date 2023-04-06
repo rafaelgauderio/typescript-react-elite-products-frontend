@@ -7,8 +7,8 @@ function Rodape() {
     return (
         <>
             <footer className="container-fluid container-rodape">
-                <h2>Desenvolvido por Rafael de Luca</h2>
-                <p>Todos os direitos reservados</p>
+                <h2>Grupo Melhoramentos Higiene. Todos os direitos reservados</h2>
+                <p>Desenvolvido por <i>Rafael de luca</i></p>
             </footer>
         </>
     );
