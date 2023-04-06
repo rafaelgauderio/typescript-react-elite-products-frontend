@@ -1,16 +1,10 @@
-.produtos-container {
-    border: 1px solid green;
-    border-radius: 15px;
+.produtos-container {    
+    border-radius: 15px;    
 }
 
 .produtos-container h2 {
     text-align: center;
     padding: 20px;
-}
-
-.container-rodape {
-    position: fixed;
-    bottom: 0;
 }
 
 .container-rodape h2 {
