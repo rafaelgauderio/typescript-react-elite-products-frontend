@@ -15,6 +15,11 @@
 
 }
 
-.container-rodape h3 {
+.container-rodape h2 {
     text-align: center;
+}
+
+.container-rodape h2 i{
+    font-size: 18px;
+    font-weight: 400;
 }

@@ -1,0 +1,14 @@
+.produtos-container {    
+    border-radius: 15px;    
+}
+
+.produtos-container h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.container-rodape h2 {
+
+    font-size: 22px;
+    padding-bottom: 10px;
+}
