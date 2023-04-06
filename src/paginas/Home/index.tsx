@@ -13,8 +13,10 @@ function Home() {
                 <div className="home-caixa">
                     <div className="home-container-conteudo">
                         <h1>Soluções Avançadas em Higiene e Limpeza</h1>
-                        <BotaoBusca />
-                        <BotaoWhats />
+                        <div className="home-container-botao">
+                            <BotaoBusca />
+                            <BotaoWhats />
+                        </div>
                     </div>
                     <div className="home-container-logo">
                         <LogoColorido />
