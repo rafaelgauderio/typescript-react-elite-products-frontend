@@ -9,17 +9,13 @@ function Rodape() {
 
     const [dataAtual, setDataAtual] = useState('');
 
-    useEffect(() => {
-        setInterval(
-            () => {
+    useEffect(() =>  {
                 let ano = new Date().getFullYear();
                 setDataAtual(
                     `${ano}`
                 );
-            },
-            1000
-        );
-    }, []);
+            }, 
+    []);
 
 
     return (
