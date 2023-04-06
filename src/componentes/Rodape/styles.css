@@ -1,0 +1,18 @@
+.container-rodape {   
+
+    background-color: var(--black-color);
+    font-size: 26;
+    text-align: center;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    height: 80px;
+    padding-top:20px;   
+   
+}
+
+.container-rodape h3 {
+    text-align: center;
+}

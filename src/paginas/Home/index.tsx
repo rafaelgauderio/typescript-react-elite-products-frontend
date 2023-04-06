@@ -2,6 +2,7 @@ import { ReactComponent as LogoColorido } from "../../assets/imagens/logo-colori
 import BotaoBusca from "../../componentes/BotaoBusca/intex";
 import BotaoWhats from "../../componentes/BotaoWhats";
 import Header from "../../componentes/Header";
+import Rodape from "../../componentes/Rodape/intex";
 import './styles.css';
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
 
                 </div>
             </div>
+            < Rodape />
         </>
     );
 }
