@@ -2,6 +2,7 @@ import './styles.css';
 import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
+import { Link, NavLink } from 'react-router-dom';
 
 
 function Header() {
@@ -9,9 +10,9 @@ function Header() {
 
         <nav className='navbar navbar-expand-lg navbar-light cabecalho'>
             <header className='container-fluid' >
-                <a href="link logo" className='texto-logo'>
+                <Link to="/" className='texto-logo'>
                     <LogoBranco className="logo-branco" width="80%" height="100%" />
-                </a>
+                </Link>
                 
                     <button
                         className="navbar-toggler"
@@ -29,9 +30,9 @@ function Header() {
                     <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
                     <ul className='menu-principal navbar-nav offset-md-2'>
                         <li>
-                            <a href="link home" className='ativo'>
+                            <NavLink to="/" activeClassName='ativo' exact>
                                 HOME
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a href="link catalogo">
