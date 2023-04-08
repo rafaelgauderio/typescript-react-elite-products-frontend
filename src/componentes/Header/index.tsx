@@ -13,21 +13,21 @@ function Header() {
                 <Link to="/" className='texto-logo'>
                     <LogoBranco className="logo-branco" width="80%" height="100%" />
                 </Link>
-                
-                    <button
-                        className="navbar-toggler"
-                        type="button"                        
-                        data-bs-toggle="collapse"
-                        data-bs-target="#menu-hamburguer-navbar"  
-                        aria-controls="menu-hamburguer-navbar"
-                        aria-expanded="false"
-                        arial-label="Toggle navigation"                    
-                    >
-                        <p>menu</p>
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
 
-                    <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu-hamburguer-navbar"
+                    aria-controls="menu-hamburguer-navbar"
+                    aria-expanded="false"
+                    arial-label="Toggle navigation"
+                >
+                    <p>menu</p>
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
                     <ul className='menu-principal navbar-nav offset-md-2'>
                         <li>
                             <NavLink to="/" activeClassName='ativo' exact>
@@ -35,9 +35,9 @@ function Header() {
                             </NavLink>
                         </li>
                         <li>
-                            <a href="link catalogo">
+                            <NavLink to="/produtos" activeClassName='ativo'>
                                 CATÁLOGO
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a href="link contato">
