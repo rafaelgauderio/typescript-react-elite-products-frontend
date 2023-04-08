@@ -40,9 +40,9 @@ function Header() {
                             </NavLink>
                         </li>
                         <li>
-                            <a href="link contato">
+                            <NavLink to="/contatos" activeClassName='ativo'>
                                 CONTATO
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a href="link quem_somos">
