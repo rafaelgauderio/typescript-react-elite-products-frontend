@@ -3,7 +3,7 @@
 }
 
 .produtos-container h2 {
-    font-size: 28px;
+    font-size: 28px !important;
     text-align: center;
     padding: 20px;
 }

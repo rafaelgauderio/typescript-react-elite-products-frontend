@@ -31,7 +31,8 @@
 .home-container-conteudo h1,
 h2,
 h3 {
-  font-size: 1.1em;
+  border: none;
+  font-size: 1.1em !important;
 }
 
 .home-container-conteudo {

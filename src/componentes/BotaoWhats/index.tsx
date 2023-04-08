@@ -1,11 +1,13 @@
 import './styles.css';
 
-function BotaoWhats () {
+type Props = {mensagem : string};
+
+function BotaoWhats ({mensagem} : Props) {
 
     return (
 
         <button className="btn btn-primary botao-whats">
-            <h5>Chamar no WhatsApp</h5>
+            <h5>{mensagem}</h5>
         </button>
     )
     
