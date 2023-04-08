@@ -4,6 +4,7 @@ import Rodape from "./componentes/Rodape/intex";
 import Home from "./paginas/Home";
 import Produtos from "./paginas/Produtos";
 import Contatos from "./paginas/Contatos/Contatos";
+import Empresa from "./paginas/Empresa/Empresa";
 
 function Rotas() {
 
@@ -19,6 +20,9 @@ function Rotas() {
         </Route>
         <Route path="/contatos">
           <Contatos></Contatos>
+        </Route>
+        <Route path="/empresa">
+          <Empresa></Empresa>
         </Route>
       </Switch>
       <Rodape></Rodape>

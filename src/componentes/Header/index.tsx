@@ -45,9 +45,9 @@ function Header() {
                             </NavLink>
                         </li>
                         <li>
-                            <a href="link quem_somos">
+                            <NavLink to="empresa" activeClassName='ativo'>
                                 QUEM SOMOS
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a href="link admim">
