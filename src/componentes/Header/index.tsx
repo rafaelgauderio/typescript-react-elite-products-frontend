@@ -45,14 +45,14 @@ function Header() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="empresa" activeClassName='ativo'>
+                            <NavLink to="/empresa" activeClassName='ativo'>
                                 QUEM SOMOS
                             </NavLink>
                         </li>
                         <li>
-                            <a href="link admim">
+                            <NavLink to="/admin" activeClassName='ativo'>
                                 PAINEL ADMIN
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
