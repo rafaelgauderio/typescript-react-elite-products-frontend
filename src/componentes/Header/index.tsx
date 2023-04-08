@@ -2,6 +2,7 @@ import './styles.css';
 import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
+import { Link, NavLink } from 'react-router-dom';
 
 
 function Header() {
@@ -9,49 +10,49 @@ function Header() {
 
         <nav className='navbar navbar-expand-lg navbar-light cabecalho'>
             <header className='container-fluid' >
-                <a href="link logo" className='texto-logo'>
+                <Link to="/" className='texto-logo'>
                     <LogoBranco className="logo-branco" width="80%" height="100%" />
-                </a>
-                
-                    <button
-                        className="navbar-toggler"
-                        type="button"                        
-                        data-bs-toggle="collapse"
-                        data-bs-target="#menu-hamburguer-navbar"  
-                        aria-controls="menu-hamburguer-navbar"
-                        aria-expanded="false"
-                        arial-label="Toggle navigation"                    
-                    >
-                        <p>menu</p>
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                </Link>
 
-                    <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu-hamburguer-navbar"
+                    aria-controls="menu-hamburguer-navbar"
+                    aria-expanded="false"
+                    arial-label="Toggle navigation"
+                >
+                    <p>menu</p>
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
                     <ul className='menu-principal navbar-nav offset-md-2'>
                         <li>
-                            <a href="link home" className='ativo'>
+                            <NavLink to="/" activeClassName='ativo' exact>
                                 HOME
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="link catalogo">
+                            <NavLink to="/produtos" activeClassName='ativo'>
                                 CATÁLOGO
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="link contato">
+                            <NavLink to="/contatos" activeClassName='ativo'>
                                 CONTATO
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="link quem_somos">
+                            <NavLink to="/empresa" activeClassName='ativo'>
                                 QUEM SOMOS
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="link admim">
+                            <NavLink to="/admin" activeClassName='ativo'>
                                 PAINEL ADMIN
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
