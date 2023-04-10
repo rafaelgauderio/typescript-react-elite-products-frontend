@@ -1,11 +1,16 @@
 import './styles.css';
 
-function BotaoBusca () {
+// props são argumentos dos componentes react, visto que componentes
+// são funções javascript
+
+type Props = { mensagem: string };
+
+function BotaoBusca ({mensagem} : Props) {
 
     return (
 
         <button className="btn botao-busca">
-            <h5>Catálogo de Produtos</h5>
+            <h5>{mensagem}</h5>
         </button>
     )
     

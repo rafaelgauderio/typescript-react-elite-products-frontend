@@ -14,9 +14,9 @@ function Home() {
                         <h1>Soluções Avançadas em Higiene e Limpeza</h1>
                         <div className="home-container-botao">
                             <Link to="produtos">
-                                <BotaoBusca />
+                                <BotaoBusca mensagem={"Catálogo de Produtos"} />
                             </Link>
-                            <BotaoWhats />
+                            <BotaoWhats mensagem={"Estamos no WhatsApp"} />
                         </div>
                     </div>
                     <div className="home-container-logo">
