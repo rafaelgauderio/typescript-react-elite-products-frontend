@@ -42,6 +42,9 @@ function Produtos() {
                     <div className="col-xl-3 col-lg-4 col-sm-6">
                         <CardProduto />
                     </div>
+                    <div className="col-xl-3 col-lg-4 col-sm-6">
+                        <CardProduto />
+                    </div>
                 </div>
             </div>
         </>

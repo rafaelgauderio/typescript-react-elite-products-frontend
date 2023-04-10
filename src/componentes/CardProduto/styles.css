@@ -2,7 +2,7 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     background-color: var(--white-color);
     border-radius: 15px; 
-    padding: 20px 0;
+    padding: 10px 0;
     margin-bottom: 25px;   
     transition: transform .6s;  
 }
@@ -18,12 +18,12 @@
     justify-content: center;
     align-items: center;   
     border-bottom: 2px solid var(--gray-less-light-color);
-    padding: 20px 0;
+    padding: 0;
 }
 
 .produto-container-superior img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: auto;        
 }
 
 .produto-container-inferior h4 {
