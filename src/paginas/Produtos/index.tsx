@@ -17,7 +17,7 @@ function Produtos() {
         metragem: 300,
         peso: null,
         fragrancia: null,
-        imgUrl: "../../assets/imagens/7127.png",
+        imgUrl: require("../../assets/imagens/7127.png"),
         dataCadastro: "2023-03-01T16:00:00.123450Z",
         embalagens: [
             {
@@ -48,8 +48,6 @@ function Produtos() {
             }
         ]
     }
-
-
 
     return (
         <>
@@ -91,7 +89,7 @@ function Produtos() {
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
                         <CardProduto produto={produtoMocado} />
-                    </div>                   
+                    </div>
                 </div>
             </div>
         </>

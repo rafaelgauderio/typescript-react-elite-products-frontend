@@ -13,7 +13,7 @@ function CardProduto ({produto} : Props)  {
   return (
     <div className="produto-card">
       <div className="produto-container-superior">
-        <img src={require("../../assets/imagens/7127.png")} alt="Imagem do Produto" />
+        <img src={produto.imgUrl} alt="Imagem do Produto" />
       </div>
       <div className="produto-container-inferior">
         <h4>{produto.descricao}</h4>        
