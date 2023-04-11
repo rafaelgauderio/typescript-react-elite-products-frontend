@@ -4,6 +4,7 @@ import { Produto } from '../../tipos/Produto';
 import './styles.css';
 
 
+
 function Produtos() {
 
     const produtoMocado: Produto = {
@@ -16,7 +17,7 @@ function Produtos() {
         metragem: 300,
         peso: null,
         fragrancia: null,
-        imgUrl: "/assets/imagens/7127.png",
+        imgUrl: "../../assets/imagens/7127.png",
         dataCadastro: "2023-03-01T16:00:00.123450Z",
         embalagens: [
             {
