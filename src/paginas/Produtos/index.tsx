@@ -52,8 +52,10 @@ function Produtos() {
 
     return (
         <>
-            <div className="container w-100 h-100 my-5 produtos-container">
-                <h2>Listagem de Produtos</h2>
+            <div className="container w-100 h-100 my-4 my-lg-5 produtos-container">
+                <div className="row titulo-container">
+                    <h2>Conheça nos produtos</h2>
+                </div>
                 <div className="row">
                     <div className="col-xl-3 col-lg-4 col-sm-6">
                         <Link to="produtos/1">
