@@ -1,16 +1,22 @@
 import './styles.css';
-import  ImagemProduto from '../../assets/imagens/7210.png';
+import { Produto } from '../../tipos/Produto';
 
+// Props são argumentos dos componentes Reacts.
+// componentes reactes são funções javaScript
 
-function CardProduto ()  {
+type Props = {
+  produto : Produto;  
+}
+
+function CardProduto ({produto} : Props)  {
     
   return (
     <div className="produto-card">
       <div className="produto-container-superior">
-        <img src={ImagemProduto} alt="Nome do Produto" />
+        <img src={produto.imgUrl} alt="Imagem do Produto" />
       </div>
       <div className="produto-container-inferior">
-        <h4>Toalha de Papel Interfolhada Folha Dupla 7210</h4>        
+        <h4>{produto.descricao}</h4>        
       </div>
     </div>
   );
