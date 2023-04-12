@@ -12,10 +12,11 @@ function ProdutoDetalhado() {
                     <div className="col-xl-5">
                         <div className="imagem-container">
                             <img src={require("../../assets/imagens/7127.png")} alt="imagem do produto"></img>
-                        </div>
-                        <div className="descricao-container">
+                            <div className="descricao-container">
                             <h2>Papel Higiênico Rolo 7127</h2>
                         </div>
+                        </div>
+                        
                     </div>
                     <div className="col-xl-7">
                         <div className="descricao-embalagem-categoria-container">
