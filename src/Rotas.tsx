@@ -6,6 +6,7 @@ import Produtos from "./paginas/Produtos";
 import Admin from "./paginas/Admin";
 import Contatos from "./paginas/Contatos";
 import Empresa from "./paginas/Empresa";
+import ProdutoDetalhado from "./paginas/ProdutoDetalhado";
 
 function Rotas() {
 
@@ -16,8 +17,11 @@ function Rotas() {
         <Route path="/" exact>
           <Home></Home>
         </Route>
-        <Route path="/produtos">
+        <Route path="/produtos" exact>
           <Produtos></Produtos>
+        </Route>
+        <Route path="/produtos/:produtoId">
+          <ProdutoDetalhado></ProdutoDetalhado>
         </Route>
         <Route path="/contatos">
           <Contatos></Contatos>
