@@ -118,6 +118,15 @@
   .imagem-container img {
     width: 60%;
   }
+
+  .descricao-embalagem-categoria-container h3 {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .descricao-embalagem-categoria-container p {
+    margin: 0;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -133,14 +142,5 @@
 
   .descricao-embalagem-categoria-container {
     height: 500px;
-  }
-
-  .descricao-embalagem-categoria-container h3 {
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-
-  .descricao-embalagem-categoria-container p {
-    margin: 0;
   }
 }
