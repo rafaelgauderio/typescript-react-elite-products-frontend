@@ -1,5 +1,61 @@
+.produto-detalhado-container {
+    padding: 10px;
+    border: 2px solid gold;
+    font-size: 22px;
+}
+
+.produto-detalhado-card {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: var(--white-color);
+    border-radius: 15px;
+    padding: 10px;
+    border: 2px solid red;    
+}
+
 .botao-voltar {
     margin-left: 15px;
     margin-top: 15px;
     color: var(--white-color);
+    font-weight: 600;    
 }
+
+
+.imagem-container {
+    text-align:center ; 
+    border: 2px solid blue;
+}
+
+.imagem-container img {
+    width: 70%;
+    border: 2px solid red;  
+
+}
+
+.descricao-container h2 {        
+    text-align: center;
+    font-size: 1.1em !important;
+    margin-bottom: 10px;   
+    color:var(--dark-color);
+}
+
+.descricao-embalagem-categoria-container {   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);   
+    border-radius: 15px;
+    height: 100%; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border: 1px solid var(--primary-color); 
+}
+
+.descricao-embalagem-categoria-container h3, .descricao-embalagem-categoria-container p {
+    letter-spacing: -0.015em;
+}
+
+.categorias-container, .embalagens-container {
+    margin-bottom: 10px;
+}
+
