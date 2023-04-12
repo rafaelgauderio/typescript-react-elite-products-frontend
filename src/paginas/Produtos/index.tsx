@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import CardProduto from '../../componentes/CardProduto/intex';
 import { Produto } from '../../tipos/Produto';
 import './styles.css';
@@ -55,40 +56,64 @@ function Produtos() {
                 <h2>Listagem de Produtos</h2>
                 <div className="row">
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <CardProduto produto={produtoMocado} />
+                        <Link to="produtos/1">
+                            <CardProduto produto={produtoMocado} />
+                        </Link>
                     </div>
                 </div>
             </div>
