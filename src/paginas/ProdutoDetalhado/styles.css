@@ -1,0 +1,146 @@
+.produto-detalhado-container {
+  padding: 15px;
+  font-size: 22px;
+}
+
+.produto-detalhado-card {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 15px;
+  padding: 10px;
+  padding-bottom: 40px;
+}
+
+.botao-voltar {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: var(--white-color);
+  font-weight: 600;
+}
+
+.imagem-container {
+  text-align: center;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.imagem-container img {
+  width: 70%;
+}
+
+.descricao-container h2 {
+  text-align: center;
+  font-size: 1.1em !important;
+  color: var(--dark-color);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.descricao-embalagem-categoria-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+}
+
+.descricao-embalagem-categoria-container h3 {
+  font-size: 0.95em;
+  letter-spacing: -0.015em;
+}
+.descricao-embalagem-categoria-container p {
+  font-size: 0.8em;
+  letter-spacing: -0.015em;
+}
+
+.categorias-container,
+.embalagens-container {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 576px) {
+  .botao-voltar {
+    margin-bottom: 20px;
+  }
+  .produto-detalhado-container {
+    padding: 25px;
+    font-size: 26px;
+  }
+
+  .descricao-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .descricao-container h2 {
+    text-align: center;
+  }
+
+  .produto-detalhado-card {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .botao-voltar {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .produto-detalhado-container {
+    padding: 30px;
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 992px) {
+  .botao-voltar {
+    font-size: 24px;
+  }
+
+  .produto-detalhado-container {
+    padding: 40px;
+    font-size: 28px;
+  }
+
+  .produto-detalhado-card {
+    padding: 40px;
+  }
+
+  .imagem-container img {
+    width: 65%;
+  }
+
+  .descricao-embalagem-categoria-container h3 {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .descricao-embalagem-categoria-container p {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .botao-voltar {
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-top: -10px;
+  }
+  .imagem-container {
+    width: auto;
+    min-height: 500px;
+  }
+
+  .descricao-embalagem-categoria-container {
+    height: 500px;
+  }
+}
