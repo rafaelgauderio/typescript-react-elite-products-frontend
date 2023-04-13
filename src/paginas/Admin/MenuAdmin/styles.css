@@ -1,0 +1,7 @@
+.admin-menu-link p:hover {
+    color: var(--dark-color) !important;
+}
+
+.admin-menu-link p {
+    margin-bottom: 0px;
+}
