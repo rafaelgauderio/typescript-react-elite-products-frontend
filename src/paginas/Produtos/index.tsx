@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CardProduto from '../../componentes/CardProduto/intex';
 import { Produto } from '../../tipos/Produto';
 import './styles.css';
+import Paginacao from '../../componentes/Paginacao/intex';
 
 
 
@@ -117,6 +118,9 @@ function Produtos() {
                             <CardProduto produto={produtoMocado} />
                         </Link>
                     </div>
+                </div>
+                <div className="row">
+                    <Paginacao />
                 </div>
             </div>
         </>
