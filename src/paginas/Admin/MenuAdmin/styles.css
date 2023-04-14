@@ -1,7 +1,33 @@
-.admin-menu-link p:hover {
-    color: var(--dark-color) !important;
+
+.admin-menu-container ul {
+    display: flex;
+    justify-content: space-between;
+       
+}
+
+.admin-menu-link {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;   
+    background-color:var(--light-color); 
+    color: var(--tertiary-color);    
+    height:50px;
+    border-radius: 10px;
+    padding: opx 10px; 
+    border: 1px solid var(--primary-color);
+    margin: 10px 0px;
+}
+
+.admin-menu-link:hover {
+    background-color: var(--blue-light);
 }
 
 .admin-menu-link p {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
+  padding: 0 10px;
+}
+
+.admin-menu-link.ativo {
+    background-color: var(--primary-color);
 }

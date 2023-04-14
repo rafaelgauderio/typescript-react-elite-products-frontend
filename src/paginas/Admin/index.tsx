@@ -4,7 +4,7 @@ import './styles.css';
 function MenuAdmin() {
 
     return (
-        <div className="container my-4 admin-container">
+        <div className="container admin-container">
             <div className="admin-menu">
                 <Menu />
             </div>

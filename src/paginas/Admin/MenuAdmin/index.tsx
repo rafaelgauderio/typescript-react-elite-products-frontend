@@ -3,11 +3,10 @@ import './styles.css';
 function Menu() {
 
     return (
-        <nav>
-            <ul className="link-primary">
-
+        <nav className="admin-menu-container">
+            <ul>
                 <li>
-                    <a href="link-sms-email" className="admin-menu-link">
+                    <a href="link-sms-email" className="admin-menu-link ativo">
                         <p>Email /sms</p>
                     </a>
                 </li>
