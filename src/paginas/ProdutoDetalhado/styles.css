@@ -12,6 +12,7 @@
 }
 
 .botao-voltar {
+  font-size: 0.7em !important;
   margin-left: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
