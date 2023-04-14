@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Header from "./componentes/Header";
 import Rodape from "./componentes/Rodape";
 import Home from "./paginas/Home";
@@ -31,8 +31,10 @@ function Rotas() {
         </Route>
       </Switch>
       <Route path="/admin">
-        <Admin></Admin>
+      <Redirect from="/admin" to="/admin/sms" exact></Redirect>
+        <Admin></Admin>        
       </Route>
+      
       <Rodape></Rodape>
     </BrowserRouter>
   );
