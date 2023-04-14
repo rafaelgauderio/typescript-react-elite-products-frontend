@@ -5,15 +5,15 @@ type Props = {
     contato: Contato;
 }
 
-function CardContato() {
+function CardContato( {contato} : Props) {
 
     return (
         <div className="contato-card">
             <div className="contato-conteudo">
-                <h4>Tecnologia da Informação</h4>
-                <p>Rafael de Luca</p>
-                <p>rafael@melhoramentoshigieners.com.br</p>
-                <p>51-3373800</p>
+                <h4>{contato.setor}</h4>
+                <p>{contato.nome}</p>
+                <p>{contato.email}</p>
+                <p>{contato.telefone}</p>
             </div>
 
         </div>
