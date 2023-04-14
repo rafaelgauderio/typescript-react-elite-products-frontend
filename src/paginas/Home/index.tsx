@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as LogoColorido } from "../../assets/imagens/logo-colorido.svg";
-import BotaoBusca from "../../componentes/BotaoBusca/intex";
+import BotaoBusca from "../../componentes/BotaoBusca";
 import BotaoWhats from "../../componentes/BotaoWhats";
 import './styles.css';
 

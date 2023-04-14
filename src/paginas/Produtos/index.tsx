@@ -1,9 +1,9 @@
 
 import { Link } from 'react-router-dom';
-import CardProduto from '../../componentes/CardProduto/intex';
+import CardProduto from '../../componentes/CardProduto';
 import { Produto } from '../../tipos/Produto';
 import './styles.css';
-import Paginacao from '../../componentes/Paginacao/intex';
+import Paginacao from '../../componentes/Paginacao';
 
 
 

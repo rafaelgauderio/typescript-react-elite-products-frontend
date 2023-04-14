@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./componentes/Header";
-import Rodape from "./componentes/Rodape/intex";
+import Rodape from "./componentes/Rodape";
 import Home from "./paginas/Home";
 import Produtos from "./paginas/Produtos";
 import Admin from "./paginas/Admin";
