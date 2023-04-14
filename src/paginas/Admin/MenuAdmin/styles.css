@@ -54,7 +54,7 @@
 @media (min-width: 1200px) {
   .admin-menu-container {
     width: 320px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 227px);
     padding: 0;
     margin: 0;
     background-color: var(--primary-color);
