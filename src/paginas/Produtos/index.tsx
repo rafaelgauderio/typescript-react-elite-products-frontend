@@ -4,11 +4,17 @@ import CardProduto from '../../componentes/CardProduto';
 import { Produto } from '../../tipos/Produto';
 import './styles.css';
 import Paginacao from '../../componentes/Paginacao';
+import { useEffect, useState } from 'react';
+import { PaginaSpring } from '../../tipos/biblioteca/spring';
+import { ParametrosAxios } from '../../tipos/biblioteca/axios';
+import { BASE_URL } from '../../util/requisicao';
+import axios from 'axios';
 
 
 
 function Produtos() {
 
+    /*
     const produtoMocado: Produto = {
 
         id: 1,
@@ -50,6 +56,29 @@ function Produtos() {
             }
         ]
     }
+    */
+
+    const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
+
+    useEffect(() => {
+
+        const parametros: ParametrosAxios = {
+
+            url: `${BASE_URL}/produtos`,
+            metodo: 'GET',
+            parametros: {
+                page: 0,
+                size: 12,
+            },
+        };
+
+        axios(parametros).then(resposta => {
+            setPagina(resposta.data);
+            //console.log(pagina);
+        });
+
+    }, []);
+
 
     return (
         <>
@@ -58,66 +87,16 @@ function Produtos() {
                     <h2>Conheça nos produtos</h2>
                 </div>
                 <div className="row">
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                        <Link to="produtos/1">
-                            <CardProduto produto={produtoMocado} />
-                        </Link>
-                    </div>
+                    {pagina?.content.map(produto => {
+                        return (
+
+                            <div className="col-xl-3 col-lg-4 col-sm-6">
+                                <Link to={`/produtos/${produto.id}`}>
+                                    <CardProduto produto={produto} key={produto.id} />
+                                </Link>
+                            </div>
+                        );
+                    })}
                 </div>
                 <div className="row">
                     <Paginacao />
