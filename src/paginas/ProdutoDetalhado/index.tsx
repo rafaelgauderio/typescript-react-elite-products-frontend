@@ -1,7 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './styles.css';
+import { useEffect, useState } from 'react';
+import { BASE_URL } from '../../util/requisicao';
+import { Produto } from '../../tipos/Produto';
+import axios from 'axios';
+
+type ParametrosUrl = {
+    produtoId: string;
+}
 
 function ProdutoDetalhado() {
+
+    const { produtoId } = useParams<ParametrosUrl>();
+
+    const [produto, setProduto] = useState<Produto>();
+
+    // useEffect receve 2 argumentos : (função e uma lista de dependências).
+    // Toda vez lista de dependências for modificada, a função vai ser chamada para atualizar o componente
+
+    useEffect( () => {
+        axios.get(`${BASE_URL}/produtos/${produtoId}`)
+          .then( (resposta) => {
+            console.log(resposta.data)
+            setProduto(resposta.data);
+          });
+      }, [produtoId]);
 
     return (
         <div className="produto-detalhado-container">
@@ -14,9 +37,9 @@ function ProdutoDetalhado() {
                 <div className="row">
                     <div className="col-xl-5">
                         <div className="imagem-container">
-                            <img src={require("../../assets/imagens/7127.png")} alt="imagem do produto"></img>
+                            <img src={produto?.imgUrl} alt={produto?.descricao}></img>
                             <div className="descricao-container">
-                                <h2>Papel Higiênico Rolo 7127</h2>
+                                <h2>{produto?.descricao}</h2>
                             </div>
                         </div>
 
@@ -34,7 +57,7 @@ function ProdutoDetalhado() {
                                 <p>Fardo com 8 rolos</p>
                             </div>
                             <h3>Descrição completa</h3>
-                            <p>Papel higiênico em rolo 100% fibras virgens, Folha Dupla, Super Macio, Folhas Brancas</p>
+                            <p>{produto?.descricaoCompleta}</p>
                         </div>
                     </div>
                 </div>
