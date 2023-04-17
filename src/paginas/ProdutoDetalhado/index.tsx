@@ -7,7 +7,7 @@ import axios from 'axios';
 
 type ParametrosUrl = {
     produtoId: string;
-}
+};
 
 function ProdutoDetalhado() {
 
@@ -18,13 +18,13 @@ function ProdutoDetalhado() {
     // useEffect receve 2 argumentos : (função e uma lista de dependências).
     // Toda vez lista de dependências for modificada, a função vai ser chamada para atualizar o componente
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get(`${BASE_URL}/produtos/${produtoId}`)
-          .then( (resposta) => {
-            //console.log(resposta.data)
-            setProduto(resposta.data);
-          });
-      }, [produtoId]);
+            .then((resposta) => {
+                console.log(resposta.data)
+                setProduto(resposta.data);
+            });
+    }, [produtoId]);
 
     return (
         <div className="produto-detalhado-container">
