@@ -21,7 +21,7 @@ function ProdutoDetalhado() {
     useEffect( () => {
         axios.get(`${BASE_URL}/produtos/${produtoId}`)
           .then( (resposta) => {
-            console.log(resposta.data)
+            //console.log(resposta.data)
             setProduto(resposta.data);
           });
       }, [produtoId]);
