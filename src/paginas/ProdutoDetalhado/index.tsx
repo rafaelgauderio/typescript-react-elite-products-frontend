@@ -21,7 +21,7 @@ function ProdutoDetalhado() {
     useEffect(() => {
         axios.get(`${BASE_URL}/produtos/${produtoId}`)
             .then((resposta) => {
-                console.log(resposta.data)
+                //console.log(resposta.data)
                 setProduto(resposta.data);
             });
     }, [produtoId]);
@@ -48,13 +48,16 @@ function ProdutoDetalhado() {
                         <div className="descricao-embalagem-categoria-container">
                             <div className="categorias-container">
                                 <h3>Categorias do produto</h3>
-                                <p>Folha Dupla</p>
-                                <p>Papel higiênico</p>
+                                {produto?.categorias.map(categoria => (
+                                    <p>{categoria.descricao}</p>
+                                ))}
+
                             </div>
                             <div className="embalagens-container">
                                 <h3>Descrição da embalagem</h3>
-                                <p>2.400 metros</p>
-                                <p>Fardo com 8 rolos</p>
+                                {produto?.embalagens.map(embalagem => (
+                                    <p>{embalagem.descricao}</p>
+                                ))}
                             </div>
                             <h3>Descrição completa</h3>
                             <p>{produto?.descricaoCompleta}</p>
