@@ -9,8 +9,7 @@ import { PaginaSpring } from '../../tipos/biblioteca/spring';
 import { ParametrosAxios } from '../../tipos/biblioteca/axios';
 import { BASE_URL } from '../../util/requisicao';
 import axios from 'axios';
-
-
+import CardLoader from './CardLoader';
 
 function Produtos() {
 
@@ -58,6 +57,7 @@ function Produtos() {
     }
     */
 
+    const [paginaCarregando, setPaginaCarregando] = useState(false);
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
     useEffect(() => {
@@ -72,10 +72,14 @@ function Produtos() {
             },
         };
 
+        setPaginaCarregando(true);
         axios(parametros).then(resposta => {
             setPagina(resposta.data);
             //console.log(pagina);
-        });
+        })
+            .finally(() => {
+                setPaginaCarregando(false);
+            });
 
     }, []);
 
@@ -87,16 +91,24 @@ function Produtos() {
                     <h2>Conheça nos produtos</h2>
                 </div>
                 <div className="row">
-                    {pagina?.content.map(produto => {
-                        return (
+                    {paginaCarregando ?
+                        <>
+                            <CardLoader />
+                            <CardLoader />
+                            <CardLoader />                            
+                        </>
+                        : (
+                            pagina?.content.map(produto => {
+                                return (
 
-                            <div className="col-xl-3 col-lg-4 col-sm-6">
-                                <Link to={`/produtos/${produto.id}`}>
-                                    <CardProduto produto={produto} key={produto.id} />
-                                </Link>
-                            </div>
-                        );
-                    })}
+                                    <div className="col-xl-3 col-lg-4 col-sm-6">
+                                        <Link to={`/produtos/${produto.id}`}>
+                                            <CardProduto produto={produto} key={produto.id} />
+                                        </Link>
+                                    </div>
+                                );
+                            })
+                        )}
                 </div>
                 <div className="row">
                     <Paginacao />

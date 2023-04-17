@@ -1,0 +1,14 @@
+.card-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {    
+  .card-loader-container {
+    display: flex;
+    flex-direction: row;
+    justify-self: start;       
+    
+  }
+}
