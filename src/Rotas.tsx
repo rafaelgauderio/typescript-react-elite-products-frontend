@@ -32,6 +32,7 @@ function Rotas() {
           <Route path="/empresa">
             <Empresa></Empresa>
           </Route>
+          <Redirect from="/admin/autenticar" to="/admin/autenticar/login" exact></Redirect>
           <Route path="/admin/autenticar">
             <Autenticacao></Autenticacao>
           </Route>

@@ -1,6 +1,12 @@
-.autenticacao-container {    
+.autenticacao-container {
+    border: 1px solid green;
+}
+
+.autenticacao-container h1 {    
     font-size: 30px;
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    border: 0;
 }
+

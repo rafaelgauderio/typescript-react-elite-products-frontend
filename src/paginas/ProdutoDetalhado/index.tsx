@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { BASE_URL } from '../../util/requisicao';
 import { Produto } from '../../tipos/Produto';
 import axios from 'axios';
-import ImagemGrid from '../Produtos/CardLoader';
 import ProdutoImageLoader from '../Produtos/CardLoader';
 import ProdutoDescricaoLoader from './ProdutoDescricaoLoader';
 
