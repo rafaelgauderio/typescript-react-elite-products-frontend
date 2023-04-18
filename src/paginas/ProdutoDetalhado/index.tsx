@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { BASE_URL } from '../../util/requisicao';
 import { Produto } from '../../tipos/Produto';
 import axios from 'axios';
+import ImagemGrid from '../Produtos/CardLoader';
+import ProdutoImageLoader from '../Produtos/CardLoader';
+import ProdutoDescricaoLoader from './ProdutoDescricaoLoader';
 
 type ParametrosUrl = {
     produtoId: string;
@@ -13,6 +16,7 @@ function ProdutoDetalhado() {
 
     const { produtoId } = useParams<ParametrosUrl>();
 
+    const [paginaCarregando, setPaginaCarregando] = useState(false);
     const [produto, setProduto] = useState<Produto>();
 
     // useEffect receve 2 argumentos : (função e uma lista de dependências).
@@ -23,6 +27,9 @@ function ProdutoDetalhado() {
             .then((resposta) => {
                 //console.log(resposta.data)
                 setProduto(resposta.data);
+            })
+            .finally(() => {
+                setPaginaCarregando(false);
             });
     }, [produtoId]);
 
@@ -36,32 +43,40 @@ function ProdutoDetalhado() {
                 </div>
                 <div className="row">
                     <div className="col-xl-5">
-                        <div className="imagem-container">
-                            <img src={produto?.imgUrl} alt={produto?.descricao}></img>
-                            <div className="descricao-container">
-                                <h2>{produto?.descricao}</h2>
+                        {paginaCarregando ? (
+                            <ProdutoImageLoader></ProdutoImageLoader>
+                        ) : (
+                            <div className="imagem-container">
+                                <img src={produto?.imgUrl} alt={produto?.descricao}></img>
+                                <div className="descricao-container">
+                                    <h2>{produto?.descricao}</h2>
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                     </div>
                     <div className="col-xl-7">
-                        <div className="descricao-embalagem-categoria-container">
-                            <div className="categorias-container">
-                                <h3>Categorias do produto</h3>
-                                {produto?.categorias.map(categoria => (
-                                    <p>{categoria.descricao}</p>
-                                ))}
+                        {paginaCarregando ? (
+                            <ProdutoDescricaoLoader></ProdutoDescricaoLoader>
+                        ) : (
+                            <div className="descricao-embalagem-categoria-container">
+                                <div className="categorias-container">
+                                    <h3>Categorias do produto</h3>
+                                    {produto?.categorias.map(categoria => (
+                                        <p>{categoria.descricao}</p>
+                                    ))}
 
+                                </div>
+                                <div className="embalagens-container">
+                                    <h3>Descrição da embalagem</h3>
+                                    {produto?.embalagens.map(embalagem => (
+                                        <p>{embalagem.descricao}</p>
+                                    ))}
+                                </div>
+                                <h3>Descrição completa</h3>
+                                <p>{produto?.descricaoCompleta}</p>
                             </div>
-                            <div className="embalagens-container">
-                                <h3>Descrição da embalagem</h3>
-                                {produto?.embalagens.map(embalagem => (
-                                    <p>{embalagem.descricao}</p>
-                                ))}
-                            </div>
-                            <h3>Descrição completa</h3>
-                            <p>{produto?.descricaoCompleta}</p>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
