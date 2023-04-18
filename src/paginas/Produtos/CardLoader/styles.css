@@ -4,11 +4,9 @@
   justify-content: center;
 }
 
-@media (min-width: 992px) {    
+@media (min-width: 992px) {
   .card-loader-container {
-    display: flex;
-    flex-direction: row;
-    justify-self: start;       
-    
+    display: flex;    
+    justify-content: flex-start;
   }
 }
