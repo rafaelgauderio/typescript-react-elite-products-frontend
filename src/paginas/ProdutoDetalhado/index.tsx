@@ -75,6 +75,8 @@ function ProdutoDetalhado() {
                                 </div>
                                 <h3>Descrição completa</h3>
                                 <p>{produto?.descricaoCompleta}</p>
+                                <p><strong>Largura da folha ou do rolo:</strong> {produto?.largura} cm</p>
+                                <p><strong>Fragrância:</strong> {produto?.fragrancia==null ? 'sem fragrância' : produto?.fragrancia}</p>
                             </div>
                         )}
                     </div>
