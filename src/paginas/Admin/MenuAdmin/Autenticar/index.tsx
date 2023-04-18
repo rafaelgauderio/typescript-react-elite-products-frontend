@@ -8,7 +8,7 @@ function Autenticacao() {
             <Switch>
                 <Route path="/admin/autenticar/login" exact>
                     <div className="autenticacao-container-login">
-                        <h1>Tela temporária de login</h1>
+                        <h1>Login</h1>
                     </div>
                 </Route>
                 <Route path="/admin/autenticar/recuperar">
