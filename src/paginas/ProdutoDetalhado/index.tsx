@@ -4,15 +4,17 @@ import { useEffect, useState } from 'react';
 import { BASE_URL } from '../../util/requisicao';
 import { Produto } from '../../tipos/Produto';
 import axios from 'axios';
-import ImagemGrid from '../Produtos/CardLoader';
 import ProdutoImageLoader from '../Produtos/CardLoader';
 import ProdutoDescricaoLoader from './ProdutoDescricaoLoader';
+import { formatarLargura } from '../../util/formatador';
 
 type ParametrosUrl = {
     produtoId: string;
 };
 
-function ProdutoDetalhado() {
+
+
+function ProdutoDetalhado( ) {
 
     const { produtoId } = useParams<ParametrosUrl>();
 
@@ -75,6 +77,8 @@ function ProdutoDetalhado() {
                                 </div>
                                 <h3>Descrição completa</h3>
                                 <p>{produto?.descricaoCompleta}</p>
+                                <p><strong>Largura da folha ou do rolo:</strong> {produto?.largura==null ? 'não se aplica' : formatarLargura(produto?.largura!)} cm</p>
+                                <p><strong>Fragrância:</strong> {produto?.fragrancia==null ? 'sem fragrância' : produto?.fragrancia}</p>
                             </div>
                         )}
                     </div>

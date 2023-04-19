@@ -1,0 +1,17 @@
+.botao-padrao {
+  height: 50px;
+  width: 220px;
+  color: var(--white-color);
+  border-radius: 15px !important;
+  align-self: center;
+}
+
+.botao-padrao h5 {
+  font-size: 18px;
+}
+
+@media (min-width: 992px) {
+  .botao-padrao {    
+    width:270px;
+  }
+}

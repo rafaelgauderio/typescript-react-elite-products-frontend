@@ -46,6 +46,12 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 10px;
 }
 
+.input-padrao {
+  font-size: 1em;
+  height: 50px;
+  border-radius: 15px;
+}
+
 
 
 

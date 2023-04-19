@@ -54,11 +54,11 @@
 }
 
 .descricao-embalagem-categoria-container h3 {
-  font-size: 0.95em;
+  font-size: 0.85em;
   letter-spacing: -0.015em;
 }
 .descricao-embalagem-categoria-container p {
-  font-size: 0.8em;
+  font-size: 0.75em;
   letter-spacing: -0.015em;
 }
 
@@ -108,7 +108,7 @@
   }
 
   .produto-detalhado-container {
-    padding: 40px;
+    padding: 30px;
     font-size: 28px;
   }
 
@@ -143,5 +143,10 @@
 
   .descricao-embalagem-categoria-container {
     height: 500px;
+  }
+
+  .descricao-embalagem-categoria-container h3 {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
 }

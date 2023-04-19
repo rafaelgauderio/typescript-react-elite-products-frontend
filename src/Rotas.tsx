@@ -7,36 +7,44 @@ import Admin from "./paginas/Admin";
 import Contatos from "./paginas/Contatos";
 import Empresa from "./paginas/Empresa";
 import ProdutoDetalhado from "./paginas/ProdutoDetalhado";
+import Autenticacao from "./paginas/Admin/MenuAdmin/Autenticar";
 
 function Rotas() {
 
   return (
-    <BrowserRouter>
-      <Header></Header>
-      <Switch>
-        <Route path="/" exact>
-          <Home></Home>
-        </Route>
-        <Route path="/produtos" exact>
-          <Produtos></Produtos>
-        </Route>
-        <Route path="/produtos/:produtoId">
-          <ProdutoDetalhado></ProdutoDetalhado>
-        </Route>
-        <Route path="/contatos">
-          <Contatos></Contatos>
-        </Route>
-        <Route path="/empresa">
-          <Empresa></Empresa>
-        </Route>
-      </Switch>
-      <Route path="/admin">
-      <Redirect from="/admin" to="/admin/sms" exact></Redirect>
-        <Admin></Admin>        
-      </Route>
-      
-      <Rodape></Rodape>
-    </BrowserRouter>
+
+    <>
+      <BrowserRouter>
+        <Header></Header>
+        <Switch>
+          <Route path="/" exact>
+            <Home></Home>
+          </Route>
+          <Route path="/produtos" exact>
+            <Produtos></Produtos>
+          </Route>
+          <Route path="/produtos/:produtoId">
+            <ProdutoDetalhado></ProdutoDetalhado>
+          </Route>
+          <Route path="/contatos">
+            <Contatos></Contatos>
+          </Route>
+          <Route path="/empresa">
+            <Empresa></Empresa>
+          </Route>
+          <Redirect from="/admin/autenticar" to="/admin/autenticar/login" exact></Redirect>
+          <Route path="/admin/autenticar">
+            <Autenticacao></Autenticacao>
+          </Route>
+          <Route path="/admin">
+            <Redirect from="/admin" to="/admin/sms" exact></Redirect>
+            <Admin></Admin>
+          </Route>
+        </Switch>
+        <Rodape></Rodape>
+      </BrowserRouter>
+    </>
+
   );
 
 }
