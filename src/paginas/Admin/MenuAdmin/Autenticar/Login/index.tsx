@@ -12,10 +12,12 @@ function Login() {
                 </div>
                 <form>
                     <div className="mb-3">
-                        <input type="text" placeholder='Email' name="usuario"></input>
+                        <input type="text" placeholder='Email' name="usuario" className='form-control input-padrao'>
+                        </input>
                     </div>
                     <div className="mb-5">
-                        <input type="password" placeholder='Senha' name="password"></input>
+                        <input type="password" placeholder='Senha' name="password" className='form-control input-padrao' >
+                        </input>
                     </div>
                     <div className='login-enviar'>
                         <BotaoPadrao mensagem="Fazer Login"></BotaoPadrao>
@@ -27,7 +29,6 @@ function Login() {
                     </div>
                 </form>
             </div>
-
         </>
 
 
