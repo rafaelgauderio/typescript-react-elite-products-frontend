@@ -27,7 +27,7 @@
 
 @media (min-width: 576px) {
   .autenticacao-container {
-    min-height: 600px;
+    min-height: 500px;
   }
 
   .autenticacao-container-login {
@@ -40,3 +40,9 @@
     width: 580px;
   }
 }
+
+@media (min-width: 992px) {
+    .autenticacao-container {
+      padding: 40px;
+    }
+  }
