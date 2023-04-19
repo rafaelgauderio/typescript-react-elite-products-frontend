@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
+import { useForm } from 'react-hook-form';
+
+
+type DadosLogin = {
+    usuario: string;
+    password: string;
+}
+
+function enviarFormulario(dadosLogin: DadosLogin) {
+    return console.log(dadosLogin); // apenas imprimindo os dados de login no console
+};
 
 function Login() {
+
+    const { register, handleSubmit } = useForm<DadosLogin>();
 
     return (
         <>
@@ -10,13 +23,24 @@ function Login() {
                 <div className="login-titulo">
                     <h1>Login</h1>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit(enviarFormulario)}>
                     <div className="mb-3">
-                        <input type="text" placeholder='Email' name="usuario" className='form-control input-padrao'>
+                        <input
+                            {...register("usuario")}
+                            type="text"
+                            placeholder='Email'
+                            name="usuario"
+                            className='form-control input-padrao'
+                        >
                         </input>
                     </div>
                     <div className="mb-5">
-                        <input type="password" placeholder='Senha' name="password" className='form-control input-padrao' >
+                        <input
+                            {...register("password")}
+                            type="password"
+                            placeholder='Senha'
+                            name="password"
+                            className='form-control input-padrao' >
                         </input>
                     </div>
                     <div className='login-enviar'>
@@ -28,7 +52,7 @@ function Login() {
                         </Link>
                     </div>
                 </form>
-            </div>
+            </div >
         </>
 
 
