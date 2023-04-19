@@ -1,0 +1,10 @@
+.botao-padrao {
+  height: 50px;
+  width: 250px;
+  color: var(--white-color);
+  border-radius: 15px !important;
+}
+
+.botao-padrao h5 {
+  font-size: 18px;
+}

@@ -1,0 +1,26 @@
+.login-container {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+
+.login-container h1 {
+  font-size: 30px;   
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border: 0;
+}
+
+.login-enviar {
+    background-color: var(--botao-busca);
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.login-recuperar-senha {
+    border-radius: 15px;
+}
+
+
+

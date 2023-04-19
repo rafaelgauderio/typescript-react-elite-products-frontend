@@ -8,8 +8,7 @@
 .autenticacao-container h1 {
   font-size: 30px;
   display: flex;
-  justify-content: center;
-  padding-top: 20px;
+  justify-content: center;  
   border: 0;
 }
 

@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import './styles.css';
+import Login from './Login';
 
 function Autenticacao() {
 
@@ -8,7 +9,7 @@ function Autenticacao() {
             <Switch>
                 <Route path="/admin/autenticar/login" exact>
                     <div className="autenticacao-container-login">
-                        <h1>Login</h1>
+                        <Login></Login>                        
                     </div>
                 </Route>
                 <Route path="/admin/autenticar/recuperar">
