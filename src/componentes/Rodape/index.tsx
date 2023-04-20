@@ -21,7 +21,7 @@ function Rodape() {
     return (
         <>
             <footer className="container-fluid container-rodape">
-                <h2><i>&copy; {dataAtual}</i> Grupo Melhoramentos Higiene. Todos os direitos reservados</h2>
+                <h2><i>&copy;1998 - {dataAtual}</i> Grupo Melhoramentos Higiene. Todos os direitos reservados</h2>
                 <p>Desenvolvido por <i>Rafael de luca</i></p>
             </footer>
         </>
