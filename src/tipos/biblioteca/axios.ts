@@ -5,4 +5,5 @@ export type ParametrosAxios = {
     metodo?: Method;
     dados?: object;
     parametros?: object;
+    cabecalho?: any;
 }

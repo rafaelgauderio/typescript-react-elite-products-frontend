@@ -2,16 +2,32 @@ import { Link } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
+import { requisicaoDeLogin } from '../../../../../util/requisicao';
 
 
 type DadosLogin = {
-    usuario: string;
+    username: string;
     password: string;
 }
 
 function enviarFormulario(dadosLogin: DadosLogin) {
-    return console.log(dadosLogin); // apenas imprimindo os dados de login no console
+    return (
+        console.log(dadosLogin),
+        requisicaoDeLogin(dadosLogin)
+            .then(resposta => {
+                console.log('Login efetuado com sucesso', resposta);
+                console.log(dadosLogin); 
+            })
+            .catch(erro => {
+                console.log("Erro, falha ao tentar realizar login", erro);
+                console.log(dadosLogin);
+            })
+            .finally(() => {
+                console.log("Finalizado o login");
+            })
+    )
 };
+
 
 function Login() {
 
@@ -26,10 +42,10 @@ function Login() {
                 <form onSubmit={handleSubmit(enviarFormulario)}>
                     <div className="mb-3">
                         <input
-                            {...register("usuario")}
+                            {...register("username")}
                             type="text"
                             placeholder='Email'
-                            name="usuario"
+                            name="username"
                             className='form-control input-padrao'
                         >
                         </input>
