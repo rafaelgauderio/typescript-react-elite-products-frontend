@@ -17,7 +17,7 @@ function Login() {
 
     const [erroLogin, setErroLogin] = useState(false);
 
-    const { register, handleSubmit } = useForm<DadosLogin>();
+    const { register, handleSubmit, formState: { errors } } = useForm<DadosLogin>();
 
     function enviarFormulario(dadosLogin: DadosLogin) {
         return (
@@ -48,30 +48,58 @@ function Login() {
                         erroLogin == true &&
                         (<div className="alert alert-danger text-center">
                             Erro ao tentar realizar login. <br />
-                            Favor preencher os campos email e senha. <br />
-                            
+                            Preencher os campos email e senha corretamente. <br />
+
                         </div>)
                     }
                 </div>
                 <form onSubmit={handleSubmit(enviarFormulario)}>
                     <div className="mb-3">
                         <input
-                            {...register("username")}
+                            {...register("username", {
+                                required: 'email é um campo obrigatório',
+                                minLength: {
+                                    value: 5,
+                                    message: "Mínimo de 5 caracteres"
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "Máximo de 50 caracters",
+                                }
+                            })}
                             type="text"
                             placeholder='Email'
                             name="username"
                             className='form-control input-padrao'
                         >
                         </input>
+                        <div className="invalid-feedback alert-danger d-block">{errors.username?.message}</div>
+                        <div className="valid-feedback">
+                            Email preenchido corretamente
+                        </div>
                     </div>
                     <div className="mb-5">
                         <input
-                            {...register("password")}
+                            {...register("password", {
+                                required: 'password é um campo obrigatório',
+                                minLength: {
+                                    value: 6,
+                                    message: "Mínimo de 6 caracteres"
+                                },
+                                maxLength: {
+                                    value: 18,
+                                    message: "Máximo de 18 caracters"
+                                }
+                            })}
                             type="password"
                             placeholder='Senha'
                             name="password"
                             className='form-control input-padrao' >
                         </input>
+                        <div className="valid-feedback">
+                            Password preenchido corretamente
+                        </div>
+                        <div className="invalid-feedback alert-danger d-block ">{errors.password?.message}</div>
                     </div>
                     <div className='login-enviar'>
                         <BotaoPadrao mensagem="Fazer Login"></BotaoPadrao>
