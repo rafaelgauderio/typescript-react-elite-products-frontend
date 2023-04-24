@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import Menu from './MenuAdmin';
 import './styles.css';
+import Usuarios from './Usuario';
 
 function MenuAdmin() {
 
@@ -24,7 +25,8 @@ function MenuAdmin() {
                         <h1>Cadastro de Categorias</h1>
                     </Route>
                     <Route path="/admin/usuarios">
-                        <h1>Cadastro de Usuários</h1>
+                        <h1>Dados dos Usuários</h1>
+                        <Usuarios></Usuarios>
                     </Route>
                 </Switch>
             </div>

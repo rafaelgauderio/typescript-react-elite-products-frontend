@@ -1,8 +1,9 @@
 import { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { PaginaSpring } from "../../../tipos/biblioteca/spring";
-import { Usuario } from '../../../tipos/usuario';
 import { requisicaoPadraoBackend } from "../../../util/requisicao";
+import { Usuario } from "../../../tipos/Usuario";
+import './styles.css';
 
 
 const Usuarios = () => {
@@ -21,11 +22,16 @@ const Usuarios = () => {
         });
     }, []);
     return (
-        <div>
+        <div className="usuario-container">
             {pagina?.content.map((item) => (
                 <>
-                    <p key={item.id}>{item.nome} {item.sobrenome}</p>
-                    <p>{item.email}<br /></p>
+                    <div className="usuario-card">
+                        <p key={item.id}>{item.nome} {item.sobrenome}</p>
+                        <p key={item.id}>{item.email}</p>
+                        {item?.regras.map(regra => (
+                            <p className="usuario-regra">{regra.permissao}</p>
+                        ))}
+                    </div>
                 </>
             ))}
         </div>
