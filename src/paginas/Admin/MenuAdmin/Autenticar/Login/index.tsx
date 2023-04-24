@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { requisicaoDeLogin } from '../../../../../util/requisicao';
+import { getDadosAutenticacao, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
 import { useState } from 'react';
 
 
@@ -26,7 +26,10 @@ function Login() {
                 .then(resposta => {
                     console.log('Login efetuado com sucesso', resposta);
                     setErroLogin(false);
-                    //console.log(dadosLogin); 
+                    console.log(dadosLogin);
+                    setDadosAutenticacao(resposta.data);
+                    const tokenAcesso = getDadosAutenticacao().access_token;
+                    console.log("access_token: " + tokenAcesso);
                 })
                 .catch(erro => {
                     setErroLogin(true);
