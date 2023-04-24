@@ -65,7 +65,11 @@ function Login() {
                                 maxLength: {
                                     value: 50,
                                     message: "Máximo de 50 caracters",
-                                }
+                                },
+                                pattern: {
+                                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i,
+                                    message: "Informe um email válido"
+                                } 
                             })}
                             type="text"
                             placeholder='Email'
