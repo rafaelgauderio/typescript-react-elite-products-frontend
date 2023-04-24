@@ -1,5 +1,5 @@
 import qs from "qs";
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 type DadosLogin = {
     username: string;
@@ -68,4 +68,21 @@ export const getDadosAutenticacao = () => {
     const dadosComoString = localStorage.getItem('authData') ?? "{}";
     const dadosComoObjeto = JSON.parse(dadosComoString);
     return dadosComoObjeto as RespostaLogin;
+}
+
+export const requisicaoPadraoBackend = (configuracao: AxiosRequestConfig) => {
+
+
+    const cabecalhos = configuracao.withCredentials ?
+        {
+            Authorization: 'Bearer ' + getDadosAutenticacao().access_token,
+        } :
+        configuracao.headers;
+
+    return axios({
+        ...configuracao,
+        baseURL: BASE_URL,
+        headers: cabecalhos
+    });
+
 }
