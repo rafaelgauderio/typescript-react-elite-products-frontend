@@ -12,11 +12,11 @@ const ID_CLIENTE = process.env.REACT_APP_CLIENT_ID ?? 'melhoramentosId';
 
 const SENHA_CLIENTE = process.env.REACT_APP_CLIENTE_SECRET ?? 'melhoramentosSecret';
 
-const cabecalhoDeAutorizacaoBasica = () => {
-    return (
-        'Basic ' + window.btoa(ID_CLIENTE + ':' + SENHA_CLIENTE)
-    );
-};
+/*
+const cabecalhoDeAutorizacaoBasica = () => 
+    
+        'Basic ' + window.btoa(ID_CLIENTE + ':' + SENHA_CLIENTE);
+*/
 
 export const requisicaoDeLogin = (dadosLogin: DadosLogin) => {
 
@@ -35,7 +35,7 @@ export const requisicaoDeLogin = (dadosLogin: DadosLogin) => {
     return axios({
         method: 'POST',
         baseURL: BASE_URL,
-        url: '/oauth/token',
+        url: endpointAutenticacao,
         data: dadosUsernamePassword,
         headers: cabecalhos
     });
