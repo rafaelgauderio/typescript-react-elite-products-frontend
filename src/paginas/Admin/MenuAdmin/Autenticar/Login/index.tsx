@@ -53,7 +53,7 @@ function Login() {
                         </div>)
                     }
                 </div>
-                <form onSubmit={handleSubmit(enviarFormulario)}>
+                <form name="formularioLogin" onSubmit={handleSubmit(enviarFormulario)}>
                     <div className="mb-3">
                         <input
                             {...register("username", {
@@ -69,12 +69,14 @@ function Login() {
                                 pattern: {
                                     value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i,
                                     message: "Informe um email válido"
-                                } 
+                                }
                             })}
+                            id="username"
                             type="text"
                             placeholder='Email'
                             name="username"
-                            className='form-control input-padrao'
+                            className={`form-control input-padrao ${errors.username ? 'is-invalid'
+                                : document.forms.length === 0 ? '' : 'is-valid'} `}
                         >
                         </input>
                         <div className="invalid-feedback alert-danger d-block">{errors.username?.message}</div>
@@ -98,7 +100,8 @@ function Login() {
                             type="password"
                             placeholder='Senha'
                             name="password"
-                            className='form-control input-padrao' >
+                            className={`form-control input-padrao ${errors.password ? 'is-invalid'
+                                : document.forms.length === 0 ? '' : 'is-valid'}`} >
                         </input>
                         <div className="valid-feedback">
                             Password preenchido corretamente
