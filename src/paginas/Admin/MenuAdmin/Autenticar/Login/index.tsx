@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
@@ -19,6 +19,8 @@ function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm<DadosLogin>();
 
+    let historicoPagina = useHistory();
+
     function enviarFormulario(dadosLogin: DadosLogin) {
         return (
             console.log(dadosLogin),
@@ -30,6 +32,8 @@ function Login() {
                     setDadosAutenticacao(resposta.data);
                     const tokenAcesso = getDadosAutenticacao().access_token;
                     console.log("access_token: " + tokenAcesso);
+                    // ao fazer login vai enviar direto para o painel do admin
+                    historicoPagina.push("/admin/");
                 })
                 .catch(erro => {
                     setErroLogin(true);
