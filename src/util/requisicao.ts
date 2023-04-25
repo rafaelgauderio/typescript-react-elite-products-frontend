@@ -1,6 +1,7 @@
 import qs from "qs";
 import axios, { AxiosRequestConfig } from 'axios';
-import history from "./historico";
+import historico from "./historico";
+import jwtDecode from "jwt-decode";
 
 type DadosLogin = {
     username: string;
@@ -16,6 +17,18 @@ type RespostaLogin = {
     nome_usuario: string;
     sobrenome_usuario: string;
 }
+
+type Regra = 'ROLE_ADMIN_SISTEMA' |
+    'ROLE_GERENTE_LOJA' |
+    'ROLE_CLIENTE';
+
+type DadosTokenJwt = {
+    expt: number;
+    user_name: string;
+    authorites: Regra[];
+}
+
+
 
 
 export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
@@ -107,9 +120,21 @@ axios.interceptors.response.use(function (resposta) {
     // direcionar para a página de login caso usuário tentar acessar rota protegida ou 
     // sem autorização par ao usuário
     if (erro.response.status === 403 || erro.response.status === 401) {
-        history.push('/admin/autenticar');
+        historico.push('/admin/autenticar');
     }
 
     return Promise.reject(erro);
 });
+
+export const getDadosTokenJwt = function (): DadosTokenJwt | undefined {
+
+    // Pode disparar um exceção ao tentar decodificar o token, pois o token jwt pode estar
+    // vazio ou inválido
+    try {
+        return jwtDecode(getDadosAutenticacao().access_token) as DadosTokenJwt;
+    } catch (erro) {
+        return undefined;
+    }
+
+}
 

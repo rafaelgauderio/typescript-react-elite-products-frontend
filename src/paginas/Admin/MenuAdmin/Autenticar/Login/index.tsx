@@ -4,14 +4,12 @@ import './styles.css';
 import { useForm } from 'react-hook-form';
 import { getDadosAutenticacao, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
 import { useState } from 'react';
-
+import { getDadosTokenJwt } from '../../../../../util/requisicao';
 
 type DadosLogin = {
     username: string;
     password: string;
 }
-
-
 
 function Login() {
 
@@ -31,7 +29,7 @@ function Login() {
                     console.log(dadosLogin);
                     setDadosAutenticacao(resposta.data);
                     const tokenAcesso = getDadosAutenticacao().access_token;
-                    console.log("access_token: " + tokenAcesso);
+                    console.log("access_token: " + tokenAcesso);                    
                     // ao fazer login vai enviar direto para o painel do admin
                     historicoPagina.push("/admin/");
                 })
@@ -123,6 +121,7 @@ function Login() {
                             <BotaoPadrao mensagem="Esqueci minha senha"></BotaoPadrao>
                         </Link>
                     </div>
+                    <p>{getDadosTokenJwt()?.user_name}</p>
                 </form>
             </div >
         </>
