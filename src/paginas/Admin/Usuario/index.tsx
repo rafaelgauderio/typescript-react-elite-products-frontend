@@ -6,7 +6,7 @@ import { Usuario } from "../../../tipos/Usuario";
 import './styles.css';
 
 
-const Usuarios = () => {
+function Usuarios() {
     const [pagina, setPagina] = useState<PaginaSpring<Usuario>>();
 
     useEffect(() => {

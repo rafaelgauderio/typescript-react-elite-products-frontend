@@ -1,5 +1,6 @@
 import qs from "qs";
 import axios, { AxiosRequestConfig } from 'axios';
+import history from "./historico";
 
 type DadosLogin = {
     username: string;
@@ -86,3 +87,29 @@ export const requisicaoPadraoBackend = (configuracao: AxiosRequestConfig) => {
     });
 
 }
+
+// fazendo interceptação de de requições com axios interceptors
+// permite fazer uma ação antes de depois da requisição
+axios.interceptors.request.use(function (configuracao) {
+
+    return configuracao;
+}, function (erro) {
+
+    return Promise.reject(erro);
+});
+
+axios.interceptors.response.use(function (resposta) {
+
+    return resposta;
+}, function (erro) {
+    // codigo http 403 = Forbidden
+    // codigo http 401 = Unauthorized
+    // direcionar para a página de login caso usuário tentar acessar rota protegida ou 
+    // sem autorização par ao usuário
+    if (erro.response.status === 403 || erro.response.status === 401) {
+        history.push('/admin/autenticar');
+    }
+
+    return Promise.reject(erro);
+});
+
