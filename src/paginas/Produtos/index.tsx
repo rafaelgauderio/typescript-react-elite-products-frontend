@@ -62,7 +62,8 @@ function Produtos() {
 
     useEffect(() => {
 
-        const parametros: ParametrosAxios = {
+        //const parametros: ParametrosAxios = {
+            const parametros: ParametrosAxios = {
 
             url: `${BASE_URL}/produtos`,
             metodo: 'GET',

@@ -1,0 +1,37 @@
+.usuario-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.usuario-container p {
+  margin-left: 20px;
+  font-size: 20px !important;
+  margin-bottom: 0px;
+}
+
+.usuario-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+  width: 340px;
+  border-radius: 20px;
+  margin: 30px;
+  padding: 20px 0;
+}
+
+@media (min-width: 1200px) {
+  .usuario-container {    
+    flex-direction: row;
+  }
+
+  .usuario-container p {
+    font-size: 24px !important;
+  }
+
+  .usuario-card {
+    width: 400px;
+    justify-content: flex-start;
+  }
+}

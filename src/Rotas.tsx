@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Router, Redirect, Route, Switch } from "react-router-dom";
 import Header from "./componentes/Header";
 import Rodape from "./componentes/Rodape";
 import Home from "./paginas/Home";
@@ -8,13 +8,14 @@ import Contatos from "./paginas/Contatos";
 import Empresa from "./paginas/Empresa";
 import ProdutoDetalhado from "./paginas/ProdutoDetalhado";
 import Autenticacao from "./paginas/Admin/MenuAdmin/Autenticar";
+import history from "./util/historico";
 
 function Rotas() {
 
   return (
 
     <>
-      <BrowserRouter>
+      <Router history={history}>
         <Header></Header>
         <Switch>
           <Route path="/" exact>
@@ -42,7 +43,7 @@ function Rotas() {
           </Route>
         </Switch>
         <Rodape></Rodape>
-      </BrowserRouter>
+      </Router>
     </>
 
   );
