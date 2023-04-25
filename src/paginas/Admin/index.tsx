@@ -1,7 +1,8 @@
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Menu from './MenuAdmin';
 import './styles.css';
 import Usuarios from './Usuario';
+import RotaPrivada from '../../componentes/RotasPrivadas';
 
 function MenuAdmin() {
 
@@ -12,22 +13,22 @@ function MenuAdmin() {
             </div>
             <div className="admin-conteudo">
                 <Switch>
-                    <Route path="/admin/sms">
+                    <RotaPrivada path="/admin/sms">
                         <h1>Envio de SMS</h1>
-                    </Route>
-                    <Route path="/admin/produtos">
+                    </RotaPrivada>
+                    <RotaPrivada path="/admin/produtos">
                         <h1>Cadastro de Produtos</h1>
-                    </Route>
-                    <Route path="/admin/embalagens">
+                    </RotaPrivada>
+                    <RotaPrivada path="/admin/embalagens">
                         <h1>Cadastro de Embalagens</h1>
-                    </Route>
-                    <Route path="/admin/categorias">
+                    </RotaPrivada>
+                    <RotaPrivada path="/admin/categorias">
                         <h1>Cadastro de Categorias</h1>
-                    </Route>
-                    <Route path="/admin/usuarios">
+                    </RotaPrivada>
+                    <RotaPrivada path="/admin/usuarios">
                         <h1>Dados dos Usuários</h1>
                         <Usuarios></Usuarios>
-                    </Route>
+                    </RotaPrivada>
                 </Switch>
             </div>
         </div>

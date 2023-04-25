@@ -2,9 +2,8 @@ import { Link, useHistory } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getDadosAutenticacao, isUsuarioAutenticado, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
+import { getDadosAutenticacao,  requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
 import { useState } from 'react';
-import { getDadosTokenJwt } from '../../../../../util/requisicao';
 
 type DadosLogin = {
     username: string;
@@ -29,7 +28,7 @@ function Login() {
                     console.log(dadosLogin);
                     setDadosAutenticacao(resposta.data);
                     const tokenAcesso = getDadosAutenticacao().access_token;
-                    console.log("access_token: " + tokenAcesso);                    
+                    console.log("access_token: " + tokenAcesso);
                     // ao fazer login vai enviar direto para o painel do admin
                     historicoPagina.push("/admin/");
                 })
@@ -50,7 +49,7 @@ function Login() {
             <div className="login-container mt-4">
                 <div className="login-titulo">
                     <h1>Login</h1> {
-                        erroLogin == true &&
+                        erroLogin === true &&
                         (<div className="alert alert-danger text-center">
                             Erro ao tentar realizar login. <br />
                             Preencher os campos email e senha corretamente. <br />
@@ -121,8 +120,6 @@ function Login() {
                             <BotaoPadrao mensagem="Esqueci minha senha"></BotaoPadrao>
                         </Link>
                     </div>
-                    <p>{getDadosTokenJwt()?.user_name}</p>
-                    <p>{isUsuarioAutenticado() ? 'Autenticado' : 'Não autenticado'}</p>
                 </form>
             </div >
         </>
