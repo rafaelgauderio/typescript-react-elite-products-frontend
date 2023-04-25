@@ -2,7 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getDadosAutenticacao, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
+import { getDadosAutenticacao, isUsuarioAutenticado, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
 import { useState } from 'react';
 import { getDadosTokenJwt } from '../../../../../util/requisicao';
 
@@ -122,6 +122,7 @@ function Login() {
                         </Link>
                     </div>
                     <p>{getDadosTokenJwt()?.user_name}</p>
+                    <p>{isUsuarioAutenticado() ? 'Autenticado' : 'Não autenticado'}</p>
                 </form>
             </div >
         </>

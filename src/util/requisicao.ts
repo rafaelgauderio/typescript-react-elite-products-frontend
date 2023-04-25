@@ -23,12 +23,10 @@ type Regra = 'ROLE_ADMIN_SISTEMA' |
     'ROLE_CLIENTE';
 
 type DadosTokenJwt = {
-    expt: number;
+    exp: number;
     user_name: string;
     authorites: Regra[];
 }
-
-
 
 
 export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
@@ -138,3 +136,17 @@ export const getDadosTokenJwt = function (): DadosTokenJwt | undefined {
 
 }
 
+// o tempo de expiração do token está em formato unixtimestamp
+// então tem que fazer um lógica apenas para verificar se o tempo de expiração 
+// não é maior que a data atual
+export const isUsuarioAutenticado = function (): boolean {
+
+    const dadosTokenJwt = getDadosTokenJwt();
+    const momentoAtual = Date.now() / 1000; // converter de milisegundos para segundos
+    // validar se o token é valido e se ele ainda não experou a validade
+    if (dadosTokenJwt && dadosTokenJwt.exp > momentoAtual) {
+        return true; //usuário autenticado
+    } else {
+        return false; //usuário não autenticado
+    }
+}
