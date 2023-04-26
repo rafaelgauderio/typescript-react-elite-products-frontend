@@ -22,7 +22,7 @@ type Regra = 'ROLE_ADMIN_SISTEMA' |
     'ROLE_GERENTE_LOJA' |
     'ROLE_CLIENTE';
 
-type DadosTokenJwt = {
+export type DadosTokenJwt = {
     exp: number;
     user_name: string;
     authorites: Regra[];
@@ -134,6 +134,11 @@ export const getDadosTokenJwt = function (): DadosTokenJwt | undefined {
         return undefined;
     }
 
+}
+
+export const removerDadosAutenticacao = function () {
+    // removendo os dados de token de login quando o cliente clicar em sair
+    localStorage.removeItem('authData');
 }
 
 // o tempo de expiração do token está em formato unixtimestamp

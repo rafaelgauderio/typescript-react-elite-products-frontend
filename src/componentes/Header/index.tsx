@@ -3,9 +3,46 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
+import { DadosTokenJwt, getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
+import { useEffect, useState } from 'react';
+import historico from '../../util/historico';
+
+type DadosAutenticacao = {
+    usuarioAutenticado: boolean;
+    dadosTokenJwt?: DadosTokenJwt;
+}
 
 
 function Header() {
+
+    // estado inicial o usuário não está autenticado
+    const [dadosAutenticacao, setDadosAutenticacao] = useState<DadosAutenticacao>({ usuarioAutenticado: false });
+
+    useEffect(function () {
+        if (isUsuarioAutenticado() === true) {
+            setDadosAutenticacao(
+                {
+                    dadosTokenJwt: getDadosTokenJwt(),
+                    usuarioAutenticado: true
+                });
+        } else {
+            setDadosAutenticacao({
+                usuarioAutenticado: false,
+            });
+        }
+    }, []);
+
+    function clicarEmSair(event: React.MouseEvent<HTMLAnchorElement>) {
+        event.preventDefault(); // previne o comportamento padrão de clicar no link (ir para o link de destino )
+        setDadosAutenticacao({
+            usuarioAutenticado: false,
+        });
+        removerDadosAutenticacao();
+        // direcionar par ao home depois de clicar em sair
+        historico.push("/home");
+
+    }
+
     return (
 
         <nav className='navbar navbar-expand-lg navbar-light cabecalho'>
@@ -55,6 +92,16 @@ function Header() {
                             </NavLink>
                         </li>
                     </ul>
+                </div>
+                <div>
+                    {(dadosAutenticacao.usuarioAutenticado === true) ? (
+                        <>
+                            <span>{dadosAutenticacao.dadosTokenJwt?.user_name}</span>
+                            <a href="#sair" onClick={clicarEmSair}>
+                                SAIR
+                            </a>
+                        </>
+                    ) : <Link to="/admin/autenticar">LOGIN</Link>}
                 </div>
             </header>
         </nav>
