@@ -91,17 +91,33 @@ function Header() {
                                 PAINEL ADMIN
                             </NavLink>
                         </li>
+                        <div className='menu-login-sair-mobile'>
+                            <li>
+                                <NavLink to="/admin/autenticar/login">
+                                    LOGIN
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="" onClick={clicarEmSair}>
+                                    SAIR
+                                </NavLink>
+                            </li>
+                        </div>
                     </ul>
+
                 </div>
-                <div>
+                <div className="menu-logar-sair btn">
                     {(dadosAutenticacao.usuarioAutenticado === true) ? (
                         <>
-                            <span>{dadosAutenticacao.dadosTokenJwt?.user_name}</span>
-                            <a href="#sair" onClick={clicarEmSair}>
-                                SAIR
+                            <a href="#sair" onClick={clicarEmSair} >
+                                Sair
                             </a>
+                            < br />
+                            <span className="menu-email-cliente">
+                                {dadosAutenticacao.dadosTokenJwt?.user_name}
+                            </span>
                         </>
-                    ) : <Link to="/admin/autenticar">LOGIN</Link>}
+                    ) : <Link to="/admin/autenticar">Login</Link>}
                 </div>
             </header>
         </nav>

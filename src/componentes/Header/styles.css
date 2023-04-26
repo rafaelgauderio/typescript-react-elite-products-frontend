@@ -26,13 +26,13 @@
 }
 
 .menu-principal li:hover {
-  transform: scale(1.15); 
+  transform: scale(1.15);
   border-radius: 10px;
   color: var(--light-color);
 }
 
 .menu-principal a {
-  color: var(--tertiary-color);  
+  color: var(--tertiary-color);
 }
 
 .menu-principal a:hover {
@@ -40,21 +40,59 @@
   color: var(--light-color);
 }
 
-.navbar.navbar .navbar-toggler-icon {    
-  background-image: url('../../assets/imagens/hamburger.svg');
+.navbar.navbar .navbar-toggler-icon {
+  background-image: url("../../assets/imagens/hamburger.svg");
 }
 
-@media (max-width: 992px) { 
-  
+.menu-logar-sair {
+  display: none;
+  font-size: 1.2em;
+  margin-right: 40px;
+}
 
+.menu-email-cliente {
+  border: 0 !important;
+}
+
+.menu-logar-sair a {
+  color: var(--tertiary-color);
+}
+
+.menu-logar-sair a:hover {
+  color: var(--light-color);
+}
+
+@media (min-width: 992px) {
+  .menu-logar-sair {
+    display: unset;
+  }
+
+  .menu-logar-sair a {
+    padding: 5px;
+    font-size: 1.1em;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 10px;
+    padding: 5px !important;
+  }
+  .menu-email-cliente {
+    display: flex;
+    margin-top: 5px;
+    font-size: 0.9em; 
+  }
+
+  .menu-login-sair-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
   .menu-principal li {
     font-size: 18px;
-      
   }
 
   .menu-principal li:hover {
     transform: scale(1);
-    border: 0;   
+    border: 0;
   }
 
   p {
@@ -65,20 +103,17 @@
 }
 
 @media (max-width: 768px) {
-
   .cabecalho {
-    padding-left: 10px;    
+    padding-left: 10px;
   }
 
-  
   .menu-principal li {
     font-size: 15px;
-  } 
-
-  p {
-    font-size: 14px;  
   }
 
+  p {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -86,5 +121,3 @@
     width: 70%;
   }
 }
-
-
