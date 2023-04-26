@@ -2,16 +2,13 @@ import { Link, useHistory } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getDadosAutenticacao, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
+import { getDadosAutenticacao,  requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
 import { useState } from 'react';
-
 
 type DadosLogin = {
     username: string;
     password: string;
 }
-
-
 
 function Login() {
 
@@ -52,7 +49,7 @@ function Login() {
             <div className="login-container mt-4">
                 <div className="login-titulo">
                     <h1>Login</h1> {
-                        erroLogin == true &&
+                        erroLogin === true &&
                         (<div className="alert alert-danger text-center">
                             Erro ao tentar realizar login. <br />
                             Preencher os campos email e senha corretamente. <br />
