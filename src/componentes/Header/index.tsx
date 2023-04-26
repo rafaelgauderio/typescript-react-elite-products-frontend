@@ -39,7 +39,7 @@ function Header() {
         });
         removerDadosAutenticacao();
         // direcionar par ao home depois de clicar em sair
-        historico.push("/home");
+        historico.push("/");
 
     }
 
@@ -98,7 +98,7 @@ function Header() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="" onClick={clicarEmSair}>
+                                <NavLink to="/" onClick={clicarEmSair}>
                                     SAIR
                                 </NavLink>
                             </li>
@@ -109,7 +109,7 @@ function Header() {
                 <div className="menu-logar-sair btn">
                     {(dadosAutenticacao.usuarioAutenticado === true) ? (
                         <>
-                            <a href="#sair" onClick={clicarEmSair} >
+                            <a href="/" onClick={clicarEmSair} >
                                 Sair
                             </a>
                             < br />
