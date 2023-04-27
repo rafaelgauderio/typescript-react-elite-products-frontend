@@ -3,30 +3,26 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
-import { DadosTokenJwt, getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
+import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
 import { useEffect, useState } from 'react';
 import historico from '../../util/historico';
-
-type DadosAutenticacao = {
-    usuarioAutenticado: boolean;
-    dadosTokenJwt?: DadosTokenJwt;
-}
+import { DadosAutenticacaoGlobais } from '../../ContextoGlobal';
 
 
 function Header() {
 
     // estado inicial o usuário não está autenticado
-    const [dadosAutenticacao, setDadosAutenticacao] = useState<DadosAutenticacao>({ usuarioAutenticado: false });
+    const [dadosAutenticacaoGlobais, setDadosAutenticacaoGlobais] = useState<DadosAutenticacaoGlobais>({ usuarioAutenticado: false });
 
     useEffect(function () {
         if (isUsuarioAutenticado() === true) {
-            setDadosAutenticacao(
+            setDadosAutenticacaoGlobais(
                 {
                     dadosTokenJwt: getDadosTokenJwt(),
                     usuarioAutenticado: true
                 });
         } else {
-            setDadosAutenticacao({
+            setDadosAutenticacaoGlobais({
                 usuarioAutenticado: false,
             });
         }
@@ -34,7 +30,7 @@ function Header() {
 
     function clicarEmSair(event: React.MouseEvent<HTMLAnchorElement>) {
         event.preventDefault(); // previne o comportamento padrão de clicar no link (ir para o link de destino )
-        setDadosAutenticacao({
+        setDadosAutenticacaoGlobais({
             usuarioAutenticado: false,
         });
         removerDadosAutenticacao();
@@ -107,14 +103,14 @@ function Header() {
 
                 </div>
                 <div className="menu-logar-sair btn">
-                    {(dadosAutenticacao.usuarioAutenticado === true) ? (
+                    {(dadosAutenticacaoGlobais.usuarioAutenticado === true) ? (
                         <>
                             <a href="/" onClick={clicarEmSair} >
                                 Sair
                             </a>
                             < br />
                             <span className="menu-email-cliente">
-                                {dadosAutenticacao.dadosTokenJwt?.user_name}
+                                {dadosAutenticacaoGlobais.dadosTokenJwt?.user_name}
                             </span>
                         </>
                     ) : <Link to="/admin/autenticar">Login</Link>}
