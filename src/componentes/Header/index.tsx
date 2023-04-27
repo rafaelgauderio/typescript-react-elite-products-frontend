@@ -3,9 +3,47 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
+import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
+import { useContext, useEffect } from 'react';
+import historico from '../../util/historico';
+import { ContextoGlobalAutenticado } from '../../ContextoGlobal';
 
 
 function Header() {
+
+    // estado inicial o usuário não está autenticado
+   
+
+    const {dadosAutenticacaoGlobais, setDadosAutenticacaoGlobais} = useContext(ContextoGlobalAutenticado);
+
+    useEffect(function () {
+        if (isUsuarioAutenticado() === true) {
+            setDadosAutenticacaoGlobais(
+                {
+                    dadosTokenJwt: getDadosTokenJwt(),
+                    usuarioAutenticado: true
+                });
+        } else {
+            setDadosAutenticacaoGlobais({
+                usuarioAutenticado: false,
+            });
+        }
+        // adicionar os dados de autenticação globais a lista de dependência
+        // ao alterar algum valor desse componente 
+        // dispara a função on click e aparece o user_name e altera o botão de login para sair
+    }, [setDadosAutenticacaoGlobais]);
+
+    function clicarEmSair(event: React.MouseEvent<HTMLAnchorElement>) {
+        event.preventDefault(); // previne o comportamento padrão de clicar no link (ir para o link de destino )
+        setDadosAutenticacaoGlobais({
+            usuarioAutenticado: false,
+        });
+        removerDadosAutenticacao();
+        // direcionar par ao home depois de clicar em sair
+        historico.push("/");
+
+    }
+
     return (
 
         <nav className='navbar navbar-expand-lg navbar-light cabecalho'>
@@ -54,7 +92,33 @@ function Header() {
                                 PAINEL ADMIN
                             </NavLink>
                         </li>
+                        <div className='menu-login-sair-mobile'>
+                            <li>
+                                <NavLink to="/admin/autenticar/login">
+                                    LOGIN
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/" onClick={clicarEmSair}>
+                                    SAIR
+                                </NavLink>
+                            </li>
+                        </div>
                     </ul>
+
+                </div>
+                <div className="menu-logar-sair btn">
+                    {(dadosAutenticacaoGlobais.usuarioAutenticado) === true ? (
+                        <>
+                            <a href="/" onClick={clicarEmSair} >
+                                Sair
+                            </a>
+                            < br />
+                            <span className="menu-email-cliente">
+                                {dadosAutenticacaoGlobais.dadosTokenJwt?.user_name}
+                            </span>
+                        </>
+                    ) : <Link to="/admin/autenticar">Login</Link>}
                 </div>
             </header>
         </nav>

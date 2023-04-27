@@ -11,8 +11,6 @@ function Menu() {
                         <p>Email /sms</p>
                     </NavLink>
                 </li>
-
-
                 <li>
                     <NavLink to="/admin/produtos" className="admin-menu-link">
                         <p>Produtos</p>
