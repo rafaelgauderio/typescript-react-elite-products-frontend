@@ -4,15 +4,17 @@ import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
 import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import historico from '../../util/historico';
-import { DadosAutenticacaoGlobais } from '../../ContextoGlobal';
+import { ContextoGlobalAutenticado, DadosAutenticacaoGlobais } from '../../ContextoGlobal';
 
 
 function Header() {
 
     // estado inicial o usuário não está autenticado
-    const [dadosAutenticacaoGlobais, setDadosAutenticacaoGlobais] = useState<DadosAutenticacaoGlobais>({ usuarioAutenticado: false });
+   
+
+    const {dadosAutenticacaoGlobais, setDadosAutenticacaoGlobais} = useContext(ContextoGlobalAutenticado);
 
     useEffect(function () {
         if (isUsuarioAutenticado() === true) {
@@ -26,7 +28,10 @@ function Header() {
                 usuarioAutenticado: false,
             });
         }
-    }, []);
+        // adicionar os dados de autenticação globais a lista de dependência
+        // ao alterar algum valor desse componente 
+        // dispara a função on click e aparece o user_name e altera o botão de login para sair
+    }, [setDadosAutenticacaoGlobais]);
 
     function clicarEmSair(event: React.MouseEvent<HTMLAnchorElement>) {
         event.preventDefault(); // previne o comportamento padrão de clicar no link (ir para o link de destino )
@@ -103,7 +108,7 @@ function Header() {
 
                 </div>
                 <div className="menu-logar-sair btn">
-                    {(dadosAutenticacaoGlobais.usuarioAutenticado === true) ? (
+                    {(dadosAutenticacaoGlobais.usuarioAutenticado) === true ? (
                         <>
                             <a href="/" onClick={clicarEmSair} >
                                 Sair

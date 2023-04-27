@@ -1,4 +1,3 @@
-
 // arquivo para deixar os dados de autenticação disponiveis para todo os componentes 
 // e páginas da aplicação
 
@@ -10,7 +9,7 @@ export type DadosAutenticacaoGlobais = {
     dadosTokenJwt?: DadosTokenJwt;
 }
 
-export type DadosAutenticacaoTipo = {
+export type DadosAutenticacaoGlobaisTipo = {
     dadosAutenticacaoGlobais: DadosAutenticacaoGlobais;
     setDadosAutenticacaoGlobais: (dadosAutenticacaoGlobais: DadosAutenticacaoGlobais) =>
         void;
@@ -18,12 +17,13 @@ export type DadosAutenticacaoTipo = {
 
 // criar o contexto global com os valores que devem ficar
 // disponíveis para toda a aplicação
-export const DadosContextoGlobal = createContext<DadosAutenticacaoTipo>({
+export const ContextoGlobalAutenticado = createContext<DadosAutenticacaoGlobaisTipo>({
     // valor inicial
-    dadosAutenticacaoGlobais : {
-        usuarioAutenticado : false,
+    dadosAutenticacaoGlobais: {
+        usuarioAutenticado: false,
     },
-    setDadosAutenticacaoGlobais :  function setarDadosGlobais ()  {
+    setDadosAutenticacaoGlobais: function setDadosContexto () {
         return null;
-    }
+    } 
+
 });

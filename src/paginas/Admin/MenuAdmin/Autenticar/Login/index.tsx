@@ -2,8 +2,9 @@ import { Link, useHistory } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getDadosAutenticacao,  requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
-import { useState } from 'react';
+import { getDadosTokenJwt, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
+import { useContext, useState } from 'react';
+import { ContextoGlobalAutenticado } from '../../../../../ContextoGlobal';
 
 type DadosLogin = {
     username: string;
@@ -11,6 +12,10 @@ type DadosLogin = {
 }
 
 function Login() {
+
+    // vai ficar monitorando se o usuário está autenticado ou não.
+    // se estiver muda o estado do usurioAutenticado para verdadeiro
+    const { setDadosAutenticacaoGlobais } = useContext(ContextoGlobalAutenticado);
 
     const [erroLogin, setErroLogin] = useState(false);
 
@@ -23,12 +28,14 @@ function Login() {
             console.log(dadosLogin),
             requisicaoDeLogin(dadosLogin)
                 .then(resposta => {
-                    console.log('Login efetuado com sucesso', resposta);
+                    //console.log('Login efetuado com sucesso', resposta);                    
                     setErroLogin(false);
-                    console.log(dadosLogin);
-                    setDadosAutenticacao(resposta.data);
-                    const tokenAcesso = getDadosAutenticacao().access_token;
-                    console.log("access_token: " + tokenAcesso);
+                    setDadosAutenticacao(resposta.data); 
+                    // alterando os contexto global do usuario se realido login com sucesso
+                    setDadosAutenticacaoGlobais ({
+                        usuarioAutenticado: true,
+                        dadosTokenJwt: getDadosTokenJwt(),
+                    })                    
                     // ao fazer login vai enviar direto para o painel do admin
                     historicoPagina.push("/admin/");
                 })
