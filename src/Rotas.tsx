@@ -37,8 +37,8 @@ function Rotas() {
           <Route path="/admin/autenticar">
             <Autenticacao></Autenticacao>
           </Route>
+          <Redirect from="/admin" to="/admin/sms" exact></Redirect>
           <Route path="/admin">
-            <Redirect from="/admin" to="/admin/sms" exact></Redirect>
             <Admin></Admin>
           </Route>
         </Switch>

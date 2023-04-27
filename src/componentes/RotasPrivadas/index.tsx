@@ -2,7 +2,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 import { isUsuarioAutenticado } from '../../util/requisicao';
 
-
 type Props = {
     children: React.ReactNode;
     path: string;
@@ -15,11 +14,17 @@ function RotaPrivada({ children, path }: Props) {
     return (
         <Route
             path={path}
-            render={() =>
+            render={({location}) =>
                 isUsuarioAutenticado() === true ? (
                     <>{children}</>)
                     : (
-                        <Redirect to="/admin/autenticar/login" />
+                        <Redirect to={{
+                            pathname: "/admin/autenticar/login",
+                            state: {
+                                from: location
+                            }
+                        }} />
+
                     )
             }
         />

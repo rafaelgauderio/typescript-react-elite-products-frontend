@@ -4,9 +4,9 @@ import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
 import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import historico from '../../util/historico';
-import { ContextoGlobalAutenticado, DadosAutenticacaoGlobais } from '../../ContextoGlobal';
+import { ContextoGlobalAutenticado } from '../../ContextoGlobal';
 
 
 function Header() {
