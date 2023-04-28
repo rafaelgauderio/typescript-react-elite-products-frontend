@@ -1,6 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 import { Regra, endpointTemRestricao, isUsuarioAutenticado } from '../../util/requisicao';
+import './styles.css';
 
 type Props = {
     children: React.ReactNode;
@@ -10,9 +11,16 @@ type Props = {
 
 const avisoRedirecionamento = () => {
 
-    alert("Seu usuário não ter permissão para acessar essa rota.\n" +
-    "Você será direcionado para página padrão após o login.\n" +
-    "Contate o administrador do sistema se precisar do acesso.");
+    /*
+    alert("Seu usuário não possui permissão para acessar essa rota.\n" +
+        "Você será direcionado para página padrão após o login.\n" +
+        "Dúvidas? Contate o administrador do sistema.");
+    */
+    Swal.fire({
+        title: '<h1>Acesso Negado</h1>',
+        icon: 'error',
+        html: '<h6>Seu usuário não possui permissão para acessar essa rota.<br />Você será redirecionado para página padrão do painel do admin.<br />Dúvidas? Contate o administrador do sistema. </h6>',
+    });
 }
 
 function RotaPrivada({ children, path, roles = [] }: Props) {
