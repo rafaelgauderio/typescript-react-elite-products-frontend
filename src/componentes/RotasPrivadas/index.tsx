@@ -1,6 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { Regra, endpointTemRestricao, isUsuarioAutenticado } from '../../util/requisicao';
+import { Regra, endpointTemRestricao, isUsuarioAutenticado } from '../../util/autenticacao';
 import './styles.css';
 
 type Props = {

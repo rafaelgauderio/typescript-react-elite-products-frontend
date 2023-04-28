@@ -3,7 +3,7 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
-import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
+import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/autenticacao';
 import { useContext, useEffect } from 'react';
 import historico from '../../util/historico';
 import { ContextoGlobalAutenticado } from '../../ContextoGlobal';

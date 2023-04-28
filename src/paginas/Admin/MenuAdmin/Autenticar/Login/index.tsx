@@ -2,9 +2,10 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import BotaoPadrao from '../../../../../componentes/BotaoPadrao';
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getDadosTokenJwt, requisicaoDeLogin, setDadosAutenticacao } from '../../../../../util/requisicao';
+import { getDadosTokenJwt, setDadosAutenticacao } from '../../../../../util/autenticacao';
 import { useContext, useState } from 'react';
 import { ContextoGlobalAutenticado } from '../../../../../ContextoGlobal';
+import { requisicaoDeLogin } from '../../../../../util/requisicao';
 
 type DadosLogin = {
     username: string;

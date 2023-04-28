@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './styles.css';
-import { endpointTemRestricao } from '../../../util/requisicao';
+import { endpointTemRestricao } from '../../../util/autenticacao';
 
 function Menu() {
 
