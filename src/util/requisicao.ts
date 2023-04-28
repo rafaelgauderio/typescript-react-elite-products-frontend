@@ -18,7 +18,7 @@ type RespostaLogin = {
     sobrenome_usuario: string;
 }
 
-type Regra = 'ROLE_ADMIN_SISTEMA' |
+export type Regra = 'ROLE_ADMIN_SISTEMA' |
     'ROLE_GERENTE_LOJA' |
     'ROLE_CLIENTE';
 
@@ -117,7 +117,7 @@ axios.interceptors.response.use(function (resposta) {
     // codigo http 401 = Unauthorized
     // direcionar para a página de login caso usuário tentar acessar rota protegida ou 
     // sem autorização par ao usuário
-    if (erro.response.status === 403 || erro.response.status === 401) {
+    if (erro.response.status === 401) {
         historico.push('/admin/autenticar');
     }
 
