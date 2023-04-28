@@ -25,7 +25,7 @@ type Regra = 'ROLE_ADMIN_SISTEMA' |
 export type DadosTokenJwt = {
     exp: number;
     user_name: string;
-    authorites: Regra[];
+    authorities: Regra[];
 }
 
 
@@ -162,19 +162,18 @@ export function endpointTemRestricao(regras: Regra[]) {
     if (regras.length === 0) {
         return true;
     }
-
     const dadosTokenJtw = getDadosTokenJwt();
-    // se o perfil tiver a authorização de acessar esse endpoint, ele acessa
+    // se o perfil tiver a authorização de acessar esse endpoint, ele acessa 
     if (dadosTokenJtw !== undefined) {
         for (var i = 0; i < regras.length; i++) {
-            if (dadosTokenJtw.authorites.includes(regras[i])) {
+            if (dadosTokenJtw.authorities.includes(regras[i])) {
                 return true;
             }
         }
-    } else {
-        //se o endpoint tiver restrição de acesso e o usuário não 
-        // tiver essa permissão. Então a rota fica bloqueada
-        return false;
     }
+    //se o endpoint tiver restrição de acesso e o usuário não 
+    // tiver essa permissão. Então a rota fica bloqueada
+    return false;
+
 
 }
