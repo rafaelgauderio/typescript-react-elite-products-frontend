@@ -155,3 +155,26 @@ export const isUsuarioAutenticado = function (): boolean {
         return false; //usuário não autenticado
     }
 }
+
+export function endpointTemRestricao(regras: Regra[]) {
+
+    // senão tiver nenhum restrição, o endpoint pode ser acesso por todos
+    if (regras.length === 0) {
+        return true;
+    }
+
+    const dadosTokenJtw = getDadosTokenJwt();
+    // se o perfil tiver a authorização de acessar esse endpoint, ele acessa
+    if (dadosTokenJtw !== undefined) {
+        for (var i = 0; i < regras.length; i++) {
+            if (dadosTokenJtw.authorites.includes(regras[i])) {
+                return true;
+            }
+        }
+    } else {
+        //se o endpoint tiver restrição de acesso e o usuário não 
+        // tiver essa permissão. Então a rota fica bloqueada
+        return false;
+    }
+
+}
