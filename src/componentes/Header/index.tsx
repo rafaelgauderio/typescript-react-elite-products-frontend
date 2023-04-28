@@ -3,7 +3,7 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 import { ReactComponent as LogoBranco } from "../../assets/imagens/logo-branco.svg";
 import { Link, NavLink } from 'react-router-dom';
-import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/requisicao';
+import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from '../../util/autenticacao';
 import { useContext, useEffect } from 'react';
 import historico from '../../util/historico';
 import { ContextoGlobalAutenticado } from '../../ContextoGlobal';
@@ -66,7 +66,7 @@ function Header() {
                 </button>
 
                 <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
-                    <ul className='menu-principal navbar-nav offset-md-2'>
+                    <ul className='menu-principal navbar-nav offset-md-1'>
                         <li>
                             <NavLink to="/" activeClassName='ativo' exact>
                                 HOME
@@ -107,10 +107,10 @@ function Header() {
                     </ul>
 
                 </div>
-                <div className="menu-logar-sair btn">
+                <div className="menu-logar-sair">
                     {(dadosAutenticacaoGlobais.usuarioAutenticado) === true ? (
                         <>
-                            <a href="/" onClick={clicarEmSair} >
+                            <a className="btn btn-info" href="/" onClick={clicarEmSair} >
                                 Sair
                             </a>
                             < br />
@@ -118,7 +118,7 @@ function Header() {
                                 {dadosAutenticacaoGlobais.dadosTokenJwt?.user_name}
                             </span>
                         </>
-                    ) : <Link to="/admin/autenticar">Login</Link>}
+                    ) : <Link className="btn btn-info" to="/admin/autenticar">Login</Link>}
                 </div>
             </header>
         </nav>

@@ -25,7 +25,7 @@ function MenuAdmin() {
                     <RotaPrivada path="/admin/categorias">
                         <h1>Cadastro de Categorias</h1>
                     </RotaPrivada>
-                    <RotaPrivada path="/admin/usuarios">
+                    <RotaPrivada path="/admin/usuarios" roles={['ROLE_ADMIN_SISTEMA']}>
                         <h1>Dados dos Usuários</h1>
                         <Usuarios></Usuarios>
                     </RotaPrivada>

@@ -2,7 +2,7 @@
 // e páginas da aplicação
 
 import { createContext } from "react";
-import { DadosTokenJwt } from "./util/requisicao";
+import { DadosTokenJwt } from "./util/autenticacao";
 
 export type DadosAutenticacaoGlobais = {
     usuarioAutenticado: boolean;

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './styles.css';
+import { endpointTemRestricao } from '../../../util/autenticacao';
 
 function Menu() {
 
@@ -26,11 +27,14 @@ function Menu() {
                         <p>Categorias</p>
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to="/admin/usuarios" className="admin-menu-link">
-                        <p>Usuários</p>
-                    </NavLink>
-                </li>
+                {endpointTemRestricao(['ROLE_ADMIN_SISTEMA']) &&
+                //n não vai renderizar o link para usuário se não tiver a permissao de admin de sistema
+                    <li>
+                        <NavLink to="/admin/usuarios" className="admin-menu-link">
+                            <p>Usuários</p>
+                        </NavLink>
+                    </li>
+                }
             </ul>
         </nav>
     )
