@@ -1,0 +1,40 @@
+.produto-card {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: var(--white-color);
+    border-radius: 15px; 
+    padding: 10px 0;
+    margin-bottom: 25px;   
+    transition: transform .6s;  
+}
+
+.produto-card:hover {
+    transform: scale(1.05);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+.produto-container-superior {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    border-bottom: 2px solid var(--gray-less-light-color);
+    padding: 0;
+}
+
+.produto-container-superior img {
+    width: 250px;
+    height: auto;        
+}
+
+.produto-container-inferior h4 {
+    font-weight: bold;   
+    font-size: 22px;
+}
+
+.produto-container-inferior {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

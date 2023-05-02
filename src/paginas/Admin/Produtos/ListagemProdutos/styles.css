@@ -1,0 +1,11 @@
+
+.botao-inserir {
+    border: 0 !important;
+    margin: 20px;
+    margin-left: 0;
+    padding: 20px;    
+    background-color: var(--botao-busca);
+    color: var(--white-color);
+    border-radius: 15px; 
+    font-size: 20px;
+}
