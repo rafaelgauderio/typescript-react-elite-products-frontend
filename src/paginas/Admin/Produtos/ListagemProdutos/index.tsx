@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CardCadastroProduto from "../../../../componentes/CardCadastroProduto";
 import './styles.css';
 
@@ -46,15 +47,19 @@ function ListagemProdutos() {
     }
 
     return (
-        <div className="container">
-            <button className="btn btn-primary botao-inserir">Inserir Novo</button>
-            <div className="barra-pesquisa">Caixa de Busca</div>
+        <>
+            <div className="cadastro-produto-container">
+                <Link to="/admin/produtos/inserir">
+                    <button className="btn btn-primary botao-inserir">Inserir Novo</button>
+                </Link>
+                <div className="barra-pesquisa-produto">Caixa de Busca</div>
+            </div>
 
             <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
             <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
             <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
             <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-        </div>
+        </>
     )
 }
 
