@@ -38,7 +38,7 @@
     padding-right: 10px;
 }
 
-.produto-cadastro-container-categorias {
+.produto-cadastro-container-categorias , .produto-cadastro-container-embalagens {
     display: flex;
     flex-direction: row;
     padding: 0;

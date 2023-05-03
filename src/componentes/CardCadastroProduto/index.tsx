@@ -1,6 +1,7 @@
 import './styles.css';
 import { Produto } from '../../tipos/Produto';
 import RotuloCategoria from '../RotuloCategoria';
+import RotuloEmbalagem from '../RotuloEmbalagem';
 
 // Props são argumentos dos componentes Reacts.
 // componentes reactes são funções javaScript
@@ -24,6 +25,13 @@ function CardProduto({ produto }: Props) {
           {produto.categorias.map(categoria => {
             return (
               <RotuloCategoria descricao={categoria.descricao} key={categoria.id} />
+            )
+          })}      
+        </div>
+        <div className="produto-cadastro-container-embalagens">
+          {produto.embalagens.map(embalagem => {
+            return (
+              <RotuloEmbalagem descricao={embalagem.descricao} key={embalagem.id} />
             )
           })}      
         </div>
