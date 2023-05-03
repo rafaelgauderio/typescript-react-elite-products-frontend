@@ -50,7 +50,9 @@ function ListagemProdutos() {
         <>
             <div className="cadastro-produto-container">
                 <Link to="/admin/produtos/inserir">
-                    <button className="btn btn-primary botao-inserir">Inserir Novo</button>
+                    <button className="btn btn-primary botao-inserir">
+                        Inserir Novo
+                    </button>
                 </Link>
                 <div className="barra-pesquisa-produto">Caixa de Busca</div>
             </div>
