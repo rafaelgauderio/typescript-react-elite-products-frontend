@@ -10,7 +10,7 @@ function CadastroProdutos() {
                 </div>
                 <form>
                     <div className="row">
-                        <div className="col-lg-7">
+                        <div className="col-lg-6">
                             <label>Nome:
                                 <input type="text" className="form-control input-padrao" />
                             </label>
@@ -30,7 +30,7 @@ function CadastroProdutos() {
                                 <input type="text" className="form-control input-padrao" />
                             </label>
                         </div>
-                        <div className="col-lg-5">
+                        <div className="col-lg-6">
                             <label>Categorias:
                                 <input type="text" className="form-control input-padrao" />
                             </label>
@@ -38,13 +38,13 @@ function CadastroProdutos() {
                                 <input type="text" className="form-control input-padrao" />
                             </label>
                             <label>Descrição Detalhada:
-                                <textarea className="form-control input-padrao" rows={20}></textarea>
+                                <textarea className="form-control input-padrao h-auto" rows={12}></textarea>
                             </label>
                         </div>
                     </div>
-                    <div>
-                        <button className="btn btn-outline-danger">CANCELAR</button>
-                        <button className="btn btn-outline-info">SALVAR</button>
+                    <div className="cadatro-produto-form-botoes-container">
+                        <button className="btn btn-outline-danger botao-cancelar">CANCELAR</button>
+                        <button className="btn btn-outline-primary botao-salvar">SALVAR</button>
                     </div>
                 </form>
             </div>
