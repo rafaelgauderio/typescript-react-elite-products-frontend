@@ -14,7 +14,7 @@ function CadastroProdutos() {
                             <label>Nome:
                                 <input type="text" className="form-control input-padrao" />
                             </label>
-                            <label>Preço:
+                            <label>Peso:
                                 <input type="text" className="form-control input-padrao" />
                             </label>
                             <label>Largura:
@@ -31,8 +31,14 @@ function CadastroProdutos() {
                             </label>
                         </div>
                         <div className="col-lg-5">
+                            <label>Categorias:
+                                <input type="text" className="form-control input-padrao" />
+                            </label>
+                            <label>Embalagens:
+                                <input type="text" className="form-control input-padrao" />
+                            </label>
                             <label>Descrição Detalhada:
-                            <textarea className="form-control input-padrao" rows={20}></textarea>
+                                <textarea className="form-control input-padrao" rows={20}></textarea>
                             </label>
                         </div>
                     </div>
