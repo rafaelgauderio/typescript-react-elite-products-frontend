@@ -66,10 +66,15 @@
   border-radius: 10px;
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
+  .produto-cadastro-container-categorias,
+  .produto-cadastro-container-embalagens {
+    justify-content: center;
+  }
 
   .produto-cadastro-botoes-container {
     flex-direction: row;
+    justify-content: space-around;
     margin-right: 20px;
   }
 
@@ -110,12 +115,16 @@
     border-bottom: 0;
   }
 
-  .produto-cadastro-descricao-categorias-container { 
-    display: flex;   
+  .produto-cadastro-descricao-categorias-container {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     flex: 1;
+  }
+
+  .produto-cadastro-container-categorias,
+  .produto-cadastro-container-embalagens {
+    justify-content: flex-start;
   }
 
   .produto-cadastro-container-embalagens {
