@@ -1,8 +1,10 @@
 import { Switch } from 'react-router-dom';
 import Menu from './MenuAdmin';
 import './styles.css';
-import Usuarios from './Usuario';
+import Usuarios from './Usuarios';
 import RotaPrivada from '../../componentes/RotasPrivadas';
+import ProdutosCadastro from './Produtos';
+
 
 function MenuAdmin() {
 
@@ -17,7 +19,7 @@ function MenuAdmin() {
                         <h1>Envio de SMS</h1>
                     </RotaPrivada>
                     <RotaPrivada path="/admin/produtos">
-                        <h1>Cadastro de Produtos</h1>
+                        <ProdutosCadastro></ProdutosCadastro>
                     </RotaPrivada>
                     <RotaPrivada path="/admin/embalagens">
                         <h1>Cadastro de Embalagens</h1>

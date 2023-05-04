@@ -1,0 +1,10 @@
+.rotulo-categoria-container {       
+    background-color: var(--blue-light);
+    color: var(--white-color);
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
