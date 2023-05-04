@@ -56,11 +56,20 @@ function ListagemProdutos() {
                 </Link>
                 <div className="barra-pesquisa-produto">Caixa de Busca</div>
             </div>
-
-            <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-            <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-            <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-            <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+            <div className="row">
+                <div className="col-xl-6">
+                    <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+                </div>
+                <div className="col-xl-6">
+                    <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+                </div>
+                <div className="col-xl-6">
+                    <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+                </div>
+                <div className="col-xl-6">
+                    <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+                </div>
+            </div>
         </>
     )
 }
