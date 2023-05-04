@@ -47,7 +47,7 @@ function ListagemProdutos() {
     }
 
     return (
-        <div className="cadastro-proputo-container-ext">
+        <>
             <div className="cadastro-produto-container">
                 <Link to="/admin/produtos/inserir">
                     <button className="btn btn-primary botao-inserir">
@@ -62,7 +62,7 @@ function ListagemProdutos() {
                 <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
                 <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
             </div>
-        </div>
+        </>
     )
 }
 
