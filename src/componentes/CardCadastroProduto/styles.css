@@ -1,66 +1,124 @@
 .produto-cadastro-card {
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    background-color: var(--white-color);
-    border-radius: 15px; 
-    padding: 10px 0;
-    margin-bottom: 30px;   
-    transition: transform .6s;  
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 15px;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  transition: transform 0.6s;
 }
 
-.produto-cadastro-card:hover {    
-    border: 1px solid var(--primary-color);
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
+.produto-cadastro-card:hover {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
 }
 
 .produto-cadastro-container-superior {
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    border-bottom: 2px solid var(--gray-less-light-color);
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid var(--gray-less-light-color);
+  padding: 0;
 }
 
 .produto-cadastro-container-superior img {
-    width: 250px;
-    height: auto;        
+  width: 250px;
+  height: auto;
 }
 
 .produto-cadastro-container-inferior h4 {
-    font-weight: bold;   
-    font-size: 22px;
+  font-weight: bold;
+  font-size: 22px;
 }
 
-.produto-cadastro-container-inferior {    
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+.produto-cadastro-container-inferior {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.produto-cadastro-container-categorias , .produto-cadastro-container-embalagens {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    flex-wrap:wrap;
+.produto-cadastro-container-categorias,
+.produto-cadastro-container-embalagens {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-wrap: wrap;
 }
 
 .produto-cadastro-botoes-container {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .produto-cadastro-botao {
-    width: 100px;
-    height: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    border-width: 2px;
-    border-radius: 10px;
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 16px;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) { 
+
+  .produto-cadastro-botoes-container {
+    flex-direction: row;
+    margin-right: 20px;
+  }
+
+  .produto-cadastro-botao {
+    margin-right: 20px;
+    width: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  .produto-cadastro-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 40px);
+    margin-left: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .produto-cadastro-botao {
+    width: 200px;
+    margin-right: 0;
+  }
+
+  .produto-cadastro-container-inferior {
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  .produto-cadastro-botoes-container {
+    flex-direction: column-reverse;
+    justify-content: space-around;
+  }
+
+  .produto-cadastro-container-superior {
+    border-right: 2px solid var(--gray-less-light-color);
+    border-bottom: 0;
+  }
+
+  .produto-cadastro-descricao-categorias-container { 
+    display: flex;   
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .produto-cadastro-container-embalagens {
+    padding-bottom: 10px;
+  }
 }
