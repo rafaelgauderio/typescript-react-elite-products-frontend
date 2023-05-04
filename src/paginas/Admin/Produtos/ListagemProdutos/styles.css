@@ -55,6 +55,11 @@
 }
 
 @media (min-width:992px) {
+  
+  .row {
+    max-width: 1100px;
+  }
+
   .botao-inserir { 
     font-size: 0.9em;
     height: 70px;     

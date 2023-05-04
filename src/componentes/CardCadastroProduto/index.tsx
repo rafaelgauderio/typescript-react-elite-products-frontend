@@ -26,15 +26,23 @@ function CardProduto({ produto }: Props) {
             return (
               <RotuloCategoria descricao={categoria.descricao} key={categoria.id} />
             )
-          })}      
+          })}
         </div>
         <div className="produto-cadastro-container-embalagens">
           {produto.embalagens.map(embalagem => {
             return (
               <RotuloEmbalagem descricao={embalagem.descricao} key={embalagem.id} />
             )
-          })}      
+          })}
         </div>
+      </div>
+      <div className="produto-cadastro-botoes-container">
+        <button className="produto-cadastro-botao btn btn-outline-danger">
+          EXCLUIR
+        </button>
+        <button className="produto-cadastro-botao btn btn-outline-warning">
+          EDITAR
+        </button>
       </div>
     </div>
   );
