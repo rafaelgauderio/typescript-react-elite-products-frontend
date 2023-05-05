@@ -11,10 +11,17 @@ function CadastroProdutos() {
 
     function salvarProduto(dadosProduto: Produto) {
 
+        const dadosMocados = {
+            ...dadosProduto,
+            categorias: [{ id: 1, descricao: 'Categoria Mocada' }],
+            embalagens: [{ id: 1, descricao: 'Embalagem Mocada' }],
+            imgUrl: "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
+        }
+
         const configuracao: AxiosRequestConfig = {
             method: 'POST',
             url: '/produtos',
-            data: dadosProduto,
+            data: dadosMocados,
             // tem que estar autenticado para cadastrar produto
             withCredentials: true,
         };
