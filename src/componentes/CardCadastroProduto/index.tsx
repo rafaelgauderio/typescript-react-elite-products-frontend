@@ -2,6 +2,7 @@ import './styles.css';
 import { Produto } from '../../tipos/Produto';
 import RotuloCategoria from '../RotuloCategoria';
 import RotuloEmbalagem from '../RotuloEmbalagem';
+import { Link } from 'react-router-dom';
 
 // Props são argumentos dos componentes Reacts.
 // componentes reactes são funções javaScript
@@ -40,11 +41,13 @@ function CardProduto({ produto }: Props) {
         <button className="produto-cadastro-botao btn btn-outline-danger">
           EXCLUIR
         </button>
-        <button className="produto-cadastro-botao btn btn-outline-warning">
-          EDITAR
-        </button>
+        <Link to={`/admin/produtos/${produto.id}`}>
+          <button className="produto-cadastro-botao btn btn-outline-warning">
+            EDITAR
+          </button>
+        </Link>
       </div>
-    </div>
+    </div >
   );
 };
 

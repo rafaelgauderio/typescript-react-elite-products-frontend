@@ -9,6 +9,8 @@ function CadastroProdutos() {
 
     const { register, handleSubmit, formState: { errors } } = useForm<Produto>();
 
+    const rotaListagemProdutos = '/admin/produtos';
+
     function salvarProduto(dadosProduto: Produto) {
 
         const dadosMocados = {
@@ -27,13 +29,15 @@ function CadastroProdutos() {
         };
 
         requisicaoPadraoBackend(configuracao).then((resposta) => {
-            console.log(resposta.data)
+            //console.log(resposta.data)
+            historico.push(rotaListagemProdutos);
+
         })
     }
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
-        historico.push('/admin/produtos');
+        historico.push(rotaListagemProdutos);
     }
 
     return (
