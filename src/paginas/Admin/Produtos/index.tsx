@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import CadastroProdutos from "./CadastroProdutos";
+import CadastroProdutos from "./CadastroProduto";
 import ListagemProdutos from "./ListagemProdutos";
 
 function ProdutosCadastro () {

@@ -9,6 +9,7 @@ import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
 
 function ListagemProdutos() {
 
+    /*
     const produtoMocado = {
 
         id: 1,
@@ -50,6 +51,7 @@ function ListagemProdutos() {
             }
         ]
     };
+    */
 
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
