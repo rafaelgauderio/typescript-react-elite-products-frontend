@@ -25,14 +25,13 @@ function Usuarios() {
     return (
         <div className="usuario-container" >
             {pagina?.content.map((usuario) => (
-                <div className="usuario-card" key={usuario.id}>
-                    <p key={usuario.id}> {usuario.nome} {usuario.sobrenome} <br />
-                        {usuario.email}</p>
+                <div key={usuario.id} className="usuario-card" >
+                    {usuario.nome} {usuario.sobrenome} <br />
+                    {usuario.email}
                     {usuario?.regras.map(regra => (
                         <p>{regra.permissao}</p>
                     ))}
                 </div>
-
             ))}
         </div>
     );

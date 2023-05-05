@@ -1,0 +1,69 @@
+.cadasto-produto-form-card {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 40px;
+}
+
+.cadastro-produto-form-titulo {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.cadasto-produto-form-card label {
+  font-size: 18px;
+  display: inline;
+}
+
+.cadasto-produto-form-card input {
+  margin-bottom: 10px;
+}
+
+.cadatro-produto-form-botoes-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.botao-salvar {
+  background-color: var(--botao-busca);
+  color: var(--white-color);
+  border: 0;
+}
+
+.botao-salvar,
+.botao-cancelar {
+  font-weight: bold;
+  width: 120px;
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+@media (min-width: 576px) {
+  .botao-salvar,
+  .botao-cancelar {
+    width: 200px;
+  }
+
+  .botao-cancelar {
+    margin-right: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cadatro-produto-form-botoes-container {
+    justify-content: flex-start;
+  }
+
+  .botao-salvar,
+  .botao-cancelar {
+    width: 250px;
+    height: 60px;
+  }
+
+  .botao-cancelar {
+    margin-right: 50px;
+  }
+}

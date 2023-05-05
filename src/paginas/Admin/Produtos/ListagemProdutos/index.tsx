@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import CardCadastroProduto from "../../../../componentes/CardCadastroProduto";
 import './styles.css';
+import { AxiosRequestConfig } from "axios";
+import { useEffect, useState } from "react";
+import { requisicaoPadraoBackend } from "../../../../util/requisicao";
+import { Produto } from "../../../../tipos/Produto";
+import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
 
 function ListagemProdutos() {
 
+    /*
     const produtoMocado = {
 
         id: 1,
@@ -44,7 +50,26 @@ function ListagemProdutos() {
                 descricao: "Folha Dupla"
             }
         ]
-    }
+    };
+    */
+
+    const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
+
+    useEffect(() => {
+        const configuracao: AxiosRequestConfig = {
+            method: 'GET',
+            url: '/produtos',
+            params: {
+                page: 0,
+                size: 12,
+            }
+        };
+        requisicaoPadraoBackend(configuracao).then((resposta) => {
+            setPagina(resposta.data);
+        })
+    }, []);
+
+
 
     return (
         <>
@@ -57,10 +82,11 @@ function ListagemProdutos() {
                 <div className="barra-pesquisa-produto">Caixa de Busca</div>
             </div>
             <div className="row">
-                <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-                <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-                <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
-                <CardCadastroProduto produto={produtoMocado}></CardCadastroProduto>
+                {pagina?.content.map((produto) => (
+                    <div key={produto.id}>
+                        <CardCadastroProduto produto={produto}></CardCadastroProduto>
+                    </div>
+                ))}
             </div>
         </>
     )
