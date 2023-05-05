@@ -3,6 +3,7 @@ import { Produto } from '../../../../tipos/Produto';
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { requisicaoPadraoBackend } from '../../../../util/requisicao';
+import historico from '../../../../util/historico';
 
 function CadastroProdutos() {
 
@@ -21,6 +22,11 @@ function CadastroProdutos() {
         requisicaoPadraoBackend(configuracao).then((resposta) => {
             console.log(resposta.data)
         })
+    }
+
+    // volta para página de listagem de produtos
+    function botaoCancelar() {
+        historico.push('/admin/produtos');
     }
 
     return (
@@ -51,7 +57,7 @@ function CadastroProdutos() {
                                     ${errors.descricao ? 'is-invalid' : ''} `}
                                     placeholder='Nome do produto'
                                     name='descricao' />
-                                <div className="invalid-feedback d-block">
+                                <div className="invalid-feedback alert-danger text-center d-block">
                                     {errors.descricao?.message}
                                 </div>
                             </label>
@@ -105,7 +111,7 @@ function CadastroProdutos() {
                                     ${errors.descricao ? 'is-invalid' : ''} `}
                                     placeholder='Link da imagem do produto'
                                     name='imgUrl' />
-                                <div className="invalid-feedback d-block">
+                                <div className="invalid-feedback alert-danger text-center d-block">
                                     {errors.imgUrl?.message}
                                 </div>
                             </label>
@@ -146,13 +152,15 @@ function CadastroProdutos() {
                                     name='descricaoCompleta' >
                                 </textarea>
                             </label>
-                            <div className="invalid-feedback d-block">
+                            <div className="invalid-feedback alert-danger text-center d-block">
                                 {errors.descricao?.message}
                             </div>
                         </div>
                     </div>
                     <div className="cadatro-produto-form-botoes-container">
-                        <button className="btn btn-outline-danger botao-cancelar">CANCELAR</button>
+                        <button className="btn btn-outline-danger botao-cancelar"
+                            onClick={botaoCancelar}
+                        >CANCELAR</button>
                         <button className="btn btn-outline-primary botao-salvar">SALVAR</button>
                     </div>
                 </form >
