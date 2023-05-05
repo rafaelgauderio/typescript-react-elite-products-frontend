@@ -13,21 +13,26 @@
 
 .cadastro-produto-container {
   margin-bottom: 10px;
-  margin-top: 10px;   
+  margin-top: 10px;
 }
 
 .barra-pesquisa-produto {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   background-color: var(--white-color);
   border-radius: 15px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   padding: 20px;
-  border: 2px solid var(--botao-busca);
+  transition: 1.5s;  
+  
+}
+
+.barra-pesquisa-produto:hover {
+  border: 2px solid var(--blue-light);
 }
 
 @media (min-width: 576px) {
-  .botao-inserir {   
-    width: 60%;;
+  .botao-inserir {
+    width: 60%;
   }
 }
 
@@ -40,28 +45,30 @@
 
   .botao-inserir {
     height: 60px;
-    margin: 0;    
-    margin-top: 20px;    
-    width: 100%;    
+    margin: 0;
+    margin-top: 20px;
+    width: 100%;
   }
 
   .barra-pesquisa-produto {
     margin-left: 40px;
     margin-top: 20px;
-    margin-bottom: 0;
-    flex: 1;
+    margin-bottom: 0;    
+    width:400px;   
+  }
 
+  .barra-pesquisa-produto:hover {    
+    flex:600px;
   }
 }
 
-@media (min-width:992px) {
-  
+@media (min-width: 992px) {
   .row {
     max-width: 1100px;
   }
 
-  .botao-inserir { 
+  .botao-inserir {
     font-size: 0.9em;
-    height: 70px;     
+    height: 70px;
   }
 }
