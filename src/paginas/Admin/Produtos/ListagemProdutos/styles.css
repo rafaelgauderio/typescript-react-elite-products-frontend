@@ -22,8 +22,7 @@
   border-radius: 15px;
   margin-bottom: 20px;
   padding: 20px;
-  transition: 1.5s;  
-  
+  transition: 1.5s;
 }
 
 .barra-pesquisa-produto:hover {
@@ -53,18 +52,16 @@
   .barra-pesquisa-produto {
     margin-left: 40px;
     margin-top: 20px;
-    margin-bottom: 0;    
-    width:400px;   
+    margin-bottom: 0;
+    flex: 1;
   }
 
-  .barra-pesquisa-produto:hover {    
-    flex:600px;
-  }
+ 
 }
 
 @media (min-width: 992px) {
   .row {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 
   .botao-inserir {
