@@ -12,8 +12,6 @@ type ParametrosUrl = {
     produtoId: string;
 };
 
-
-
 function ProdutoDetalhado( ) {
 
     const { produtoId } = useParams<ParametrosUrl>();
