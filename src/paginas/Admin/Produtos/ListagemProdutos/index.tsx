@@ -55,18 +55,24 @@ function ListagemProdutos() {
 
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    useEffect(() => {
+    function getProdutos() {
         const configuracao: AxiosRequestConfig = {
             method: 'GET',
             url: '/produtos',
             params: {
                 page: 0,
                 size: 12,
-            }
+            },
         };
         requisicaoPadraoBackend(configuracao).then((resposta) => {
             setPagina(resposta.data);
-        })
+        });
+    };
+
+    // vai ficar monitorando o estado, quando deleter um produto, vai atulizar a listagem do bando de dados
+    // assim vai renderizar a tela novamente sem ter clicar em atualziar a tela.
+    useEffect(() => {
+        getProdutos();
     }, []);
 
 
@@ -84,7 +90,10 @@ function ListagemProdutos() {
             <div className="row">
                 {pagina?.content.map((produto) => (
                     <div key={produto.id}>
-                        <CardCadastroProduto produto={produto}></CardCadastroProduto>
+                        <CardCadastroProduto
+                            produto={produto}
+                            deletarProdutoComponente={() => { getProdutos() }}
+                        />
                     </div>
                 ))}
             </div>

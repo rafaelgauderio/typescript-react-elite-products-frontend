@@ -8,12 +8,14 @@ import { requisicaoPadraoBackend } from '../../util/requisicao';
 
 // Props são argumentos dos componentes Reacts.
 // componentes reactes são funções javaScript
-
+// funçao deletar um produto passada como prop do componente CardProduto
 type Props = {
   produto: Produto;
-}
+  deletarProdutoComponente: Function;
+};
 
-function CardProduto({ produto }: Props) {
+function CardProduto({ produto, deletarProdutoComponente }: Props) {
+
 
   function deletarProduto(produtoId: number) {
 
@@ -28,7 +30,7 @@ function CardProduto({ produto }: Props) {
     };
 
     requisicaoPadraoBackend(configuracaoDelete).then(() => {
-      console.log("produto " + produto.descricao + " exluído com sucesso");
+      deletarProdutoComponente();
     });
 
   };
