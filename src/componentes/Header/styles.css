@@ -74,6 +74,12 @@
     font-size: 1.1em;
     border-radius: 10px;
     padding: 8px !important;
+    background-color: var(--blue-light);
+    color: var(--light-color);
+  }
+
+  .menu-logar-sair a:hover {
+    color: var(--tertiary-color);
   }
 
   .menu-email-cliente {
