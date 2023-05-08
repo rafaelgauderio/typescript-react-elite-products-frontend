@@ -38,7 +38,7 @@ function Login() {
 
 function enviarFormulario(dadosLogin: DadosLogin) {
     return (
-        console.log(dadosLogin),
+        //console.log(dadosLogin),
         requisicaoDeLogin(dadosLogin)
             .then(resposta => {
                 //console.log('Login efetuado com sucesso', resposta);                    

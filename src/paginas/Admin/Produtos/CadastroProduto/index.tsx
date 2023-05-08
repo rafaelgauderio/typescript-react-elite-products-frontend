@@ -4,37 +4,87 @@ import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { requisicaoPadraoBackend } from '../../../../util/requisicao';
 import historico from '../../../../util/historico';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+
+export type ParametrosUrl = {
+    produtoId: string;
+}
 
 function CadastroProdutos() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<Produto>();
+    const { produtoId } = useParams<ParametrosUrl>();
+
+    // se está inserindo produto novo a sub rota é /produtos/inserir
+    // Se for a sub rotao /produtos/:produtoId é uma edição de produto
+    // ambas são requisição GET para buscar os dados
+    // ao clicar em salvar para editar vai ser um requisição PUT e para salvar uma requisição POST
+    let editandoProduto: boolean = produtoId !== 'inserir' ? true : false;
+
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Produto>();
+
+    const rotaListagemProdutos: string = '/admin/produtos';
+
+    useEffect(() => {
+        if (editandoProduto) {
+            requisicaoPadraoBackend({
+                url: `/produtos/${produtoId}`,
+            }).then((resposta) => {
+                let produto = resposta.data as Produto;
+
+                setValue('descricao', produto.descricao);
+                setValue('descricaoCompleta', produto.descricaoCompleta);
+                setValue('fragrancia', produto.fragrancia);
+                setValue('peso', produto.preco);
+                setValue('preco', produto.preco);
+                setValue('largura', produto.largura);
+                setValue('metragem', produto.metragem);
+                setValue('imgUrl', produto.imgUrl);
+                setValue('categorias', produto.categorias);
+                setValue('embalagens', produto.embalagens);
+
+            })
+        }
+    }, [editandoProduto, setValue, produtoId]);
 
     function salvarProduto(dadosProduto: Produto) {
 
         const dadosMocados = {
             ...dadosProduto,
-            categorias: [{ id: 1, descricao: 'Categoria Mocada' }],
-            embalagens: [{ id: 1, descricao: 'Embalagem Mocada' }],
-            imgUrl: "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
-        }
+            categorias: editandoProduto === true ? dadosProduto.categorias : [{ id: 1, descricao: 'Categoria Mocada' }],
+            embalagens: editandoProduto === true ? dadosProduto.embalagens : [{ id: 1, descricao: 'Embalagem Mocada' }],
+            imgUrl: editandoProduto === true ? dadosProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
+        };
 
-        const configuracao: AxiosRequestConfig = {
+        const configuracaoInsert: AxiosRequestConfig = {
             method: 'POST',
             url: '/produtos',
             data: dadosMocados,
-            // tem que estar autenticado para cadastrar produto
+            // tem que estar autenticado para cadastrar ou editar produto
             withCredentials: true,
         };
 
+        const configuracaoUpdate: AxiosRequestConfig = {
+            method: 'PUT',
+            url: `/produtos/${produtoId}`,
+            data: dadosMocados,
+            withCredentials: true,
+        };
+
+        // ser se está editando ou inserindo para ver qual requisição fazer ao backend
+        let configuracao: AxiosRequestConfig = editandoProduto === true ? configuracaoUpdate : configuracaoInsert;
+
         requisicaoPadraoBackend(configuracao).then((resposta) => {
-            console.log(resposta.data)
-        })
-    }
+            //console.log(resposta.data)
+            historico.push(rotaListagemProdutos);
+
+        });
+    };
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
-        historico.push('/admin/produtos');
-    }
+        historico.push(rotaListagemProdutos);
+    };
 
     return (
         <div className="cadastro-produto-form-container">
@@ -174,6 +224,6 @@ function CadastroProdutos() {
             </div >
         </div >
     )
-}
+};
 
 export default CadastroProdutos;
