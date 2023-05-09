@@ -19,10 +19,11 @@
     align-items: center;   
     border-bottom: 2px solid var(--gray-less-light-color);
     padding: 0;
+    height: 250px;
 }
 
 .produto-container-superior img {
-    width: 250px;
+    width: 240px;
     height: auto;        
 }
 
