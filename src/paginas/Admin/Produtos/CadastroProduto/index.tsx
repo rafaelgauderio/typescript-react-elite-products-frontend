@@ -6,12 +6,26 @@ import { requisicaoPadraoBackend } from '../../../../util/requisicao';
 import historico from '../../../../util/historico';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import Select from 'react-select';
 
 export type ParametrosUrl = {
     produtoId: string;
 }
 
 function CadastroProdutos() {
+
+    const embalagens = [
+        { value: 'Fardo com 8 rolos', label: 'Fardo com 8 rolos' },
+        { value: 'Fardo com 4 rolos', label: 'Fardo com 4 rolos' },
+        { value: 'Galão de 2 litros', label: 'Galão de 2 litros' },
+    ];
+
+    const categorias = [
+        { value: 'Papel Toalha', label: 'Papel Toalha' },
+        { value: 'Papel Higiênico', label: 'Papel Higiênico' },
+        { value: 'Intefolhado', label: 'Interfolhado' },
+    ];
+
 
     const { produtoId } = useParams<ParametrosUrl>();
 
@@ -175,18 +189,18 @@ function CadastroProdutos() {
                         </div>
                         <div className="col-lg-6">
                             <label>Categorias:
-                                <input {
-                                    ...register('categorias')}
-                                    type='text'
-                                    className={`form-control input-padrao`}
-                                    placeholder='Categorias do produto'
+                                <Select
+                                    options={categorias}
+                                    isMulti={true}
+                                    classNamePrefix={'cadastro-produto-select'}
+                                    placeholder='Categorias do Produto'
                                     name='categorias' />
                             </label>
                             <label>Embalagens:
-                                <input {
-                                    ...register('embalagens')}
-                                    type='text'
-                                    className={`form-control input-padrao`}
+                                <Select
+                                    options={embalagens}
+                                    isMulti={true}
+                                    classNamePrefix={'cadastro-produto-select'}
                                     placeholder='Embalagens disponíveis'
                                     name='embalagens' />
                             </label>
