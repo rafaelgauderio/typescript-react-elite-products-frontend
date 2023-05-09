@@ -5,8 +5,10 @@ import { AxiosRequestConfig } from 'axios';
 import { requisicaoPadraoBackend } from '../../../../util/requisicao';
 import historico from '../../../../util/historico';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { Embalagem } from '../../../../tipos/Embalgem';
+import { Categoria } from '../../../../tipos/Categoria';
 
 export type ParametrosUrl = {
     produtoId: string;
@@ -14,6 +16,7 @@ export type ParametrosUrl = {
 
 function CadastroProdutos() {
 
+    /*
     const embalagens = [
         { value: 'Fardo com 8 rolos', label: 'Fardo com 8 rolos' },
         { value: 'Fardo com 4 rolos', label: 'Fardo com 4 rolos' },
@@ -25,7 +28,7 @@ function CadastroProdutos() {
         { value: 'Papel Higiênico', label: 'Papel Higiênico' },
         { value: 'Intefolhado', label: 'Interfolhado' },
     ];
-
+    */
 
     const { produtoId } = useParams<ParametrosUrl>();
 
@@ -38,6 +41,24 @@ function CadastroProdutos() {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<Produto>();
 
     const rotaListagemProdutos: string = '/admin/produtos';
+
+    const [selectEmbalagens, setSelectEmbalagens] = useState<Embalagem[]>([]);
+
+    const [selectCategorias, setSelectCategorias] = useState<Categoria[]>([]);
+
+    useEffect(() => {
+        requisicaoPadraoBackend({ url: '/embalagens' })
+            .then(resposta => {
+                setSelectEmbalagens(resposta.data.content);
+            })
+    }, []);
+
+    useEffect(() => {
+        requisicaoPadraoBackend({ url: '/categorias' })
+            .then(resposta => {
+                setSelectCategorias(resposta.data.content);
+            })
+    }, []);
 
     useEffect(() => {
         if (editandoProduto) {
@@ -190,19 +211,23 @@ function CadastroProdutos() {
                         <div className="col-lg-6">
                             <label>Categorias:
                                 <Select
-                                    options={categorias}
+                                    options={selectCategorias}
                                     isMulti={true}
                                     classNamePrefix={'cadastro-produto-select'}
                                     placeholder='Categorias do Produto'
-                                    name='categorias' />
+                                    name='categorias'
+                                    getOptionLabel={(categoria: Categoria) => categoria.descricao}
+                                    getOptionValue={(categoria: Categoria) => String(categoria.id)} />
                             </label>
                             <label>Embalagens:
                                 <Select
-                                    options={embalagens}
+                                    options={selectEmbalagens}
                                     isMulti={true}
                                     classNamePrefix={'cadastro-produto-select'}
                                     placeholder='Embalagens disponíveis'
-                                    name='embalagens' />
+                                    name='embalagens'
+                                    getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
+                                    getOptionValue={(embalagem: Embalagem) => String(embalagem.id)} />
                             </label>
                             <label>Descrição Detalhada:
                                 <textarea rows={12}
