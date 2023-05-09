@@ -46,6 +46,7 @@ function CadastroProdutos() {
 
     const [selectCategorias, setSelectCategorias] = useState<Categoria[]>([]);
 
+
     useEffect(() => {
         requisicaoPadraoBackend({ url: '/embalagens' })
             .then(resposta => {
@@ -81,19 +82,21 @@ function CadastroProdutos() {
         }
     }, [editandoProduto, setValue, produtoId]);
 
-    function salvarProduto(dadosProduto: Produto) {
+    function salvarProduto(dadosFormularioProduto: Produto) {
 
+        /*
         const dadosMocados = {
-            ...dadosProduto,
-            categorias: editandoProduto === true ? dadosProduto.categorias : [{ id: 1, descricao: 'Categoria Mocada' }],
-            embalagens: editandoProduto === true ? dadosProduto.embalagens : [{ id: 1, descricao: 'Embalagem Mocada' }],
-            imgUrl: editandoProduto === true ? dadosProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
+            ...dadosFormularioProduto,
+            categorias: editandoProduto === true ? dadosFormularioProduto.categorias : [{ id: 1, descricao: 'Categoria Mocada' }],
+            embalagens: editandoProduto === true ? dadosFormularioProduto.embalagens : [{ id: 1, descricao: 'Embalagem Mocada' }],
+            imgUrl: editandoProduto === true ? dadosFormularioProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
         };
+        */
 
         const configuracaoInsert: AxiosRequestConfig = {
             method: 'POST',
             url: '/produtos',
-            data: dadosMocados,
+            data: dadosFormularioProduto,
             // tem que estar autenticado para cadastrar ou editar produto
             withCredentials: true,
         };
@@ -101,7 +104,7 @@ function CadastroProdutos() {
         const configuracaoUpdate: AxiosRequestConfig = {
             method: 'PUT',
             url: `/produtos/${produtoId}`,
-            data: dadosMocados,
+            data: dadosFormularioProduto,
             withCredentials: true,
         };
 
@@ -113,12 +116,17 @@ function CadastroProdutos() {
             historico.push(rotaListagemProdutos);
 
         });
+
+
     };
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
         historico.push(rotaListagemProdutos);
     };
+
+    const regexUrl = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    var regexUrlValidada = new RegExp(regexUrl);
 
     return (
         <div className="cadastro-produto-form-container">
@@ -196,6 +204,10 @@ function CadastroProdutos() {
                                             value: 100,
                                             message: 'Máximo de 100 caracteres',
                                         },
+                                        pattern: {
+                                            value: regexUrlValidada,
+                                            message: "Informa um Url válida",
+                                        }
                                     })}
                                     type='text'
                                     className={`form-control input-padrao 
@@ -236,7 +248,7 @@ function CadastroProdutos() {
                                     rules={{ required: true }}
                                     render={({ field }) => (
                                         <Select {...field}
-                                        name="categorias"
+                                            name="categorias"
                                             options={selectEmbalagens}
                                             isMulti={true}
                                             classNamePrefix={'cadastro-produto-select'}
