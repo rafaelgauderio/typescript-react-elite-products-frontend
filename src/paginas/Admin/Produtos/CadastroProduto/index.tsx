@@ -209,14 +209,25 @@ function CadastroProdutos() {
                         </div>
                         <div className="col-lg-6">
                             <label>Categorias:
-                                <Select
-                                    options={selectCategorias}
-                                    isMulti={true}
-                                    classNamePrefix={'cadastro-produto-select'}
-                                    placeholder='Categorias do Produto'
-                                    name='categorias'
-                                    getOptionLabel={(categoria: Categoria) => categoria.descricao}
-                                    getOptionValue={(categoria: Categoria) => String(categoria.id)} />
+                                <Controller
+                                    name="categorias"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                        <Select {...field}
+                                            name="categorias"
+                                            options={selectCategorias}
+                                            isMulti={true}
+                                            classNamePrefix={'cadastro-produto-select'}
+                                            placeholder='Categorias do Produto'
+                                            getOptionLabel={(categoria: Categoria) => categoria.descricao}
+                                            getOptionValue={(categoria: Categoria) => String(categoria.id)} />
+                                    )}
+                                />
+                                {errors.categorias && (
+                                    <div className="invalid-feedback alert-danger text-center d-block">
+                                        "Produto deve pertencer a pelo menos uma Categoria"
+                                    </div>)}
                             </label>
                             <label>Embalagens:
                                 <Controller
@@ -225,17 +236,18 @@ function CadastroProdutos() {
                                     rules={{ required: true }}
                                     render={({ field }) => (
                                         <Select {...field}
+                                        name="categorias"
                                             options={selectEmbalagens}
                                             isMulti={true}
                                             classNamePrefix={'cadastro-produto-select'}
-                                            placeholder='Embalagens disponíveis'                                           
+                                            placeholder='Embalagens disponíveis'
                                             getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
                                             getOptionValue={(embalagem: Embalagem) => String(embalagem.id)} />
                                     )}
                                 />
                                 {errors.embalagens && (
                                     <div className="invalid-feedback alert-danger text-center d-block">
-                                        "Selecione pelo menos uma embalagem"
+                                        "Produto deve estar disponível em pelo menos uma embalagem"
                                     </div>)}
                             </label>
                             <label>Descrição Detalhada:
