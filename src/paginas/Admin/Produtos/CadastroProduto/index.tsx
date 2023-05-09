@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Produto } from '../../../../tipos/Produto';
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
@@ -38,7 +38,7 @@ function CadastroProdutos() {
     // ao clicar em salvar para editar vai ser um requisição PUT e para salvar uma requisição POST
     let editandoProduto: boolean = produtoId !== 'inserir' ? true : false;
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Produto>();
+    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<Produto>();
 
     const rotaListagemProdutos: string = '/admin/produtos';
 
@@ -77,7 +77,6 @@ function CadastroProdutos() {
                 setValue('imgUrl', produto.imgUrl);
                 setValue('categorias', produto.categorias);
                 setValue('embalagens', produto.embalagens);
-
             })
         }
     }, [editandoProduto, setValue, produtoId]);
@@ -220,14 +219,24 @@ function CadastroProdutos() {
                                     getOptionValue={(categoria: Categoria) => String(categoria.id)} />
                             </label>
                             <label>Embalagens:
-                                <Select
-                                    options={selectEmbalagens}
-                                    isMulti={true}
-                                    classNamePrefix={'cadastro-produto-select'}
-                                    placeholder='Embalagens disponíveis'
-                                    name='embalagens'
-                                    getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
-                                    getOptionValue={(embalagem: Embalagem) => String(embalagem.id)} />
+                                <Controller
+                                    name="embalagens"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                        <Select {...field}
+                                            options={selectEmbalagens}
+                                            isMulti={true}
+                                            classNamePrefix={'cadastro-produto-select'}
+                                            placeholder='Embalagens disponíveis'                                           
+                                            getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
+                                            getOptionValue={(embalagem: Embalagem) => String(embalagem.id)} />
+                                    )}
+                                />
+                                {errors.embalagens && (
+                                    <div className="invalid-feedback alert-danger text-center d-block">
+                                        "Selecione pelo menos uma embalagem"
+                                    </div>)}
                             </label>
                             <label>Descrição Detalhada:
                                 <textarea rows={12}
