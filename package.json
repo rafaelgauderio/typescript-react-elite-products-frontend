@@ -60,6 +60,7 @@
     ]
   },
   "resolutions": {
-    "autoprefixer": "10.4.5"
+    "autoprefixer": "10.4.5",
+    "@types/react": "17.0.37"
   }
 }

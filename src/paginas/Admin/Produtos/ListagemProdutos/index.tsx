@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { requisicaoPadraoBackend } from "../../../../util/requisicao";
 import { Produto } from "../../../../tipos/Produto";
 import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
+import Paginacao from "../../../../componentes/Paginacao";
 
 function ListagemProdutos() {
 
@@ -96,6 +97,7 @@ function ListagemProdutos() {
                         />
                     </div>
                 ))}
+            <Paginacao />
             </div>
         </>
     )
