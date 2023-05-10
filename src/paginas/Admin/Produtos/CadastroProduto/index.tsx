@@ -1,17 +1,34 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Produto } from '../../../../tipos/Produto';
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { requisicaoPadraoBackend } from '../../../../util/requisicao';
 import historico from '../../../../util/historico';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Select from 'react-select';
+import { Embalagem } from '../../../../tipos/Embalgem';
+import { Categoria } from '../../../../tipos/Categoria';
 
 export type ParametrosUrl = {
     produtoId: string;
 }
 
 function CadastroProdutos() {
+
+    /*
+    const embalagens = [
+        { value: 'Fardo com 8 rolos', label: 'Fardo com 8 rolos' },
+        { value: 'Fardo com 4 rolos', label: 'Fardo com 4 rolos' },
+        { value: 'Galão de 2 litros', label: 'Galão de 2 litros' },
+    ];
+
+    const categorias = [
+        { value: 'Papel Toalha', label: 'Papel Toalha' },
+        { value: 'Papel Higiênico', label: 'Papel Higiênico' },
+        { value: 'Intefolhado', label: 'Interfolhado' },
+    ];
+    */
 
     const { produtoId } = useParams<ParametrosUrl>();
 
@@ -21,9 +38,28 @@ function CadastroProdutos() {
     // ao clicar em salvar para editar vai ser um requisição PUT e para salvar uma requisição POST
     let editandoProduto: boolean = produtoId !== 'inserir' ? true : false;
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Produto>();
+    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<Produto>();
 
     const rotaListagemProdutos: string = '/admin/produtos';
+
+    const [selectEmbalagens, setSelectEmbalagens] = useState<Embalagem[]>([]);
+
+    const [selectCategorias, setSelectCategorias] = useState<Categoria[]>([]);
+
+
+    useEffect(() => {
+        requisicaoPadraoBackend({ url: '/embalagens' })
+            .then(resposta => {
+                setSelectEmbalagens(resposta.data.content);
+            })
+    }, []);
+
+    useEffect(() => {
+        requisicaoPadraoBackend({ url: '/categorias' })
+            .then(resposta => {
+                setSelectCategorias(resposta.data.content);
+            })
+    }, []);
 
     useEffect(() => {
         if (editandoProduto) {
@@ -42,24 +78,25 @@ function CadastroProdutos() {
                 setValue('imgUrl', produto.imgUrl);
                 setValue('categorias', produto.categorias);
                 setValue('embalagens', produto.embalagens);
-
             })
         }
     }, [editandoProduto, setValue, produtoId]);
 
-    function salvarProduto(dadosProduto: Produto) {
+    function salvarProduto(dadosFormularioProduto: Produto) {
 
+        /*
         const dadosMocados = {
-            ...dadosProduto,
-            categorias: editandoProduto === true ? dadosProduto.categorias : [{ id: 1, descricao: 'Categoria Mocada' }],
-            embalagens: editandoProduto === true ? dadosProduto.embalagens : [{ id: 1, descricao: 'Embalagem Mocada' }],
-            imgUrl: editandoProduto === true ? dadosProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
+            ...dadosFormularioProduto,
+            categorias: editandoProduto === true ? dadosFormularioProduto.categorias : [{ id: 1, descricao: 'Categoria Mocada' }],
+            embalagens: editandoProduto === true ? dadosFormularioProduto.embalagens : [{ id: 1, descricao: 'Embalagem Mocada' }],
+            imgUrl: editandoProduto === true ? dadosFormularioProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
         };
+        */
 
         const configuracaoInsert: AxiosRequestConfig = {
             method: 'POST',
             url: '/produtos',
-            data: dadosMocados,
+            data: dadosFormularioProduto,
             // tem que estar autenticado para cadastrar ou editar produto
             withCredentials: true,
         };
@@ -67,7 +104,7 @@ function CadastroProdutos() {
         const configuracaoUpdate: AxiosRequestConfig = {
             method: 'PUT',
             url: `/produtos/${produtoId}`,
-            data: dadosMocados,
+            data: dadosFormularioProduto,
             withCredentials: true,
         };
 
@@ -79,12 +116,17 @@ function CadastroProdutos() {
             historico.push(rotaListagemProdutos);
 
         });
+
+
     };
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
         historico.push(rotaListagemProdutos);
     };
+
+    const regexUrl = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    var regexUrlValidada = new RegExp(regexUrl);
 
     return (
         <div className="cadastro-produto-form-container">
@@ -162,6 +204,10 @@ function CadastroProdutos() {
                                             value: 100,
                                             message: 'Máximo de 100 caracteres',
                                         },
+                                        pattern: {
+                                            value: regexUrlValidada,
+                                            message: "Informa um Url válida",
+                                        }
                                     })}
                                     type='text'
                                     className={`form-control input-padrao 
@@ -175,20 +221,46 @@ function CadastroProdutos() {
                         </div>
                         <div className="col-lg-6">
                             <label>Categorias:
-                                <input {
-                                    ...register('categorias')}
-                                    type='text'
-                                    className={`form-control input-padrao`}
-                                    placeholder='Categorias do produto'
-                                    name='categorias' />
+                                <Controller
+                                    name="categorias"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                        <Select {...field}
+                                            name="categorias"
+                                            options={selectCategorias}
+                                            isMulti={true}
+                                            classNamePrefix={'cadastro-produto-select'}
+                                            placeholder='Categorias do Produto'
+                                            getOptionLabel={(categoria: Categoria) => categoria.descricao}
+                                            getOptionValue={(categoria: Categoria) => String(categoria.id)} />
+                                    )}
+                                />
+                                {errors.categorias && (
+                                    <div className="invalid-feedback alert-danger text-center d-block">
+                                        "Produto deve pertencer a pelo menos uma Categoria"
+                                    </div>)}
                             </label>
                             <label>Embalagens:
-                                <input {
-                                    ...register('embalagens')}
-                                    type='text'
-                                    className={`form-control input-padrao`}
-                                    placeholder='Embalagens disponíveis'
-                                    name='embalagens' />
+                                <Controller
+                                    name="embalagens"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                        <Select {...field}
+                                            name="categorias"
+                                            options={selectEmbalagens}
+                                            isMulti={true}
+                                            classNamePrefix={'cadastro-produto-select'}
+                                            placeholder='Embalagens disponíveis'
+                                            getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
+                                            getOptionValue={(embalagem: Embalagem) => String(embalagem.id)} />
+                                    )}
+                                />
+                                {errors.embalagens && (
+                                    <div className="invalid-feedback alert-danger text-center d-block">
+                                        "Produto deve estar disponível em pelo menos uma embalagem"
+                                    </div>)}
                             </label>
                             <label>Descrição Detalhada:
                                 <textarea rows={12}

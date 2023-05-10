@@ -134,7 +134,7 @@ return (
                     <div className="invalid-feedback alert-danger d-block ">{errors.password?.message}</div>
                 </div>
                 <div className='login-enviar'>
-                    <BotaoPadrao mensagem="Fazer Login"></BotaoPadrao>
+                    <BotaoPadrao mensagem="Entrar"></BotaoPadrao>
                 </div>
                 <div className="login-recuperar-senha btn-danger">
                     <Link to="/admin/autenticar/recuperar">
