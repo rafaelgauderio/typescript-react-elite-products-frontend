@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { Embalagem } from '../../../../tipos/Embalgem';
 import { Categoria } from '../../../../tipos/Categoria';
+import { NumericFormat } from 'react-number-format';
 
 export type ParametrosUrl = {
     produtoId: string;
@@ -163,7 +164,7 @@ function CadastroProdutos() {
                             <label>Peso:
                                 <input {
                                     ...register('peso')}
-                                    type='text'
+                                    type='number'
                                     className={`form-control input-padrao`}
                                     placeholder='Peso em Kg'
                                     name='peso' />
@@ -171,7 +172,7 @@ function CadastroProdutos() {
                             <label>Largura:
                                 <input {
                                     ...register('largura')}
-                                    type='text'
+                                    type='number'
                                     className={`form-control input-padrao`}
                                     placeholder='Largura do folha/rolo em centímetros'
                                     name='largura' />
@@ -179,7 +180,7 @@ function CadastroProdutos() {
                             <label>Metragem:
                                 <input {
                                     ...register('metragem')}
-                                    type='text'
+                                    type='number'
                                     className={`form-control input-padrao`}
                                     placeholder='Metragem total da embalagem em metros'
                                     name='metragem' />
@@ -238,7 +239,7 @@ function CadastroProdutos() {
                                 />
                                 {errors.categorias && (
                                     <div className="invalid-feedback alert-danger text-center d-block">
-                                        "Produto deve pertencer a pelo menos uma Categoria"
+                                        Produto deve pertencer a pelo menos uma Categoria
                                     </div>)}
                             </label>
                             <label>Embalagens:
@@ -259,7 +260,7 @@ function CadastroProdutos() {
                                 />
                                 {errors.embalagens && (
                                     <div className="invalid-feedback alert-danger text-center d-block">
-                                        "Produto deve estar disponível em pelo menos uma embalagem"
+                                        Produto deve estar disponível em pelo menos uma embalagem
                                     </div>)}
                             </label>
                             <label>Descrição Detalhada:
@@ -281,7 +282,7 @@ function CadastroProdutos() {
                                     name='descricaoCompleta' >
                                 </textarea>
                             </label>
-                            <div className="invalid-feedback alert-danger text-center d-block">
+                            <div className="invalid-feedback alert-danger text-center fw-bolder d-block ">
                                 {errors.descricao?.message}
                             </div>
                         </div>
