@@ -71,7 +71,7 @@ function CadastroProdutos() {
                 setValue('descricao', produto.descricao);
                 setValue('descricaoCompleta', produto.descricaoCompleta);
                 setValue('fragrancia', produto.fragrancia);
-                setValue('peso', produto.peso!);
+                setValue('peso', produto.peso );
                 setValue('preco', produto.preco);
                 setValue('largura', produto.largura);
                 setValue('metragem', produto.metragem);
@@ -163,7 +163,7 @@ function CadastroProdutos() {
                                     {errors.descricao?.message}
                                 </div>
                             </label>
-                            <label>Peso:
+                            <label>Peso (kg):
                                 <input {
                                     ...register('peso')}
                                     type='number'                                                                        
@@ -179,7 +179,7 @@ function CadastroProdutos() {
                                     {errors.peso?.message}
                                 </div>
                             </label>
-                            <label>Largura:
+                            <label>Largura (cm):
                                 <input {
                                     ...register('largura')}
                                     type='number'
