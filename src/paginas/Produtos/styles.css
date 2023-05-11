@@ -1,5 +1,6 @@
 .produtos-container {
   border-radius: 15px;  
+  word-wrap: break-word;
 }
 
 .produtos-container h2 {
