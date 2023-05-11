@@ -111,7 +111,7 @@ function Produtos() {
                             })
                         )}
                 </div>
-                <div className="row">
+                <div className="row icones-paginacao">
                     <Paginacao />
                 </div>
             </div>
