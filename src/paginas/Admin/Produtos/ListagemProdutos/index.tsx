@@ -97,7 +97,9 @@ function ListagemProdutos() {
                         />
                     </div>
                 ))}
-            <Paginacao />
+                <div className="paginacao-container">
+                    <Paginacao />
+                </div>
             </div>
         </>
     )

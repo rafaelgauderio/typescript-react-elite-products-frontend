@@ -29,6 +29,10 @@
   border: 2px solid var(--blue-light);
 }
 
+.paginacao-container {
+  margin-bottom: 10px;
+}
+
 @media (min-width: 576px) {
   .botao-inserir {
     width: 60%;
