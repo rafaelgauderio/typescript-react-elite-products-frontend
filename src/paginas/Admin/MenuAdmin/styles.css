@@ -31,15 +31,19 @@
 }
 
 @media (max-width: 440px) {
-  .admin-menu-container ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+  .admin-menu-container {
+    margin: 0 10px;
   }
 
-  .admin-menu-link {
-    
+  .admin-menu-container ul {
+    display: block;    
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .admin-menu-link {    
     min-width: 150px;
   }
 }

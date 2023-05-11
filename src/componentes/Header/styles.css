@@ -23,6 +23,7 @@
 .menu-principal li {
   transition: transform 0.6s;
   padding: 5px;
+  font-size: 21px;
 }
 
 .menu-principal li:hover {
@@ -64,6 +65,12 @@
 }
 
 @media (min-width: 992px) {
+
+  .cabecalho {
+    padding-left: 10px;
+  }
+  
+
   .menu-logar-sair {
     display: unset;
     border: 0 !important;
@@ -95,6 +102,28 @@
   }
 }
 
+@media (max-width: 576px) {
+ 
+  .logo-branco {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cabecalho {
+    padding-left: 10px;
+  }
+
+  .menu-principal li {   
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+
 @media (max-width: 992px) {
   .menu-principal li {
     font-size: 18px;
@@ -112,22 +141,5 @@
   }
 }
 
-@media (max-width: 768px) {
-  .cabecalho {
-    padding-left: 10px;
-  }
 
-  .menu-principal li {
-    font-size: 15px;
-  }
 
-  p {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 576px) {
-  .logo-branco {
-    width: 70%;
-  }
-}

@@ -66,7 +66,7 @@ function Header() {
                 </button>
 
                 <div id="menu-hamburguer-navbar" className='collapse navbar-collapse'>
-                    <ul className='menu-principal navbar-nav offset-md-1'>
+                    <ul className='menu-principal navbar-nav'>
                         <li>
                             <NavLink to="/" activeClassName='ativo' exact>
                                 HOME
