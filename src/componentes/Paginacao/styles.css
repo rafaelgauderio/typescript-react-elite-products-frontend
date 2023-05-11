@@ -24,19 +24,19 @@
 
 .rotulo-direcionais {
   display: flex;
-  align-items: center;
-  padding: 0 5px;
+  align-items: center;  
+  padding: 0 5px;  
 }
 
 .direcional-proximo svg {
   color: var(--primary-color);
   transform: rotate(180deg);
-  font-size: 22px;   
+  font-size: 22px; 
 }
 
 .direcional-proximo text {
   font-size: 22px;
-  color: var(--primary-color);
+  color: var(--primary-color);  
 }
 
 .direcional-anterior {

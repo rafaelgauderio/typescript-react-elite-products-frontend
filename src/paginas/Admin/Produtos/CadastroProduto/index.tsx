@@ -293,8 +293,8 @@ function CadastroProdutos() {
                                             message: 'Mínimo de 5 caracteres',
                                         },
                                         maxLength: {
-                                            value: 100,
-                                            message: 'Máximo de 100 caracteres',
+                                            value: 500,
+                                            message: 'Máximo de 500 caracteres',
                                         },
                                     })}
                                     className={`form-control input-padrao h-auto
@@ -304,7 +304,7 @@ function CadastroProdutos() {
                                 </textarea>
                             </label>
                             <div className="invalid-feedback alert-danger text-center fw-bolder d-block ">
-                                {errors.descricao?.message}
+                                {errors.descricaoCompleta?.message}
                             </div>
                         </div>
                     </div>
