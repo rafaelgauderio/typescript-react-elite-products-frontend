@@ -71,7 +71,7 @@ function CadastroProdutos() {
                 setValue('descricao', produto.descricao);
                 setValue('descricaoCompleta', produto.descricaoCompleta);
                 setValue('fragrancia', produto.fragrancia);
-                setValue('peso', produto.preco);
+                setValue('peso', produto.peso );
                 setValue('preco', produto.preco);
                 setValue('largura', produto.largura);
                 setValue('metragem', produto.metragem);
@@ -93,10 +93,14 @@ function CadastroProdutos() {
         };
         */
 
+        const dadosFormatados = {
+            ...dadosFormularioProduto, peso: String(dadosFormularioProduto.peso).replace(",", ".")
+        }
+
         const configuracaoInsert: AxiosRequestConfig = {
             method: 'POST',
             url: '/produtos',
-            data: dadosFormularioProduto,
+            data: dadosFormatados,
             // tem que estar autenticado para cadastrar ou editar produto
             withCredentials: true,
         };
@@ -104,7 +108,7 @@ function CadastroProdutos() {
         const configuracaoUpdate: AxiosRequestConfig = {
             method: 'PUT',
             url: `/produtos/${produtoId}`,
-            data: dadosFormularioProduto,
+            data: dadosFormatados,
             withCredentials: true,
         };
 
@@ -117,7 +121,6 @@ function CadastroProdutos() {
 
         });
 
-
     };
 
     // volta para página de listagem de produtos
@@ -125,7 +128,7 @@ function CadastroProdutos() {
         historico.push(rotaListagemProdutos);
     };
 
-    const regexUrl = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    const regexUrl = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi;
     var regexUrlValidada = new RegExp(regexUrl);
 
     return (
@@ -160,18 +163,29 @@ function CadastroProdutos() {
                                     {errors.descricao?.message}
                                 </div>
                             </label>
-                            <label>Peso:
+                            <label>Peso (kg):
                                 <input {
                                     ...register('peso')}
-                                    type='text'
-                                    className={`form-control input-padrao`}
+                                    type='number'                                                                        
+                                    maxLength={10}
+                                    step=".1"
+                                    min="0"
+                                    max="100"
+                                    className={`form-control input-padrao 
+                                    ${errors.peso ? 'is-invalid' : ''} `}
                                     placeholder='Peso em Kg'
                                     name='peso' />
+                                <div className="invalid-feedback alert-danger text-center d-block">
+                                    {errors.peso?.message}
+                                </div>
                             </label>
-                            <label>Largura:
+                            <label>Largura (cm):
                                 <input {
                                     ...register('largura')}
-                                    type='text'
+                                    type='number'
+                                    step=".1"
+                                    min="0"
+                                    max="100"                                    
                                     className={`form-control input-padrao`}
                                     placeholder='Largura do folha/rolo em centímetros'
                                     name='largura' />
@@ -179,14 +193,22 @@ function CadastroProdutos() {
                             <label>Metragem:
                                 <input {
                                     ...register('metragem')}
-                                    type='text'
+                                    type='number'
+                                    min="0"
+                                    max="10000"                                    
                                     className={`form-control input-padrao`}
                                     placeholder='Metragem total da embalagem em metros'
                                     name='metragem' />
                             </label>
                             <label>Fragrância:
                                 <input {
-                                    ...register('fragrancia')}
+                                    ...register('fragrancia', {
+                                        maxLength: {
+                                            value: 20,
+                                            message: 'Máximo de 20 caracteres',
+                                        },
+                                    })}
+                                    
                                     type='text'
                                     className={`form-control input-padrao`}
                                     placeholder='Fragrância do produto'
@@ -206,7 +228,7 @@ function CadastroProdutos() {
                                         },
                                         pattern: {
                                             value: regexUrlValidada,
-                                            message: "Informa um Url válida",
+                                            message: "Informe um Url válida!",
                                         }
                                     })}
                                     type='text'
@@ -238,7 +260,7 @@ function CadastroProdutos() {
                                 />
                                 {errors.categorias && (
                                     <div className="invalid-feedback alert-danger text-center d-block">
-                                        "Produto deve pertencer a pelo menos uma Categoria"
+                                        Produto deve pertencer a pelo menos uma Categoria
                                     </div>)}
                             </label>
                             <label>Embalagens:
@@ -259,7 +281,7 @@ function CadastroProdutos() {
                                 />
                                 {errors.embalagens && (
                                     <div className="invalid-feedback alert-danger text-center d-block">
-                                        "Produto deve estar disponível em pelo menos uma embalagem"
+                                        Produto deve estar disponível em pelo menos uma embalagem
                                     </div>)}
                             </label>
                             <label>Descrição Detalhada:
@@ -271,8 +293,8 @@ function CadastroProdutos() {
                                             message: 'Mínimo de 5 caracteres',
                                         },
                                         maxLength: {
-                                            value: 100,
-                                            message: 'Máximo de 100 caracteres',
+                                            value: 500,
+                                            message: 'Máximo de 500 caracteres',
                                         },
                                     })}
                                     className={`form-control input-padrao h-auto
@@ -281,8 +303,8 @@ function CadastroProdutos() {
                                     name='descricaoCompleta' >
                                 </textarea>
                             </label>
-                            <div className="invalid-feedback alert-danger text-center d-block">
-                                {errors.descricao?.message}
+                            <div className="invalid-feedback alert-danger text-center fw-bolder d-block ">
+                                {errors.descricaoCompleta?.message}
                             </div>
                         </div>
                     </div>

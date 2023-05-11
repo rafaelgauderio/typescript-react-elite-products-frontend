@@ -6,4 +6,5 @@ export type ParametrosAxios = {
     dados?: object;
     parametros?: object;
     cabecalho?: any;
+    size?: number;    
 }

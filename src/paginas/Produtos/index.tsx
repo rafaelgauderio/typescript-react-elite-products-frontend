@@ -6,9 +6,9 @@ import './styles.css';
 import Paginacao from '../../componentes/Paginacao';
 import { useEffect, useState } from 'react';
 import { PaginaSpring } from '../../tipos/biblioteca/spring';
-import { ParametrosAxios } from '../../tipos/biblioteca/axios';
+//import { ParametrosAxios } from '../../tipos/biblioteca/axios';
 import { BASE_URL } from '../../util/requisicao';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import CardLoader from './CardLoader';
 
 function Produtos() {
@@ -60,28 +60,32 @@ function Produtos() {
     const [paginaCarregando, setPaginaCarregando] = useState(false);
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    useEffect(() => {
 
+    function getProdutos(numeroPagina: number) {
+        const parametros: AxiosRequestConfig ={
         //const parametros: ParametrosAxios = {
-            const parametros: ParametrosAxios = {
 
             url: `${BASE_URL}/produtos`,
-            metodo: 'GET',
-            parametros: {
-                page: 0,
+            method: 'GET',
+            params: {
+                page: numeroPagina,
                 size: 12,
             },
         };
-
         setPaginaCarregando(true);
         axios(parametros).then(resposta => {
             setPagina(resposta.data);
-            //console.log(pagina);
+            console.log(pagina);
         })
             .finally(() => {
                 setPaginaCarregando(false);
             });
+    };
 
+
+    useEffect(() => {
+        getProdutos(0) // montar o componente na página zero
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -96,7 +100,7 @@ function Produtos() {
                         <>
                             <CardLoader />
                             <CardLoader />
-                            <CardLoader />                            
+                            <CardLoader />
                         </>
                         : (
                             pagina?.content.map(produto => {
@@ -111,8 +115,11 @@ function Produtos() {
                             })
                         )}
                 </div>
-                <div className="row">
-                    <Paginacao />
+                <div className="row icones-paginacao">
+                    <Paginacao
+                        totalPaginas={(pagina) ? pagina.totalPages : 0}
+                        elementosPorPagina={4}
+                        onAtualizarPagina={getProdutos} />
                 </div>
             </div>
         </>
