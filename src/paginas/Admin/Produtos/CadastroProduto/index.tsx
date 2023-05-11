@@ -228,7 +228,7 @@ function CadastroProdutos() {
                                         },
                                         pattern: {
                                             value: regexUrlValidada,
-                                            message: "Informa um Url válida",
+                                            message: "Informe um Url válida!",
                                         }
                                     })}
                                     type='text'

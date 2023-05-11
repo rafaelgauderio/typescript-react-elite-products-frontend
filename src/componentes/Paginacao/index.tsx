@@ -3,15 +3,20 @@ import { ReactComponent as DirecionalAnterior } from "../../assets/imagens/direc
 import './styles.css';
 import ReactPaginate from "react-paginate";
 
-function Paginacao() {
+type Props = {
+    totalPaginas: number;
+    elementosPorPagina: number; // range
+    onAtualizarPagina: (numeroPagina: number) => void;
+};
 
+function Paginacao({ totalPaginas, elementosPorPagina, onAtualizarPagina }: Props) {
 
 
     return (
         <>
             <ReactPaginate
-                pageCount={12} // toral de paginas
-                pageRangeDisplayed={4} // quantos componentes ficam no meio da paginação
+                pageCount={totalPaginas} // total de paginas
+                pageRangeDisplayed={elementosPorPagina} // quantos componentes ficam no meio da paginação
                 marginPagesDisplayed={1} // quantos componentes aparecem no final
                 breakClassName="paginacao-icone-reticencias"
                 containerClassName="paginacao-container"
@@ -19,7 +24,12 @@ function Paginacao() {
                 activeLinkClassName="icone-link-ativado"
                 nextClassName="direcional-proximo"
                 previousClassName="direcional-anterior"
-                disabledClassName="icone-desativado "
+                disabledClassName="icone-desativado"
+                onPageChange={(itensPaginacao) => (onAtualizarPagina)
+                    ? onAtualizarPagina(itensPaginacao.selected) // vai selecionar o número da pagina que atualizou no ReactPaginate
+                    : {}
+                }
+
 
                 previousLabel={
                     <div className="rotulo-direcionais">

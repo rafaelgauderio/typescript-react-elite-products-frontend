@@ -60,19 +60,17 @@ function Produtos() {
     const [paginaCarregando, setPaginaCarregando] = useState(false);
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    useEffect(() => {
 
-        //const parametros: ParametrosAxios = {
-            const parametros: ParametrosAxios = {
+    function getProdutos(numeroPagina: number) {
+        const parametros: ParametrosAxios = {
 
             url: `${BASE_URL}/produtos`,
             metodo: 'GET',
             parametros: {
-                page: 0,
+                page: numeroPagina,
                 size: 12,
             },
         };
-
         setPaginaCarregando(true);
         axios(parametros).then(resposta => {
             setPagina(resposta.data);
@@ -81,7 +79,11 @@ function Produtos() {
             .finally(() => {
                 setPaginaCarregando(false);
             });
+    };
 
+
+    useEffect(() => {
+        getProdutos(0) // montar o componente na página zero
     }, []);
 
 
@@ -96,7 +98,7 @@ function Produtos() {
                         <>
                             <CardLoader />
                             <CardLoader />
-                            <CardLoader />                            
+                            <CardLoader />
                         </>
                         : (
                             pagina?.content.map(produto => {
@@ -112,7 +114,10 @@ function Produtos() {
                         )}
                 </div>
                 <div className="row icones-paginacao">
-                    <Paginacao />
+                    <Paginacao
+                        totalPaginas={(pagina) ? pagina.totalPages : 0}
+                        elementosPorPagina={4}
+                        onAtualizarPagina={getProdutos} />
                 </div>
             </div>
         </>

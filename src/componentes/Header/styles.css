@@ -65,13 +65,9 @@
 }
 
 @media (min-width: 992px) {
+ 
 
-  .cabecalho {
-    padding-left: 10px;
-  }
-  
-
-  .menu-logar-sair {
+  .menu-logar-sair  {
     display: unset;
     border: 0 !important;
   }

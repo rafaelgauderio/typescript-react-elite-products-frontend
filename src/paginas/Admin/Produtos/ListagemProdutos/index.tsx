@@ -56,13 +56,13 @@ function ListagemProdutos() {
 
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    function getProdutos() {
+    function getProdutos(numeroPagina : number) {
         const configuracao: AxiosRequestConfig = {
             method: 'GET',
             url: '/produtos',
             params: {
-                page: 0,
-                size: 12,
+                page:numeroPagina,
+                size: 4,
             },
         };
         requisicaoPadraoBackend(configuracao).then((resposta) => {
@@ -73,7 +73,7 @@ function ListagemProdutos() {
     // vai ficar monitorando o estado, quando deleter um produto, vai atulizar a listagem do bando de dados
     // assim vai renderizar a tela novamente sem ter clicar em atualziar a tela.
     useEffect(() => {
-        getProdutos();
+        getProdutos(0); // inicia na pagina zero
     }, []);
 
 
@@ -93,12 +93,16 @@ function ListagemProdutos() {
                     <div key={produto.id}>
                         <CardCadastroProduto
                             produto={produto}
-                            deletarProdutoComponente={() => { getProdutos() }}
+                            deletarProdutoComponente={() => { getProdutos(pagina.number) }}
                         />
                     </div>
                 ))}
                 <div className="paginacao-container">
-                    <Paginacao />
+                    <Paginacao 
+                        totalPaginas={(pagina) ? pagina.totalPages : 0}
+                        elementosPorPagina={4}
+                        onAtualizarPagina={getProdutos}
+                        />
                 </div>
             </div>
         </>
