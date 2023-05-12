@@ -3,12 +3,7 @@
   background-color: var(--blue-light);
   border-radius: 15px;
   margin-bottom: 20px;
-  padding: 20px;
-  
-}
-
-.barra-pesquisa-produto:hover {
-  border: 2px solid var(--blue-light);
+  padding: 20px;  
 }
 
 .descricao-produto-barra-pesquisa {
@@ -30,10 +25,12 @@
     color: var(--tertiary-color);
 }
 
-.descricao-produto-barra-pesquisa svg {
+.descricao-produto-barra-pesquisa button, .descricao-produto-barra-pesquisa svg  {    
     color: var(--primary-color);
+    border: none;
     width: 45px;
     height: 45px;
+    background-color: transparent;
 }
 
 .embalagem-categoria-limpar-container {
@@ -46,6 +43,7 @@
 
 .botao-limpar {
     color: var(--tertiary-color) !important;
+    height: 50px;
 }
 
 @media (min-width: 768px) {
