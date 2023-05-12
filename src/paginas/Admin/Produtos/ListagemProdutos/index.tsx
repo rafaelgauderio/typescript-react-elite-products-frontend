@@ -7,6 +7,7 @@ import { requisicaoPadraoBackend } from "../../../../util/requisicao";
 import { Produto } from "../../../../tipos/Produto";
 import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
 import Paginacao from "../../../../componentes/Paginacao";
+import BarraBuscaProdutos from "../../../../componentes/BarraBuscaProdutos";
 
 // vai ter 2 componentes monitorados para rendezirar o listagem dos produtos,
 // o componente de barra de busca e o componente de paginação
@@ -63,7 +64,7 @@ function ListagemProdutos() {
                         Inserir Novo
                     </button>
                 </Link>
-                <div className="barra-pesquisa-produto">Caixa de Busca</div>
+                <BarraBuscaProdutos></BarraBuscaProdutos>                
             </div>
             <div className="row">
                 {pagina?.content.map((produto) => (
