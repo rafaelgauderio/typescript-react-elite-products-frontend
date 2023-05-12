@@ -1,13 +1,51 @@
 .barra-pesquisa-produto {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-  background-color: var(--white-color);
+  background-color: var(--blue-light);
   border-radius: 15px;
   margin-bottom: 20px;
   padding: 20px;
+  
 }
 
 .barra-pesquisa-produto:hover {
   border: 2px solid var(--blue-light);
+}
+
+.descricao-produto-barra-pesquisa {
+    display: flex;
+    align-items: center; 
+    font-size: 22px;
+}
+
+.descricao-produto-barra-pesquisa input {
+    min-height: 50px;   
+}
+
+.descricao-produto-barra-pesquisa input:focus {
+    box-shadow: none;
+}
+
+.descricao-produto-barra-pesquisa input::placeholder {
+    font-size: 20px;
+    color: var(--tertiary-color);
+}
+
+.descricao-produto-barra-pesquisa svg {
+    color: var(--primary-color);
+    width: 45px;
+    height: 45px;
+}
+
+.embalagem-categoria-limpar-container {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 5px 0;
+    border: 1px solid var(--blue-light);    
+}
+
+.botao-limpar {
+    color: var(--tertiary-color) !important;
 }
 
 @media (min-width: 768px) {
@@ -18,3 +56,4 @@
     flex: 1;
   }
 }
+ 
