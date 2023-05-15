@@ -11,14 +11,15 @@ function BarraBuscaProdutos() {
 
     type DadosBarraBusca = {
         descricao: string;
-        embalagem: Embalagem;
-        categoria: Categoria;
+        embalagem: Embalagem | null;
+        categoria: Categoria | null;
     }
 
     const {
         register,
         handleSubmit,
         control,
+        setValue
     } = useForm<DadosBarraBusca>();
 
     const [selectEmbalagens, setSelectEmbalagens] = useState<Embalagem[]>([]);
@@ -29,6 +30,12 @@ function BarraBuscaProdutos() {
     function buscarProdutoAoEnviar(dadosFormularioBusca: DadosBarraBusca) {
         console.log("Enviado dados formulario!", dadosFormularioBusca);
 
+    }
+
+    function limparFormularioPesquisa () {
+        setValue("descricao", "");
+        setValue("embalagem", null);
+        setValue("categoria", null);
     }
 
     useEffect(() => {
@@ -100,7 +107,7 @@ function BarraBuscaProdutos() {
                         />
                     </div>
                     <div>
-                        <button className="btn btn-primary botao-limpar">Limpar Busca</button>
+                        <button onClick={limparFormularioPesquisa} className="btn btn-primary botao-limpar">Limpar Busca</button>
                     </div>
                 </div>
             </form>
