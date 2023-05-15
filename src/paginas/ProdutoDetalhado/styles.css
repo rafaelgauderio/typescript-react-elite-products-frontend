@@ -1,6 +1,7 @@
 .produto-detalhado-container {
   padding: 15px;
   font-size: 22px;
+  word-wrap: break-word;  
 }
 
 .produto-detalhado-card {
@@ -8,7 +9,7 @@
   background-color: var(--white-color);
   border-radius: 15px;
   padding: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 40px; 
 }
 
 .botao-voltar {
@@ -36,7 +37,7 @@
   font-size: 1.1em !important;
   color: var(--dark-color);
   padding-bottom: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 30px;  
 }
 
 .descricao-embalagem-categoria-container {
@@ -136,13 +137,23 @@
     margin-bottom: 20px;
     margin-top: -10px;
   }
+
+  
   .imagem-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: auto;
-    min-height: 500px;
+    min-height: 400px;
+  }
+
+  .descricao-container h2 {
+    font-size: 0.9em !important;
   }
 
   .descricao-embalagem-categoria-container {
-    height: 500px;
+    min-height: 500px;
   }
 
   .descricao-embalagem-categoria-container h3 {

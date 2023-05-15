@@ -2,66 +2,37 @@ import { Link } from "react-router-dom";
 import CardCadastroProduto from "../../../../componentes/CardCadastroProduto";
 import './styles.css';
 import { AxiosRequestConfig } from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { requisicaoPadraoBackend } from "../../../../util/requisicao";
 import { Produto } from "../../../../tipos/Produto";
 import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
 import Paginacao from "../../../../componentes/Paginacao";
+import BarraBuscaProdutos from "../../../../componentes/BarraBuscaProdutos";
+
+// vai ter 2 componentes monitorados para rendezirar o listagem dos produtos,
+// o componente de barra de busca e o componente de paginação
+export type DadosComponentesMonitorados = {
+    paginaAtiva: number;
+}
 
 function ListagemProdutos() {
 
-    /*
-    const produtoMocado = {
-
-        id: 1,
-        descricao: "Papel Higiênico Rolo 7127",
-        descricaoCompleta: "Papel higiênico em rolo 100% fibras virgens, Folha Dupla, Super Macio, Folhas Brancas",
-        preco: null,
-        largura: 10.0,
-        metragem: 300,
-        peso: null,
-        fragrancia: null,
-        imgUrl: "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
-        dataCadastro: "2023-03-01T16:00:00.123450Z",
-        embalagens: [
-            {
-                id: 3,
-                descricao: "2.400 metros"
-            },
-            {
-                id: 1,
-                descricao: "Fardo com 8 rolos"
-            }
-        ],
-        categorias: [
-            {
-                id: 2,
-                descricao: "Papel Higiênico"
-            },
-            {
-                id: 6,
-                descricao: "Excellence"
-            },
-            {
-                id: 5,
-                descricao: "Rolo"
-            },
-            {
-                id: 10,
-                descricao: "Folha Dupla"
-            }
-        ]
-    };
-    */
-
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    function getProdutos(numeroPagina : number) {
+    const [dadosComponentesMonitorados, setDadosAutenticacaoGlobais] = useState<DadosComponentesMonitorados>({
+        paginaAtiva: 0, // quando montar o componente pela primeira vez vai ser na página de indice zero por default
+    });
+
+    const getProdutos = useCallback(requisicaoProdutos, [dadosComponentesMonitorados]);
+    // usar o useCallback para não entrar em loop infinito, ele guarda a mesma referência da função,
+    // se a referência chamada for a mesma, não monta novamente o componente
+    // useCallback tem 2 argumentos. uma função e uma lista de dependências
+    function requisicaoProdutos() {
         const configuracao: AxiosRequestConfig = {
             method: 'GET',
             url: '/produtos',
             params: {
-                page:numeroPagina,
+                page: dadosComponentesMonitorados.paginaAtiva,
                 size: 4,
             },
         };
@@ -70,11 +41,18 @@ function ListagemProdutos() {
         });
     };
 
-    // vai ficar monitorando o estado, quando deleter um produto, vai atulizar a listagem do bando de dados
-    // assim vai renderizar a tela novamente sem ter clicar em atualziar a tela.
+    function actionPaginaAlterada(numeroPagina: number) {
+        setDadosAutenticacaoGlobais({
+            paginaAtiva: numeroPagina // atualizada o componente de acordo com o número da pagina que a requisição ao backend retornar
+        });
+    };
+
+    // vai ficar monitorando o estado, quando deletar um produto, vai atualizar a listagem do bando de dados
+    // toda vez que alterar o componente, renderiza a tela novamente
+    // assim vai renderizar a tela novamente sem ter clicar em atualizar a tela.
     useEffect(() => {
-        getProdutos(0); // inicia na pagina zero
-    }, []);
+        getProdutos();
+    }, [getProdutos]);
 
 
 
@@ -86,27 +64,28 @@ function ListagemProdutos() {
                         Inserir Novo
                     </button>
                 </Link>
-                <div className="barra-pesquisa-produto">Caixa de Busca</div>
+                <BarraBuscaProdutos></BarraBuscaProdutos>                
             </div>
             <div className="row">
                 {pagina?.content.map((produto) => (
                     <div key={produto.id}>
                         <CardCadastroProduto
                             produto={produto}
-                            deletarProdutoComponente={() => { getProdutos(pagina.number) }}
+                            deletarProdutoComponente={getProdutos}
                         />
                     </div>
                 ))}
                 <div className="paginacao-container">
-                    <Paginacao 
+                    <Paginacao
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
                         elementosPorPagina={4}
-                        onAtualizarPagina={getProdutos}
-                        />
+                        onAtualizarPagina={actionPaginaAlterada}
+                    />
                 </div>
             </div>
         </>
     )
-}
+};
+
 
 export default ListagemProdutos;
