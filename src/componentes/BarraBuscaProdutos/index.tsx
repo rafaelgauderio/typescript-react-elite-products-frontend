@@ -11,15 +11,18 @@ function BarraBuscaProdutos() {
 
     type DadosBarraBusca = {
         descricao: string;
-        embalagem: Embalagem | null;
-        categoria: Categoria | null;
+        embalagem?: Embalagem | null;
+        categoria?: Categoria | null;
     }
+
 
     const {
         register,
         handleSubmit,
         control,
-        setValue
+        setValue,
+        // getValues permite acessar os dados do formulário
+        getValues
     } = useForm<DadosBarraBusca>();
 
     const [selectEmbalagens, setSelectEmbalagens] = useState<Embalagem[]>([]);
@@ -32,11 +35,23 @@ function BarraBuscaProdutos() {
 
     }
 
-    function limparFormularioPesquisa () {
+    function limparFormularioPesquisa() {
         setValue("descricao", "");
         setValue("embalagem", null);
         setValue("categoria", null);
     }
+
+    function selectEmbalagemOnChange(embalagem: Embalagem) {
+        setValue("embalagem", embalagem);
+
+        let dadosFormulario: DadosBarraBusca = {
+            descricao: getValues("descricao"),
+            embalagem: getValues("embalagem")
+
+        }
+
+        console.log("Embalagens selecionadas: ", dadosFormulario);
+    }   
 
     useEffect(() => {
         requisicaoPadraoBackend({ url: '/embalagens' })
@@ -82,6 +97,7 @@ function BarraBuscaProdutos() {
                                     placeholder='Embalagens'
                                     isClearable={true}
                                     isMulti={true}
+                                    onChange={embalagemForm => selectEmbalagemOnChange(embalagemForm as unknown as Embalagem)}
                                     getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
                                     getOptionValue={(embalagem: Embalagem) => String(embalagem.id)}
                                 />
