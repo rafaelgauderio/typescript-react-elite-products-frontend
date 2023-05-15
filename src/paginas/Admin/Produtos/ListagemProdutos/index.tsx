@@ -59,22 +59,26 @@ function ListagemProdutos() {
     return (
         <>
             <div className="cadastro-produto-container">
-                <Link to="/admin/produtos/inserir">
-                    <button className="btn btn-primary botao-inserir">
-                        Inserir Novo
-                    </button>
-                </Link>
-                <BarraBuscaProdutos></BarraBuscaProdutos>                
-            </div>
-            <div className="row">
-                {pagina?.content.map((produto) => (
-                    <div key={produto.id}>
-                        <CardCadastroProduto
-                            produto={produto}
-                            deletarProdutoComponente={getProdutos}
-                        />
-                    </div>
-                ))}
+                <div className="cadastro-produto-inserir-barra-pesquisa-container">
+                    <Link to="/admin/produtos/inserir">
+                        <button className="btn btn-primary botao-inserir">
+                            Inserir Novo
+                        </button>
+                    </Link>
+                    <BarraBuscaProdutos />
+                </div>
+                
+                <div className="row">
+                    {pagina?.content.map((produto) => (
+                        <div key={produto.id}>
+                            <CardCadastroProduto
+                                produto={produto}
+                                deletarProdutoComponente={getProdutos}
+                            />
+                        </div>
+
+                    ))}
+                </div>
                 <div className="paginacao-container">
                     <Paginacao
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
@@ -83,6 +87,7 @@ function ListagemProdutos() {
                     />
                 </div>
             </div>
+
         </>
     )
 };

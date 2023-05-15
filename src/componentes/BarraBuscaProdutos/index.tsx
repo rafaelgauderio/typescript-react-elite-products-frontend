@@ -58,42 +58,50 @@ function BarraBuscaProdutos() {
                         className="form-control"
                         placeholder='Busque aqui seu produto...'>
                     </input>
-                    <button>
+                    <button className="icone-botao-busca-barra-pesquisa">
                         <IconeBusca></IconeBusca>
                     </button>
                 </div>
                 <div className="embalagem-categoria-limpar-container">
-                    <Controller
-                        name="embalagem"
-                        control={control}
-                        render={({ field }) => (
-                            <Select
-                                {...field}
-                                options={selectEmbalagens}
-                                classNamePrefix={'cadastro-produto-select'}
-                                placeholder='Embalagem'
-                                isClearable={true}
-                                getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
-                                getOptionValue={(embalagem: Embalagem) => String(embalagem.id)}
-                            />
-                        )}
-                    />
-                    <Controller
-                        name="categoria"
-                        control={control}
-                        render={({ field }) => (
-                            <Select
-                                {...field}
-                                options={selectCategorias}
-                                classNamePrefix={'cadastro-produto-select'}
-                                placeholder='Categoria'
-                                isClearable={true}
-                                getOptionLabel={(categoria: Categoria) => categoria.descricao}
-                                getOptionValue={(categoria: Categoria) => String(categoria.id)}
-                            />
-                        )}
-                    />
-                    <button className="btn btn-warning botao-limpar">Limpar</button>
+                    <div className="embalagem-container">
+                        <Controller
+                            name="embalagem"
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    options={selectEmbalagens}
+                                    classNamePrefix={'cadastro-produto-select'}
+                                    placeholder='Embalagem'
+                                    isClearable={true}
+                                    isMulti={true}
+                                    getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
+                                    getOptionValue={(embalagem: Embalagem) => String(embalagem.id)}
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="categoria-container">
+                        <Controller
+                            name="categoria"
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    options={selectCategorias}
+                                    classNamePrefix={'cadastro-produto-select'}
+                                    placeholder='Categoria'
+                                    isClearable={true}
+                                    isMulti={true}
+                                    getOptionLabel={(categoria: Categoria) => categoria.descricao}
+                                    getOptionValue={(categoria: Categoria) => String(categoria.id)}
+                                />
+                            )}
+                        />
+                    </div>
+                    <div>
+                        <button className="btn btn-primary botao-limpar">Limpar Busca</button>
+                    </div>
                 </div>
             </form>
         </div>
