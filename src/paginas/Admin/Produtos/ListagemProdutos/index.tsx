@@ -7,21 +7,24 @@ import { requisicaoPadraoBackend } from "../../../../util/requisicao";
 import { Produto } from "../../../../tipos/Produto";
 import { PaginaSpring } from "../../../../tipos/biblioteca/spring";
 import Paginacao from "../../../../componentes/Paginacao";
-import BarraBuscaProdutos from "../../../../componentes/BarraBuscaProdutos";
+import BarraBuscaProdutos, { DadosBarraBusca } from "../../../../componentes/BarraBuscaProdutos";
 
 // vai ter 2 componentes monitorados para rendezirar o listagem dos produtos,
 // o componente de barra de busca e o componente de paginação
 export type DadosComponentesMonitorados = {
     paginaAtiva: number;
+    dadosBarraBusca: DadosBarraBusca;
 }
 
 function ListagemProdutos() {
 
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
-    const [dadosComponentesMonitorados, setDadosAutenticacaoGlobais] = useState<DadosComponentesMonitorados>({
+    const [dadosComponentesMonitorados, setDadosComponentesMonitorados] = useState<DadosComponentesMonitorados>({
         paginaAtiva: 0, // quando montar o componente pela primeira vez vai ser na página de indice zero por default
+        dadosBarraBusca: { descricao: "", embalagem: null, categoria: null }
     });
+
 
     const getProdutos = useCallback(requisicaoProdutos, [dadosComponentesMonitorados]);
     // usar o useCallback para não entrar em loop infinito, ele guarda a mesma referência da função,
@@ -33,7 +36,10 @@ function ListagemProdutos() {
             url: '/produtos',
             params: {
                 page: dadosComponentesMonitorados.paginaAtiva,
-                size: 4,
+                size: 3,
+                descricao: dadosComponentesMonitorados.dadosBarraBusca.descricao,
+                embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
+                categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
             },
         };
         requisicaoPadraoBackend(configuracao).then((resposta) => {
@@ -42,10 +48,19 @@ function ListagemProdutos() {
     };
 
     function actionPaginaAlterada(numeroPagina: number) {
-        setDadosAutenticacaoGlobais({
+        setDadosComponentesMonitorados({
             paginaAtiva: numeroPagina // atualizada o componente de acordo com o número da pagina que a requisição ao backend retornar
+            , dadosBarraBusca: dadosComponentesMonitorados.dadosBarraBusca
         });
     };
+
+    function actionEnviarFormulario(dadosFormulario: DadosBarraBusca) : void {
+        setDadosComponentesMonitorados({
+            paginaAtiva: 0,
+            dadosBarraBusca: dadosFormulario
+        });
+    };
+
 
     // vai ficar monitorando o estado, quando deletar um produto, vai atualizar a listagem do bando de dados
     // toda vez que alterar o componente, renderiza a tela novamente
@@ -53,7 +68,6 @@ function ListagemProdutos() {
     useEffect(() => {
         getProdutos();
     }, [getProdutos]);
-
 
 
     return (
@@ -65,9 +79,9 @@ function ListagemProdutos() {
                             Inserir Novo
                         </button>
                     </Link>
-                    <BarraBuscaProdutos />
+                    <BarraBuscaProdutos onSubmitFormularioBusca={actionEnviarFormulario} />
                 </div>
-                
+
                 <div className="row">
                     {pagina?.content.map((produto) => (
                         <div key={produto.id}>

@@ -7,13 +7,17 @@ import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import { requisicaoPadraoBackend } from '../../util/requisicao';
 
-function BarraBuscaProdutos() {
+export type DadosBarraBusca = {
+    descricao: string;
+    embalagem?: Embalagem | null;
+    categoria?: Categoria | null;
+}
 
-    type DadosBarraBusca = {
-        descricao: string;
-        embalagem?: Embalagem | null;
-        categoria?: Categoria | null;
-    }
+type PropsBarraBusca = {
+    onSubmitFormularioBusca : (dadosFormulario : DadosBarraBusca) => void;
+}
+
+function BarraBuscaProdutos({onSubmitFormularioBusca} : PropsBarraBusca) {
 
 
     const {
@@ -31,7 +35,8 @@ function BarraBuscaProdutos() {
 
     // a barra de busca é um formulario que faz um select no database com os filtros desejados
     function buscarProdutoAoEnviar(dadosFormularioBusca: DadosBarraBusca) {
-        console.log("Enviado dados formulario!", dadosFormularioBusca);
+        //console.log("Enviado dados formulario!", dadosFormularioBusca);
+        onSubmitFormularioBusca(dadosFormularioBusca);
 
     }
 
@@ -42,28 +47,32 @@ function BarraBuscaProdutos() {
     }
 
     function selectEmbalagemOnChange(embalagem: Embalagem) {
-        setValue("embalagem", embalagem);
+        setValue("embalagem", embalagem);        
 
         let dadosFormulario: DadosBarraBusca = {
             descricao: getValues("descricao"),
-            embalagem: getValues("embalagem")
-
-        }
-
-        console.log("Embalagens selecionadas: ", dadosFormulario);
-    }   
-
-    function selectCategoriaOnChange(categoria: Categoria) {
-        setValue("categoria", categoria);
-
-        let dadosFormulario: DadosBarraBusca = {
-            descricao: getValues("descricao"),
+            embalagem: getValues("embalagem"),
             categoria: getValues("categoria")
 
         }
 
-        console.log("Categorias selecionadas: ", dadosFormulario);
-    }   
+        //console.log("Embalagens selecionadas: ", dadosFormulario);
+        onSubmitFormularioBusca(dadosFormulario);
+    }
+
+    function selectCategoriaOnChange(categoria: Categoria) {
+        setValue("categoria", categoria);        
+
+        let dadosFormulario: DadosBarraBusca = {
+            descricao: getValues("descricao"),
+            categoria: getValues("categoria"),
+            embalagem: getValues("embalagem")
+
+        }
+
+        //console.log("Categorias selecionadas: ", dadosFormulario);
+        onSubmitFormularioBusca(dadosFormulario);
+    }
 
     useEffect(() => {
         requisicaoPadraoBackend({ url: '/embalagens' })
@@ -99,7 +108,7 @@ function BarraBuscaProdutos() {
                 <div className="embalagem-categoria-limpar-container">
                     <div className="embalagem-container">
                         <Controller
-                            name="embalagem"
+                            name="embalagem"                            
                             control={control}
                             render={({ field }) => (
                                 <Select
@@ -108,8 +117,8 @@ function BarraBuscaProdutos() {
                                     classNamePrefix={'barra-pesquisa-select'}
                                     placeholder='Embalagens'
                                     isClearable={true}
-                                    isMulti={true}
-                                    onChange={embalagemForm => selectEmbalagemOnChange(embalagemForm as unknown as Embalagem)}
+                                    //isMulti={true}
+                                    onChange={embalagem => selectEmbalagemOnChange(embalagem as Embalagem)}
                                     getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
                                     getOptionValue={(embalagem: Embalagem) => String(embalagem.id)}
                                 />
@@ -127,8 +136,8 @@ function BarraBuscaProdutos() {
                                     classNamePrefix={'barra-pesquisa-select'}
                                     placeholder='Categorias'
                                     isClearable={true}
-                                    isMulti={true}
-                                    onChange={categoria => selectCategoriaOnChange(categoria as unknown as Categoria )}
+                                    //isMulti={true}
+                                    onChange={categoria => selectCategoriaOnChange(categoria as Categoria)}
                                     getOptionLabel={(categoria: Categoria) => categoria.descricao}
                                     getOptionValue={(categoria: Categoria) => String(categoria.id)}
                                 />
