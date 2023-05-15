@@ -135,6 +135,9 @@ function CadastroProdutos() {
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
+        toast.info('Cancelada a inserção/edição de Produto', {
+            theme: "colored",
+        });
         historico.push(rotaListagemProdutos);
     };
 
