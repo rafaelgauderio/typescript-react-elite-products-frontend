@@ -53,6 +53,18 @@ function BarraBuscaProdutos() {
         console.log("Embalagens selecionadas: ", dadosFormulario);
     }   
 
+    function selectCategoriaOnChange(categoria: Categoria) {
+        setValue("categoria", categoria);
+
+        let dadosFormulario: DadosBarraBusca = {
+            descricao: getValues("descricao"),
+            categoria: getValues("categoria")
+
+        }
+
+        console.log("Categorias selecionadas: ", dadosFormulario);
+    }   
+
     useEffect(() => {
         requisicaoPadraoBackend({ url: '/embalagens' })
             .then((resposta) => {
@@ -116,6 +128,7 @@ function BarraBuscaProdutos() {
                                     placeholder='Categorias'
                                     isClearable={true}
                                     isMulti={true}
+                                    onChange={categoria => selectCategoriaOnChange(categoria as unknown as Categoria )}
                                     getOptionLabel={(categoria: Categoria) => categoria.descricao}
                                     getOptionValue={(categoria: Categoria) => String(categoria.id)}
                                 />
