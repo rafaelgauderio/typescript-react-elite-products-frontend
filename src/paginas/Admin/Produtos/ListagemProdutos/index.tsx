@@ -98,6 +98,7 @@ function ListagemProdutos() {
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
                         elementosPorPagina={4}
                         onAtualizarPagina={actionPaginaAlterada}
+                        forcarPagina={pagina?.number}
                     />
                 </div>
             </div>

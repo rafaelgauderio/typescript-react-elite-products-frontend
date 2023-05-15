@@ -7,14 +7,16 @@ type Props = {
     totalPaginas: number;
     elementosPorPagina: number; // range
     onAtualizarPagina: (numeroPagina: number) => void;
+    forcarPagina?: number; // interrogação para deixar o parâmetro como optional
 };
 
-function Paginacao({ totalPaginas, elementosPorPagina, onAtualizarPagina }: Props) {
+function Paginacao({ totalPaginas, elementosPorPagina, onAtualizarPagina, forcarPagina }: Props) {
 
 
     return (
         <>
             <ReactPaginate
+                forcePage={forcarPagina}
                 pageCount={totalPaginas} // total de paginas
                 pageRangeDisplayed={elementosPorPagina} // quantos componentes ficam no meio da paginação
                 marginPagesDisplayed={1} // quantos componentes aparecem no final
@@ -24,7 +26,7 @@ function Paginacao({ totalPaginas, elementosPorPagina, onAtualizarPagina }: Prop
                 activeLinkClassName="icone-link-ativado"
                 nextClassName="direcional-proximo"
                 previousClassName="direcional-anterior"
-                disabledClassName="icone-desativado"
+                disabledClassName="icone-desativado"                
                 onPageChange={(itensPaginacao) => (onAtualizarPagina)
                     ? onAtualizarPagina(itensPaginacao.selected) // vai selecionar o número da pagina que atualizou no ReactPaginate
                     : {}
