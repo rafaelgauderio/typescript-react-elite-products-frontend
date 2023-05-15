@@ -71,8 +71,8 @@ function BarraBuscaProdutos() {
                                 <Select
                                     {...field}
                                     options={selectEmbalagens}
-                                    classNamePrefix={'cadastro-produto-select'}
-                                    placeholder='Embalagem'
+                                    classNamePrefix={'barra-pesquisa-select'}
+                                    placeholder='Embalagens'
                                     isClearable={true}
                                     isMulti={true}
                                     getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
@@ -89,8 +89,8 @@ function BarraBuscaProdutos() {
                                 <Select
                                     {...field}
                                     options={selectCategorias}
-                                    classNamePrefix={'cadastro-produto-select'}
-                                    placeholder='Categoria'
+                                    classNamePrefix={'barra-pesquisa-select'}
+                                    placeholder='Categorias'
                                     isClearable={true}
                                     isMulti={true}
                                     getOptionLabel={(categoria: Categoria) => categoria.descricao}

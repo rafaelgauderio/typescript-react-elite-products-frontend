@@ -3,7 +3,7 @@
   background-color: var(--blue-light);
   border-radius: 15px;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .descricao-produto-barra-pesquisa {
@@ -13,7 +13,7 @@
 }
 
 .descricao-produto-barra-pesquisa input {
-  min-height: 60px;
+  min-height: 50px;
   border-radius: 10px 0 0 10px;
   font-size: 1em;
   color: var(--gray-less-dark-color) !important;
@@ -70,11 +70,33 @@
 }
 
 .icone-botao-busca-barra-pesquisa {
-  height: 60px !important;
+  height: 50px !important;
   display: flex;
   align-items: center;
   border-radius: 0 10px 10px 0;
   background-color: var(--primary-color) !important;
+}
+
+.barra-pesquisa-select__control {
+  font-size: 1.1em;
+  min-height: 40px !important;
+  border-radius: 15px !important;
+}
+
+.barra-pesquisa-select__placeholder {
+  color: var(--gray-less-dark-color) !important;
+  font-weight: 400;
+  text-align: center;
+}
+
+.barra-pesquisa-select__multi-value {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 10px !important;
+}
+
+.barra-pesquisa-select__indicator-separator {
+    display: none;
 }
 
 @media (min-width: 768px) {
@@ -86,6 +108,7 @@
     margin-left: 40px;
     margin-top: 20px;
     margin-bottom: 0;
+    padding: 15px 20px;
     flex: 1;
   }
 
