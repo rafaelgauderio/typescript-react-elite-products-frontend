@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { Embalagem } from '../../../../tipos/Embalgem';
 import { Categoria } from '../../../../tipos/Categoria';
+import { toast } from 'react-toastify';
+
 
 export type ParametrosUrl = {
     produtoId: string;
@@ -71,7 +73,7 @@ function CadastroProdutos() {
                 setValue('descricao', produto.descricao);
                 setValue('descricaoCompleta', produto.descricaoCompleta);
                 setValue('fragrancia', produto.fragrancia);
-                setValue('peso', produto.peso );
+                setValue('peso', produto.peso);
                 setValue('preco', produto.preco);
                 setValue('largura', produto.largura);
                 setValue('metragem', produto.metragem);
@@ -110,6 +112,7 @@ function CadastroProdutos() {
             url: `/produtos/${produtoId}`,
             data: dadosFormatados,
             withCredentials: true,
+
         };
 
         // ser se está editando ou inserindo para ver qual requisição fazer ao backend
@@ -117,14 +120,24 @@ function CadastroProdutos() {
 
         requisicaoPadraoBackend(configuracao).then((resposta) => {
             //console.log(resposta.data)
+            toast.success('Produto Cadastrado/Editado com Sucesso.', {
+                hideProgressBar: false,
+                pauseOnHover: true,
+                theme: "colored",
+                draggable: true
+            });
             historico.push(rotaListagemProdutos);
-
-        });
-
+        })
+            .catch(() => {
+                toast.error("erro ao tentar cadastrar Produto!")
+            });
     };
 
     // volta para página de listagem de produtos
     function botaoCancelar() {
+        toast.info('Cancelada a inserção/edição de Produto', {
+            theme: "colored",
+        });
         historico.push(rotaListagemProdutos);
     };
 
@@ -166,7 +179,7 @@ function CadastroProdutos() {
                             <label>Peso (kg):
                                 <input {
                                     ...register('peso')}
-                                    type='number'                                                                        
+                                    type='number'
                                     maxLength={10}
                                     step=".1"
                                     min="0"
@@ -185,7 +198,7 @@ function CadastroProdutos() {
                                     type='number'
                                     step=".1"
                                     min="0"
-                                    max="100"                                    
+                                    max="100"
                                     className={`form-control input-padrao`}
                                     placeholder='Largura do folha/rolo em centímetros'
                                     name='largura' />
@@ -195,7 +208,7 @@ function CadastroProdutos() {
                                     ...register('metragem')}
                                     type='number'
                                     min="0"
-                                    max="10000"                                    
+                                    max="10000"
                                     className={`form-control input-padrao`}
                                     placeholder='Metragem total da embalagem em metros'
                                     name='metragem' />
@@ -208,7 +221,7 @@ function CadastroProdutos() {
                                             message: 'Máximo de 20 caracteres',
                                         },
                                     })}
-                                    
+
                                     type='text'
                                     className={`form-control input-padrao`}
                                     placeholder='Fragrância do produto'

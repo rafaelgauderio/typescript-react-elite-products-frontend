@@ -6,6 +6,7 @@ import { getDadosTokenJwt, setDadosAutenticacao } from '../../../../../util/aute
 import { useContext, useState } from 'react';
 import { ContextoGlobalAutenticado } from '../../../../../ContextoGlobal';
 import { requisicaoDeLogin } from '../../../../../util/requisicao';
+import { toast } from 'react-toastify';
 
 type DadosLogin = {
     username: string;
@@ -50,11 +51,21 @@ function enviarFormulario(dadosLogin: DadosLogin) {
                     dadosTokenJwt: getDadosTokenJwt(),
                 })
                 // ao fazer login vai enviar direto para o painel do admin ou 
-                // volta para a pagina que estava antes de fazer o login  caso usuario            
+                // volta para a pagina que estava antes de fazer o login  caso usuario 
+                toast.success('Login realizado com sucesso.\nRedirecionando...', {
+                    hideProgressBar: false,
+                    pauseOnHover: true,
+                    theme: "colored",                   
+                });           
                 historicoPagina.replace(from);
             })
             .catch(erro => {
                 setErroLogin(true);
+                toast.error('Falha ao realizar Login.\nVerificar usuário e senha informados.', {
+                    hideProgressBar: false,
+                    pauseOnHover: true,
+                    theme: "colored",                   
+                }); 
                 console.log("Erro, falha ao tentar realizar login", erro);
                 //console.log(dadosLogin);
             })

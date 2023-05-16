@@ -7,6 +7,7 @@ import { getDadosTokenJwt, isUsuarioAutenticado, removerDadosAutenticacao } from
 import { useContext, useEffect } from 'react';
 import historico from '../../util/historico';
 import { ContextoGlobalAutenticado } from '../../ContextoGlobal';
+import { toast } from 'react-toastify';
 
 
 function Header() {
@@ -40,6 +41,11 @@ function Header() {
         });
         removerDadosAutenticacao();
         // direcionar par ao home depois de clicar em sair
+        toast.success('Logout  realizado com sucesso.\nRedirecionando para página Home', {
+            hideProgressBar: false,
+            pauseOnHover: true,
+            theme: "colored",                   
+        });         
         historico.push("/");
 
     }

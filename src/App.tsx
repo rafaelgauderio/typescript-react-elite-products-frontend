@@ -3,6 +3,8 @@ import './assets/styles/custom.scss';
 import './App.css';
 import Rotas from './Rotas';
 import { DadosAutenticacaoGlobais, ContextoGlobalAutenticado } from './ContextoGlobal';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
     <><ContextoGlobalAutenticado.Provider
       value={{ dadosAutenticacaoGlobais, setDadosAutenticacaoGlobais }}>
       <Rotas></Rotas>
+      <ToastContainer></ToastContainer>
     </ContextoGlobalAutenticado.Provider>
 
     </>
