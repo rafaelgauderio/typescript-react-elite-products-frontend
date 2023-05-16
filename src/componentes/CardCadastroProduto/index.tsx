@@ -5,6 +5,8 @@ import RotuloEmbalagem from '../RotuloEmbalagem';
 import { Link } from 'react-router-dom';
 import { AxiosRequestConfig } from 'axios';
 import { requisicaoPadraoBackend } from '../../util/requisicao';
+import { toast } from 'react-toastify';
+
 
 // Props são argumentos dos componentes Reacts.
 // componentes reactes são funções javaScript
@@ -14,12 +16,17 @@ type Props = {
   deletarProdutoComponente: Function;
 };
 
+//const rotaListagemProdutos : string = '/admin/produtos';
+
 function CardProduto({ produto, deletarProdutoComponente }: Props) {
 
 
   function deletarProduto(produtoId: number) {
 
     if (window.confirm("Confirmar exclusão do produto: " + produto.descricao) === false) {
+      toast.info('Cancelada exclusão de Produto', {
+        theme: "colored",
+      });
       return;
     }
 
@@ -30,7 +37,14 @@ function CardProduto({ produto, deletarProdutoComponente }: Props) {
     };
 
     requisicaoPadraoBackend(configuracaoDelete).then(() => {
+      toast.success('Produto excluído com sucesso', {
+        theme: "colored",
+      });
       deletarProdutoComponente();
+      //historico.push(rotaListagemProdutos);
+      
+    }).catch(() => {
+      toast.error("erro ao tentar excluir Produto!")
     });
 
   };

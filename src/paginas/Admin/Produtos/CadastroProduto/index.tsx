@@ -120,7 +120,7 @@ function CadastroProdutos() {
 
         requisicaoPadraoBackend(configuracao).then((resposta) => {
             //console.log(resposta.data)
-            toast.success('Produto Cadastrado com Sucesso.', {
+            toast.success('Produto Cadastrado/Editado com Sucesso.', {
                 hideProgressBar: false,
                 pauseOnHover: true,
                 theme: "colored",
