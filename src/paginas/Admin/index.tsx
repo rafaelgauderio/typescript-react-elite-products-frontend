@@ -4,7 +4,6 @@ import './styles.css';
 import Usuarios from './Usuarios';
 import RotaPrivada from '../../componentes/RotasPrivadas';
 import ProdutosCadastro from './Produtos';
-import CardCategoria from '../../componentes/CardCadastroCategoria';
 import CategoriasCadastro from './Categorias';
 
 

@@ -1,27 +1,33 @@
 .categoria-card {
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    background-color: var(--white-color);
-    border-radius: 15px; 
-    padding: 10px 0;
-    margin-bottom: 25px;   
-    transition: transform .6s;  
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--white-color);
+  border-radius: 15px;
+  padding: 10px 0;
+  margin-bottom: 25px;
+  transition: transform 0.6s;
 }
 
 .categoria-card:hover {
-    transform: scale(1.05);
-    border: 1px solid var(--primary-color);
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
 }
 
-.categoria-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 20px;
-    height: 150px;
+.categoria-cadastro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .produto-container h3 {
-    font-weight: bold;   
-    font-size: 30px;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .categoria-cadastro-container {
+    padding-left: 30px;
+    padding-top: 10px;
+  }
 }

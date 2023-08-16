@@ -146,7 +146,7 @@ function CadastroProdutos() {
 
     return (
         <div className="cadastro-produto-form-container">
-            <div className="cadasto-produto-form-card">
+            <div className="cadastro-produto-form-card">
                 <div className="cadastro-produto-form-titulo">
                     Dados do Produto
                 </div>
