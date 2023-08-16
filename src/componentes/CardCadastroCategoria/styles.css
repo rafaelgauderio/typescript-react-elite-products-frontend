@@ -1,33 +1,71 @@
-.categoria-card {
+.categoria-cadastro-card {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   background-color: var(--white-color);
   border-radius: 15px;
-  padding: 10px 0;
+  padding: 10px 0;  
   margin-bottom: 25px;
-  transition: transform 0.6s;
+  border: 1px solid var(--primary-color);
+  transition: transform 0.6s;      
 }
 
 .categoria-card:hover {
   transform: scale(1.05);
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
   box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.7);
 }
 
 .categoria-cadastro-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid var(--primary-color);
+  width: 400px;
 }
 
-.produto-container h3 {
+.categoria-cadastro-container h4 {
   font-weight: bold;
-  font-size: 30px;
-  text-align: center;
+  font-size: 25px !important;
+  text-align: center !important;
+  margin: 10px 0;
+  
+}
+
+.categoria-cadastro-botoes-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.categoria-cadastro-botao {
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 16px;
+  border-width: 2px;
+  border-radius: 10px;
 }
 
 @media (min-width: 576px) {
+
+.categoria-cadastro-card {
+    margin: 20px 20px;
+    width: 400px;
+}
   .categoria-cadastro-container {
-    padding-left: 30px;
-    padding-top: 10px;
+    padding-left: 30px;    
+  }  
+
+  .categoria-cadastro-container h4 {
+    font-size: 30px !important;
+    margin: 15px 0;
+  }
+
+  .categoria-cadastro-botao {
+    width: 120px;
   }
 }

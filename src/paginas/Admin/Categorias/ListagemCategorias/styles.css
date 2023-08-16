@@ -1,5 +1,12 @@
-.cadastro-categoria-container {
+.categoria-container {
+    margin: 0 20px;  
+    width: 100%; 
+}
+
+.cadastro-categoria-container { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 20px;
-    margin-top: 20px;
-    max-width: 600px;    
-  }
+    margin-top: 20px;    
+}

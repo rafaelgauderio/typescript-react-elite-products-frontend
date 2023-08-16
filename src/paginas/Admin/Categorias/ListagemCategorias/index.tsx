@@ -32,8 +32,8 @@ export default function ListagemCategorias() {
 
 
     return (<>
-        <div className="cadastro-categoria-container">
-            <div className="row">
+        <div className="categoria-container">
+            <div className="cadastro-categoria-container">
                 {pagina?.content.map((categoria) => (
                     <div key={categoria.id}>
                         <CardCadastroCategoria
@@ -43,8 +43,9 @@ export default function ListagemCategorias() {
                 ))
 
                 }
-            </div>
-        </div >
+
+            </div >
+        </div>
 
     </>
     );
