@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Categoria } from "../../../../tipos/Categoria";
 
 import './styles.css';
+import { Link } from "react-router-dom";
 
 export default function ListagemCategorias() {
 
@@ -32,7 +33,14 @@ export default function ListagemCategorias() {
 
 
     return (<>
-        <div className="categoria-container">
+        <div className="cadastro-categoria-container">
+            <div className="cadastro-categoria-botoes-container">
+                <Link to="/admin/categorias/inserir">
+                    <button className="btn btn-primary botao-inserir">
+                        Inserir Categoria
+                    </button>
+                </Link>
+            </div>
             <div className="cadastro-categoria-container">
                 {pagina?.content.map((categoria) => (
                     <div key={categoria.id}>

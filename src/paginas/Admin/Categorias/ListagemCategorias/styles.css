@@ -1,12 +1,30 @@
-.categoria-container {
-    margin: 0 20px;  
-    width: 100%; 
+.cadastro-categoria-container {
+  margin: 0;
+  width: 100%;
 }
 
-.cadastro-categoria-container { 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    margin-top: 20px;    
+.cadastro-categoria-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+   
+}
+
+.cadastro-categoria-botoes-container {
+    width: 100%;
+    margin: 0 20px;
+}
+
+
+.botao-inserir {
+  height: 50px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+@media (min-width: 992px) {
+  .botao-inserir {
+    height: 50px;
+  }
 }
