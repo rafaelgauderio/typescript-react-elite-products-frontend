@@ -33,10 +33,10 @@ export default function ListagemCategorias() {
 
 
     return (<>
-        <div className="cadastro-categoria-container">
+        <div className="categoria-container">
             <div className="cadastro-categoria-botoes-container">
                 <Link to="/admin/categorias/inserir">
-                    <button className="btn btn-primary botao-inserir">
+                    <button className="btn btn-primary botao-inserir-categoria">
                         Inserir Categoria
                     </button>
                 </Link>
