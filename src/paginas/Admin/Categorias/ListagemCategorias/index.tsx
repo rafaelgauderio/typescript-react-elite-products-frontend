@@ -38,6 +38,7 @@ export default function ListagemCategorias() {
                     <div key={categoria.id}>
                         <CardCadastroCategoria
                             categoria={categoria}
+                            deletarCategoriaComponente={getCagegorias}
                         />
                     </div>
                 ))
