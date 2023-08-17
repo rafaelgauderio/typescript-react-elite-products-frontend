@@ -129,7 +129,7 @@ function CadastroProdutos() {
             historico.push(rotaListagemProdutos);
         })
             .catch(() => {
-                toast.error("erro ao tentar cadastrar Produto!")
+                toast.error("Erro ao tentar cadastrar Produto!")
             });
     };
 

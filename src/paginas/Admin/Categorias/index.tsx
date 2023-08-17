@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import ListagemCategorias from "./ListagemCategorias";
+import CadastroCategoria from "./CadastroCategoria";
 
 
 function CategoriasCadastro () {
@@ -9,7 +10,10 @@ function CategoriasCadastro () {
         <Switch>
             <Route path="/admin/categorias" exact>
                 <ListagemCategorias></ListagemCategorias>
-            </Route>            
+            </Route>  
+            <Route path="/admin/categorias/:categoriaId">
+                <CadastroCategoria></CadastroCategoria>
+            </Route>          
         </Switch>
     );
 
