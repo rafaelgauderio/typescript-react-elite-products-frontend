@@ -36,7 +36,7 @@ function CardCadastroCategoria({ categoria, deletarCategoriaComponente }: Props)
       }).catch(() => {
 
         Swal.fire({
-          title: '<h1>Erro ao tentar excluir</h1>',
+          title: '<h1 id="titulo-sweetAlert">Erro ao tentar excluir!</h1>',
           icon: 'error',
           html: '<h5>Não é possível excluir categoria que já possui produto cadastrado.</h5>',
       });
