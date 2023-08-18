@@ -9,6 +9,7 @@ import Empresa from "./paginas/Empresa";
 import ProdutoDetalhado from "./paginas/ProdutoDetalhado";
 import Autenticacao from "./paginas/Admin/MenuAdmin/Autenticar";
 import history from "./util/historico";
+import NotFound from "./componentes/NotFound";
 
 function Rotas() {
 
@@ -20,7 +21,7 @@ function Rotas() {
         <Switch>
           <Route path="/" exact>
             <Home></Home>
-          </Route>
+          </Route>         
           <Route path="/produtos" exact>
             <Produtos></Produtos>
           </Route>
@@ -40,6 +41,9 @@ function Rotas() {
           <Redirect from="/admin" to="/admin/sms" exact></Redirect>
           <Route path="/admin">
             <Admin></Admin>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
         <Rodape></Rodape>
