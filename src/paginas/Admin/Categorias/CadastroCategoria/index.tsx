@@ -10,6 +10,7 @@ import './styles.css';
 import { requisicaoPadraoBackend } from "../../../../util/requisicao";
 import { AxiosRequestConfig } from "axios";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 export type ParamentrosUrl = {
     categoriaId: string;
@@ -26,7 +27,7 @@ const CadastroCategorias = () => {
 
 
 
-    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<Categoria>();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Categoria>();
 
     useEffect(() => {
         if (editandoCategoria) {
@@ -34,7 +35,7 @@ const CadastroCategorias = () => {
                 url: `/categorias/${categoriaId}`,
             })
                 .then((response) => {
-                    let categoria = response.data as Categoria;
+                    var categoria = response.data as Categoria;
 
                     setValue('descricao', (categoria.descricao).toLowerCase());
                 })
@@ -69,8 +70,17 @@ const CadastroCategorias = () => {
                     draggable: true
                 });
                 historico.push(rotaListagemCategorias);
-            }).catch(() => {
-                toast.error("Erro ao tentar cadastrar Categoria");
+            }).catch((response) => {
+
+                Swal.fire({
+                    title: '<h1 id="titulo-sweetAlert">Erro cadastrar/editar categoria!</h1>',
+                    icon: 'error',
+                    html: '<h5>Não é possível ter categorias com o mesmo nome.</h5>',
+                });
+
+                toast.error("Erro ao tentar cadastrar/editar Categoria!\nNão é possível inserir categorias duplicadas.", {
+                    theme: "colored",
+                });
             });
     };
 
