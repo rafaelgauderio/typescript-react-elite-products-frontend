@@ -2,14 +2,13 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   background-color: var(--white-color);
   border-radius: 15px;
-  padding: 10px 0;  
+  padding: 10px 0;
   margin-bottom: 25px;
   border: 1px solid var(--primary-color);
-  transition: transform 0.6s;      
+  transition: transform 0.6s;
 }
-#titulo-sweetAlert {  
+#titulo-sweetAlert {
   font-size: 25px !important;
- 
 }
 
 .embalagem-cadastro-card:hover {
@@ -33,7 +32,6 @@
   font-size: 25px !important;
   text-align: center !important;
   margin: 10px 0;
-  
 }
 
 .embalagem-cadastro-botoes-container {
@@ -55,14 +53,13 @@
 }
 
 @media (min-width: 576px) {
-
-.embalagem-cadastro-card {
+  .embalagem-cadastro-card {
     margin: 20px 20px;
     width: 400px;
-}
+  }
   .embalagem-cadastro-container {
-    padding-left: 30px;    
-  }  
+    padding-left: 30px;
+  }
 
   .embalagem-cadastro-container h4 {
     font-size: 30px !important;

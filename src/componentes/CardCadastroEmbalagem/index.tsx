@@ -58,7 +58,7 @@ function CardCadastroEmbalagem({ embalagem, deletarEmbalagemComponente }: Props)
           onClick={() => deletarEmbalagem(embalagem.id)}>
           EXCLUIR
         </button>
-        <Link to={`/admin/embalgens/${embalagem.id}`}>
+        <Link to={`/admin/embalagens/${embalagem.id}`}>
           <button className="embalagem-cadastro-botao btn btn-outline-warning">
             EDITAR
           </button>
