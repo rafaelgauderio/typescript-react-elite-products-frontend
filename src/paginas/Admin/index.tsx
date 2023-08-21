@@ -1,11 +1,12 @@
 import { Switch } from 'react-router-dom';
 import Menu from './MenuAdmin';
 import './styles.css';
-import Usuarios from './Usuarios';
+import Usuarios from './Usuarios/ListagemUsuarios';
 import RotaPrivada from '../../componentes/RotasPrivadas';
 import ProdutosCadastro from './Produtos';
 import CategoriasCadastro from './Categorias';
 import EmbalagensCadastro from './Embalagens';
+import UsuariosCadastro from './Usuarios';
 
 
 function MenuAdmin() {
@@ -29,8 +30,8 @@ function MenuAdmin() {
                     <RotaPrivada path="/admin/categorias">
                         <CategoriasCadastro></CategoriasCadastro>
                     </RotaPrivada>
-                    <RotaPrivada path="/admin/usuarios" roles={['ROLE_ADMIN_SISTEMA']}>                        
-                        <Usuarios></Usuarios>
+                    <RotaPrivada path="/admin/usuarios" roles={['ROLE_ADMIN_SISTEMA']}>
+                        <UsuariosCadastro></UsuariosCadastro>
                     </RotaPrivada>
                 </Switch>
             </div>
