@@ -4,15 +4,16 @@
 }
 
 .cadastro-usuario-botoes-container {
-  width: 100%;
-  
+  width: calc(100% - 30px);
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .cadastro-usuario-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .botao-inserir-usuario {
@@ -32,6 +33,11 @@
   .botao-inserir-usuario {
     width: 60%;
     height: 60px;
+    margin-left: 0;
+  }
+
+  .cadastro-usuario-botoes-container {
+    margin-top: 20px;
   }
 }
 
@@ -43,7 +49,6 @@
   }
   .botao-inserir-usuario {
     margin-top: 20px;
-    margin-left: 15px;
     width: 40%;
     height: 60px;
     font-size: 0.7em;
@@ -55,12 +60,8 @@
     margin-bottom: 30px;
   }
 
-  .cadastro-usuario-botoes-container {
-    margin-top: 20px;
-  }
-
   .botao-inserir-usuario {
-    width: 30%;
+    width: 25%;
     height: 70px;
     font-size: 0.9em;
   }
