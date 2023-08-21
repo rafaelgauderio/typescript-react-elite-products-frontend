@@ -59,6 +59,7 @@ function CardCadastroUsuario({ usuario, deletarComponenteUsuario }: Props) {
       </div>
       <div className="usuario-cadastro-botoes-container">
         <button className="usuario-cadastro-botao btn btn-outline-danger"
+          disabled
           onClick={() => deletarUsuario(usuario.id)}>
           EXCLUIR
 
