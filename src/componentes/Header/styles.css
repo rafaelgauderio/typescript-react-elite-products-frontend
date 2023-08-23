@@ -21,26 +21,28 @@
 }
 
 .menu-principal li {
-  transition: transform 0.6s;
-  padding: 0 5px;
+  transition: transform 0.4s;  
   font-size: 21px;
+  
   
 }
 
 .menu-principal li:hover {
   transform: scale(1.15); 
   color: var(--light-color);
-  border-bottom: 1px solid var(--light-color);
-  
+  border-bottom: 1px solid var(--light-color);  
+ 
 }
 
 .menu-principal a {
   color: var(--tertiary-color);
+  padding: 5px;
 }
 
 .menu-principal a:hover {
   text-decoration: none;
   color: var(--light-color);
+  
 }
 
 .navbar.navbar .navbar-toggler-icon {

@@ -39,13 +39,14 @@
   .cadastro-usuario-botoes-container {
     margin-top: 20px;
   }
+  
 }
 
 @media (min-width: 768px) {
   .cadastro-usuario-container {
     flex-direction: row;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
   }
   .botao-inserir-usuario {
     margin-top: 20px;
