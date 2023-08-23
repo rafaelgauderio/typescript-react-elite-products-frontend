@@ -12,15 +12,15 @@ import { useParams } from 'react-router-dom';
 import { Regra } from '../../../../tipos/Regra';
 
 
-
-
 export type ParametrosUrl = {
     usuarioId: string;
 };
 
 export default function CadastroUsuario() {
 
-    const {usuarioId} = useParams<ParametrosUrl>();
+    const { usuarioId } = useParams<ParametrosUrl>();
+
+    let editingUser: boolean = (usuarioId !== 'inserir') ? true : false;
 
     const rotaListagemUsuarios: string = '/admin/usuarios';
 
@@ -29,15 +29,32 @@ export default function CadastroUsuario() {
     const [selectRegras, setSelectRegras] = useState<Regra[]>([]);
 
     useEffect(() => {
-
-    }, [setValue, usuarioId]);
-
-    useEffect(() => {
         requisicaoPadraoBackend({ url: '/regras' })
-            .then(resposta=> {
+            .then(resposta => {
                 setSelectRegras(resposta.data);
             })
     }, []);
+    
+
+    useEffect(() => {
+        if (editingUser) {
+            requisicaoPadraoBackend({
+                method:'GET',
+                url: `/usuarios/${usuarioId}`,
+                withCredentials: true,
+            })
+                .then((response) => {
+                    let user = response.data as Usuario;
+                    setValue('nome', user.nome);
+                    setValue('sobrenome', user.sobrenome);
+                    setValue('email', user.email); 
+                    setValue('password', user.password);                                                                             
+                    setValue('regras', user.regras);
+                })
+        }
+
+    }, [editingUser, setValue, usuarioId]);
+
 
     function saveUser(dadosFormularioUsuario: Usuario) {
 
@@ -48,11 +65,18 @@ export default function CadastroUsuario() {
             withCredentials: true,
         };
 
-        let config: AxiosRequestConfig = configInsertUser;
+        const configUpdateUser: AxiosRequestConfig = {
+            method: 'PUT',
+            url: `/usuarios/${usuarioId}`,
+            data: dadosFormularioUsuario,
+            withCredentials: true,
+        };     
+
+        let config: AxiosRequestConfig = editingUser===false ? configInsertUser : configUpdateUser;
 
         requisicaoPadraoBackend(config)
             .then((response) => {
-                toast.success("Usuário Cadastrada/Editada com sucesso", {
+                toast.success("Usuário Cadastrado/Editado com sucesso", {
                     hideProgressBar: false,
                     theme: "colored",
                     draggable: true
@@ -99,8 +123,8 @@ export default function CadastroUsuario() {
                                             message: "Mínimo de 3 caracteres"
                                         },
                                         maxLength: {
-                                            value: 50,
-                                            message: "Máximo de 50 caracteres"
+                                            value: 20,
+                                            message: "Máximo de 20 caracteres"
                                         },
                                     })
                                 }
@@ -123,8 +147,8 @@ export default function CadastroUsuario() {
                                             message: "Mínimo de 3 caracteres"
                                         },
                                         maxLength: {
-                                            value: 50,
-                                            message: "Máximo de 50 caracteres"
+                                            value: 20,
+                                            message: "Máximo de 20 caracteres"
                                         },
                                     })
                                 }
@@ -178,7 +202,7 @@ export default function CadastroUsuario() {
                                 }
                                     type='password'
                                     className={`form-control input-padrao
-                                ${errors.password ? 'is-valid' : ''}`}
+                                ${errors.password? 'is-valid' : ''}`}
                                     placeholder="Senha"
                                     name='password' />
                                 <div className="invalid-feedback alert-danger text-center d-block">
@@ -211,7 +235,7 @@ export default function CadastroUsuario() {
                             </label>
                         </div>
                     </div>
-                    <div className="cadatro-produto-form-botoes-container">
+                    <div className="cadastro-produto-form-botoes-container">
                         <button className="btn btn-outline-danger botao-cancelar"
                             onClick={cancelButton}>
                             CANCELAR

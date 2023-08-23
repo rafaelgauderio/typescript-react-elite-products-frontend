@@ -21,7 +21,7 @@ function Rotas() {
         <Switch>
           <Route path="/" exact>
             <Home></Home>
-          </Route>         
+          </Route>
           <Route path="/produtos" exact>
             <Produtos></Produtos>
           </Route>

@@ -9,8 +9,8 @@ const UsuariosCadastro = () => {
             <Route path="/admin/usuarios" exact>
                 <ListagemUsuarios></ListagemUsuarios>
             </Route>
-            <Route path="/admin/usuarios/:usuarios">
-                <CadastroUsuario></CadastroUsuario>
+            <Route path="/admin/usuarios/:usuarioId">
+                <CadastroUsuario></CadastroUsuario>                
             </Route>
         </Switch>
     );
