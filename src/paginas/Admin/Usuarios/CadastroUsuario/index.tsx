@@ -47,8 +47,7 @@ export default function CadastroUsuario() {
                     let user = response.data as Usuario;
                     setValue('nome', user.nome);
                     setValue('sobrenome', user.sobrenome);
-                    setValue('email', user.email); 
-                    setValue('password', user.password);                                                                             
+                    setValue('email', user.email);                                                                                               
                     setValue('regras', user.regras);
                 })
         }

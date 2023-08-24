@@ -117,7 +117,7 @@ function Produtos() {
                 <div className="row icones-paginacao">
                     <Paginacao
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
-                        elementosPorPagina={4}
+                        elementosPorPagina={12}
                         onAtualizarPagina={getProdutos} />
                 </div>
             </div>
