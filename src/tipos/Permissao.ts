@@ -1,0 +1,5 @@
+export enum Permissao {
+   ADMIN_SISTEMA = "ADMIN_SISTEMA",
+   GERENTE_LOJA = "GERENTE_LOJA",
+   CLIENTE = "_CLIENTE",
+}
