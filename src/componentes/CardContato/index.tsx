@@ -1,4 +1,4 @@
-import { Contato } from '../../tipos/Contatos';
+import { Contato } from '../../tipos/Contato';
 import './styles.css';
 
 type Props = {
@@ -10,7 +10,7 @@ function CardContato( {contato} : Props) {
     return (
         <div className="contato-card">
             <div className="contato-conteudo">
-                <h4>{contato.setor}</h4>
+                <h4>{contato.departamentoNome}</h4>
                 <p>{contato.nome}</p>
                 <p>{contato.email}</p>
                 <p>{contato.telefone}</p>
