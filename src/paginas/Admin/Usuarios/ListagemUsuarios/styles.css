@@ -1,0 +1,69 @@
+.cadastro-container {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.cadastro-usuario-botoes-container {
+  width: calc(100% - 30px);
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.cadastro-usuario-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao-inserir-usuario {
+  height: 50px;
+  width: calc(100% - 10px);
+  margin-bottom: 20px;
+  background-color: var(--botao-busca);
+  border: 0 !important;
+  color: var(--white-color);
+  border-radius: 15px;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  font-weight: bold;
+}
+
+@media (min-width: 576px) {
+  .botao-inserir-usuario {
+    width: 60%;
+    height: 60px;
+    margin-left: 0;
+  }
+
+  .cadastro-usuario-botoes-container {
+    margin-top: 20px;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .cadastro-usuario-container {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;    
+  }
+  .botao-inserir-usuario {
+    margin-top: 20px;
+    width: 40%;
+    height: 60px;
+    font-size: 0.7em;
+  }
+}
+
+@media (min-width: 992px) {
+  .cadastro-usuario-container {
+    margin-bottom: 30px;
+  }
+
+  .botao-inserir-usuario {
+    width: 25%;
+    height: 70px;
+    font-size: 0.9em;
+  }
+}

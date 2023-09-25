@@ -9,7 +9,8 @@ import { PaginaSpring } from '../../tipos/biblioteca/spring';
 //import { ParametrosAxios } from '../../tipos/biblioteca/axios';
 import { BASE_URL } from '../../util/requisicao';
 import axios, { AxiosRequestConfig } from 'axios';
-import CardLoader from './CardLoader';
+//import CardLoader from './CardLoader';
+import CatalogoLoader from './CataloLoader';
 
 function Produtos() {
 
@@ -96,11 +97,9 @@ function Produtos() {
                     <h2>Conheça nos produtos</h2>
                 </div>
                 <div className="row">
-                    {paginaCarregando ?
+                    {paginaCarregando===true ?
                         <>
-                            <CardLoader />
-                            <CardLoader />
-                            <CardLoader />
+                            <CatalogoLoader className="catalogo-loader"></CatalogoLoader>                           
                         </>
                         : (
                             pagina?.content.map(produto => {
@@ -118,7 +117,7 @@ function Produtos() {
                 <div className="row icones-paginacao">
                     <Paginacao
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
-                        elementosPorPagina={4}
+                        elementosPorPagina={12}
                         onAtualizarPagina={getProdutos} />
                 </div>
             </div>

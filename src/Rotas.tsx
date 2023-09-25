@@ -9,6 +9,8 @@ import Empresa from "./paginas/Empresa";
 import ProdutoDetalhado from "./paginas/ProdutoDetalhado";
 import Autenticacao from "./paginas/Admin/MenuAdmin/Autenticar";
 import history from "./util/historico";
+import NotFound from "./componentes/NotFound";
+import CardRodape from "./componentes/CardRodape";
 
 function Rotas() {
 
@@ -41,7 +43,11 @@ function Rotas() {
           <Route path="/admin">
             <Admin></Admin>
           </Route>
+          <Route path="*">
+            <NotFound></NotFound>
+          </Route>
         </Switch>
+        <CardRodape></CardRodape>
         <Rodape></Rodape>
       </Router>
     </>

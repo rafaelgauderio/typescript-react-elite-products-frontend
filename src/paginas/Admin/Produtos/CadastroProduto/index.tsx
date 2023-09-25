@@ -129,7 +129,7 @@ function CadastroProdutos() {
             historico.push(rotaListagemProdutos);
         })
             .catch(() => {
-                toast.error("erro ao tentar cadastrar Produto!")
+                toast.error("Erro ao tentar cadastrar Produto!")
             });
     };
 
@@ -146,7 +146,7 @@ function CadastroProdutos() {
 
     return (
         <div className="cadastro-produto-form-container">
-            <div className="cadasto-produto-form-card">
+            <div className="cadastro-produto-form-card">
                 <div className="cadastro-produto-form-titulo">
                     Dados do Produto
                 </div>
