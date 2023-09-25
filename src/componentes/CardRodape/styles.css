@@ -1,6 +1,6 @@
 .rodape-container {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .rodape-card {
@@ -40,6 +40,20 @@
   margin-top: 20px;
 }
 
+@media (min-width: 768px) {
+  .rodape-card {   
+    margin: 10px 0 30px 0;
+    
+  }
+}
+
+@media (min-width: 992px) {
+  .rodape-card {   
+    margin: 10px 10px 30px 10px;
+    
+  }
+}
+
 @media (min-width: 1200px) {
   .rodape-container {
     display: flex;
@@ -49,8 +63,8 @@
 
   .rodape-card {
     min-width: 350px;
+    margin: 0 10px 30px 10px;
     width: 100%;
-    margin: 0 20px 30px 20px;
   }
 
   .rodape-card:nth-child(2) {
