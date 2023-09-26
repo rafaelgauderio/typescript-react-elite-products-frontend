@@ -4,13 +4,19 @@ import CardProduto from '../../componentes/CardProduto';
 import { Produto } from '../../tipos/Produto';
 import './styles.css';
 import Paginacao from '../../componentes/Paginacao';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { PaginaSpring } from '../../tipos/biblioteca/spring';
 //import { ParametrosAxios } from '../../tipos/biblioteca/axios';
-import { BASE_URL } from '../../util/requisicao';
-import axios, { AxiosRequestConfig } from 'axios';
+import { BASE_URL, requisicaoPadraoBackend } from '../../util/requisicao';
+import { AxiosRequestConfig } from 'axios';
 //import CardLoader from './CardLoader';
 import CatalogoLoader from './CataloLoader';
+import BarraBuscaProdutos, { DadosBarraBusca } from '../../componentes/BarraBuscaProdutos';
+
+export type MonitoredComponentData = {
+    activePage: number;
+    dadosBarraBusca: DadosBarraBusca;
+}
 
 function Produtos() {
 
@@ -61,10 +67,55 @@ function Produtos() {
     const [paginaCarregando, setPaginaCarregando] = useState(false);
     const [pagina, setPagina] = useState<PaginaSpring<Produto>>();
 
+    const [monitoredComponentData, setMonitoredComponentData] = useState<MonitoredComponentData>({
+        activePage: 0,
+        dadosBarraBusca: { descricao: "", embalagem: null, categoria: null }
+    })
 
+    const getProdutos = useCallback(requestProducts, [monitoredComponentData]);
+
+    function requestProducts() {
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            url: `${BASE_URL}/produtos`,
+            params: {
+                page: monitoredComponentData.activePage,
+                size: 12,
+                descricao: monitoredComponentData.dadosBarraBusca.descricao,
+                embalagemId: monitoredComponentData.dadosBarraBusca.embalagem?.id,
+                categoriaId: monitoredComponentData.dadosBarraBusca.categoria?.id
+            },
+        };
+        setPaginaCarregando(true);
+        requisicaoPadraoBackend(config)
+            .then((response) => {
+                setPagina(response.data);
+            })
+            .finally(() => {
+                setPaginaCarregando(false);
+            });
+    }
+
+    const actionChangePage = (pageNumber: number) => {
+        setMonitoredComponentData({
+            activePage: pageNumber,
+            dadosBarraBusca: monitoredComponentData.dadosBarraBusca
+        });
+    }
+
+    const actionSubmitForm = (formData: DadosBarraBusca): void => {
+        setMonitoredComponentData({
+            activePage: 0,
+            dadosBarraBusca: formData
+
+        });
+    }
+
+
+    /*
     function getProdutos(numeroPagina: number) {
-        const parametros: AxiosRequestConfig ={
-        //const parametros: ParametrosAxios = {
+        const parametros: AxiosRequestConfig = {
+            //const parametros: ParametrosAxios = {
 
             url: `${BASE_URL}/produtos`,
             method: 'GET',
@@ -82,12 +133,13 @@ function Produtos() {
                 setPaginaCarregando(false);
             });
     };
+    */
 
 
     useEffect(() => {
-        getProdutos(0) // montar o componente na página zero
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        getProdutos() // montar o componente na página zero
+
+    }, [getProdutos]);
 
 
     return (
@@ -96,10 +148,13 @@ function Produtos() {
                 <div className="row titulo-container">
                     <h2>Conheça nos produtos</h2>
                 </div>
+                <div className="row produtos-barra-busca cadastro-produto-inserir-barra-pesquisa-container">
+                    <BarraBuscaProdutos onSubmitFormularioBusca={actionSubmitForm}></BarraBuscaProdutos>
+                </div>
                 <div className="row">
-                    {paginaCarregando===true ?
+                    {paginaCarregando === true ?
                         <>
-                            <CatalogoLoader className="catalogo-loader"></CatalogoLoader>                           
+                            <CatalogoLoader className="catalogo-loader"></CatalogoLoader>
                         </>
                         : (
                             pagina?.content.map(produto => {
@@ -118,7 +173,8 @@ function Produtos() {
                     <Paginacao
                         totalPaginas={(pagina) ? pagina.totalPages : 0}
                         elementosPorPagina={12}
-                        onAtualizarPagina={getProdutos} />
+                        onAtualizarPagina={actionChangePage}
+                        forcarPagina={pagina?.number} />
                 </div>
             </div>
         </>
