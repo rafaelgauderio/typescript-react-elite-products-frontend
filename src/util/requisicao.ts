@@ -10,6 +10,8 @@ type DadosLogin = {
 
 export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
 
+export const LINK_WHATSUP = "https://wa.me/5551992847442?text=Bem-vindo+ao+catálogo+de+produtos+da+Melhoramentos+Higiene.+Como+podemos+ajudá-lo?"
+
 const ID_CLIENTE = process.env.REACT_APP_CLIENT_ID ?? 'melhoramentosId';
 
 const SENHA_CLIENTE = process.env.REACT_APP_CLIENTE_SECRET ?? 'melhoramentosSecret';

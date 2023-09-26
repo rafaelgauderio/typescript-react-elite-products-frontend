@@ -3,6 +3,7 @@ import { ReactComponent as LogoColorido } from "../../assets/imagens/logo-colori
 import BotaoBusca from "../../componentes/BotaoBusca";
 import BotaoWhats from "../../componentes/BotaoWhats";
 import './styles.css';
+import { LINK_WHATSUP } from "../../util/requisicao";
 
 function Home() {
 
@@ -13,10 +14,12 @@ function Home() {
                     <div className="home-container-conteudo">
                         <h1>Soluções Avançadas em Higiene e Limpeza</h1>
                         <div className="home-container-botao">
-                            <Link to="produtos">
+                            <Link to="produtos" target="_blank">
                                 <BotaoBusca mensagem={"Catálogo de Produtos"} />
                             </Link>
-                            <BotaoWhats mensagem={"Estamos no WhatsApp"} />
+                            <a href={LINK_WHATSUP} target="_blank" rel="noreferrer">
+                                <BotaoWhats mensagem={"Estamos no WhatsApp"} />
+                            </a>
                         </div>
                     </div>
                     <div className="home-container-logo">
