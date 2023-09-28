@@ -6,6 +6,7 @@ import ProdutosCadastro from './Produtos';
 import CategoriasCadastro from './Categorias';
 import EmbalagensCadastro from './Embalagens';
 import UsuariosCadastro from './Usuarios';
+import CadastroSms from './CadastroSms';
 
 
 function MenuAdmin() {
@@ -18,7 +19,7 @@ function MenuAdmin() {
             <div className="admin-conteudo">
                 <Switch>
                     <RotaPrivada path="/admin/sms">
-                        <h1>Envio de SMS</h1>
+                        <CadastroSms></CadastroSms>
                     </RotaPrivada>
                     <RotaPrivada path="/admin/produtos" roles={['ROLE_GERENTE_LOJA']}>
                         <ProdutosCadastro></ProdutosCadastro>
