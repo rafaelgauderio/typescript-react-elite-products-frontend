@@ -47,7 +47,7 @@ function BarraBuscaProdutos({onSubmitFormularioBusca} : PropsBarraBusca) {
     }
 
     function selectEmbalagemOnChange(embalagem: Embalagem) {
-        setValue("embalagem", embalagem);        
+        setValue("embalagem", embalagem );        
 
         let dadosFormulario: DadosBarraBusca = {
             descricao: getValues("descricao"),
@@ -145,7 +145,7 @@ function BarraBuscaProdutos({onSubmitFormularioBusca} : PropsBarraBusca) {
                         />
                     </div>
                     <div>
-                        <button onClick={limparFormularioPesquisa} className="btn btn-primary botao-limpar">Limpar Busca</button>
+                        <button onClick={limparFormularioPesquisa} className="btn btn-primary botao-limpar">Limpar</button>
                     </div>
                 </div>
             </form>
