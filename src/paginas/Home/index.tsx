@@ -17,7 +17,7 @@ function Home() {
                             <Link to="produtos" target="_blank">
                                 <BotaoBusca mensagem={"Catálogo de Produtos"} />
                             </Link>
-                            <a href={LINK_WHATSUP} target="_blank" rel="noreferrer">
+                            <a href={LINK_WHATSUP} target="_blank" rel="noopener noreferrer">
                                 <BotaoWhats mensagem={"Estamos no WhatsApp"} />
                             </a>
                         </div>

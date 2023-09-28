@@ -22,7 +22,7 @@ function ListagemProdutos() {
 
     const [dadosComponentesMonitorados, setDadosComponentesMonitorados] = useState<DadosComponentesMonitorados>({
         paginaAtiva: 0, // quando montar o componente pela primeira vez vai ser na página de indice zero por default
-        dadosBarraBusca: { descricao: "", embalagem: null, categoria: null }
+        dadosBarraBusca: { descricao: "", embalagem: null , categoria: null,  }
     });
 
 
@@ -38,8 +38,8 @@ function ListagemProdutos() {
                 page: dadosComponentesMonitorados.paginaAtiva,
                 size: 3,
                 descricao: dadosComponentesMonitorados.dadosBarraBusca.descricao,
-                embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
-                categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
+                //embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
+                //categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
             },
         };
         requisicaoPadraoBackend(configuracao).then((resposta) => {
