@@ -52,7 +52,7 @@
 }
 
 .categoria-container {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-right: 30px;
   margin-bottom: 20px;
   flex: 1;
@@ -60,7 +60,7 @@
 
 .botao-limpar {
   color: var(--white-color) !important;
-  height: 50px;
+  height: 45px;
   border-radius: 10px;
   font-weight: 700;
 }

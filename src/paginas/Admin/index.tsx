@@ -20,13 +20,13 @@ function MenuAdmin() {
                     <RotaPrivada path="/admin/sms">
                         <h1>Envio de SMS</h1>
                     </RotaPrivada>
-                    <RotaPrivada path="/admin/produtos">
+                    <RotaPrivada path="/admin/produtos" roles={['ROLE_GERENTE_LOJA']}>
                         <ProdutosCadastro></ProdutosCadastro>
                     </RotaPrivada>
-                    <RotaPrivada path="/admin/embalagens">
+                    <RotaPrivada path="/admin/embalagens" roles={['ROLE_GERENTE_LOJA']}>
                         <EmbalagensCadastro></EmbalagensCadastro>
                     </RotaPrivada>
-                    <RotaPrivada path="/admin/categorias">
+                    <RotaPrivada path="/admin/categorias" roles={['ROLE_GERENTE_LOJA']}>
                         <CategoriasCadastro></CategoriasCadastro>
                     </RotaPrivada>
                     <RotaPrivada path="/admin/usuarios" roles={['ROLE_ADMIN_SISTEMA']}>

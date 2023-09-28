@@ -36,7 +36,7 @@ function ListagemProdutos() {
             url: '/produtos',
             params: {
                 page: dadosComponentesMonitorados.paginaAtiva,
-                size: 3,
+                size: 4,
                 descricao: dadosComponentesMonitorados.dadosBarraBusca.descricao,
                 //embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
                 //categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
