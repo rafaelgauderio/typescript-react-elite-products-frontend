@@ -6,13 +6,13 @@ import { Produto } from '../../tipos/Produto';
 import axios from 'axios';
 import ProdutoImageLoader from '../Produtos/CardLoader';
 import ProdutoDescricaoLoader from './ProdutoDescricaoLoader';
-import { formatarLargura } from '../../util/formatador';
+import { formatarLargura, formatarMetragem } from '../../util/formatador';
 
 type ParametrosUrl = {
     produtoId: string;
 };
 
-function ProdutoDetalhado( ) {
+function ProdutoDetalhado() {
 
     const { produtoId } = useParams<ParametrosUrl>();
 
@@ -75,8 +75,10 @@ function ProdutoDetalhado( ) {
                                 </div>
                                 <h3>Descrição completa</h3>
                                 <p>{produto?.descricaoCompleta}</p>
-                                <p><strong>Largura da folha ou do rolo:</strong> {produto?.largura==null ? 'não se aplica' : formatarLargura(produto?.largura!)} cm</p>
-                                <p><strong>Fragrância:</strong> {produto?.fragrancia==null ? 'sem fragrância' : produto?.fragrancia}</p>
+                                <p><strong>Largura da folha ou do rolo: </strong> {produto?.largura == null ? 'não se aplica' : formatarLargura(produto?.largura)} cm</p>
+                                <p><strong>Total de folhas/Metragem total rolos: </strong> {produto?.metragem == null ? 'não se aplica' :
+                                    (produto.descricao.includes('Interfolhado') || produto.descricao.includes('Guardanapo')) ? formatarMetragem(produto?.metragem) + " folhas" : formatarMetragem(produto?.metragem) + " metros"}</p>
+                                <p><strong>Fragrância:</strong> {produto?.fragrancia == null ? 'sem fragrância' : produto?.fragrancia}</p>
                             </div>
                         )}
                     </div>

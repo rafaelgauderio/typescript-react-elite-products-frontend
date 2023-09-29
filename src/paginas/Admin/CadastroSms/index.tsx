@@ -1,11 +1,12 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm  } from "react-hook-form";
 import { requisicaoPadraoBackend } from "../../../util/requisicao";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { AxiosRequestConfig } from "axios";
 import { toast } from "react-toastify";
 import historico from "../../../util/historico";
 import Swal from "sweetalert2";
 import { Sms } from "../../../tipos/Sms";
+import { useEffect } from "react";
 
 
 const CadastroSms = () => {
@@ -15,6 +16,17 @@ const CadastroSms = () => {
 
     const rotaEnvioSms: string = '/admin/sms';
 
+    useEffect(() => {
+        requisicaoPadraoBackend({
+            url: '/sms',
+        })
+            .then((response) => {
+                var sms = response.data as Sms;
+                setValue('telefone', sms.telefone);
+                setValue('mensagem', sms.mensagem);
+            })
+    })
+
     function enviaSms(dadosFormularioSms: Sms) {
 
         const config: AxiosRequestConfig = {
@@ -23,7 +35,6 @@ const CadastroSms = () => {
             data: dadosFormularioSms,
             withCredentials: true,
         };
-
 
 
         requisicaoPadraoBackend(config)
