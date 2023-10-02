@@ -1,5 +1,4 @@
-export type Sms = {
-    id: number;
+export type Sms = {    
     telefone: string;
-    mensagem: string;
+    mensagem?: string;
 }
