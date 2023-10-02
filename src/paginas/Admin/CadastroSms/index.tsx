@@ -11,8 +11,8 @@ import { useState } from "react";
 
 const CadastroSms = () => {
 
-    const [telefone, setTelefone] = useState();
-    const [mensagem, setMensagem] = useState();
+    const [telefone, setTelefone] = useState<string>();
+    const [mensagem, setMensagem] = useState<string>();
 
     const { register, handleSubmit, formState: { errors } } = useForm<Sms>();
 
@@ -60,7 +60,10 @@ const CadastroSms = () => {
             theme: "colored",
         });
         event.preventDefault();
+        const vazia : string = "";
+        setTelefone(vazia);
         historico.push(rotaEnvioSms);
+        
     };
 
     function handleTelefone(event: { target: { value: any; }; }) {
