@@ -50,14 +50,22 @@ function CadastroProdutos() {
 
 
     useEffect(() => {
-        requisicaoPadraoBackend({ url: '/embalagens' })
+        requisicaoPadraoBackend({
+            url: '/embalagens', params: {
+                size: 50
+            }
+        })
             .then(resposta => {
                 setSelectEmbalagens(resposta.data.content);
             })
     }, []);
 
     useEffect(() => {
-        requisicaoPadraoBackend({ url: '/categorias' })
+        requisicaoPadraoBackend({
+            url: '/categorias', params: {
+                size: 50
+            }
+        })
             .then(resposta => {
                 setSelectCategorias(resposta.data.content);
             })
@@ -208,7 +216,7 @@ function CadastroProdutos() {
                                     ...register('metragem')}
                                     type='number'
                                     min="0"
-                                    max="10000"
+                                    max="100000"
                                     className={`form-control input-padrao`}
                                     placeholder='Metragem total da embalagem em metros'
                                     name='metragem' />

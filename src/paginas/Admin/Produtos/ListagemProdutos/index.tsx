@@ -38,8 +38,8 @@ function ListagemProdutos() {
                 page: dadosComponentesMonitorados.paginaAtiva,
                 size: 4,
                 descricao: dadosComponentesMonitorados.dadosBarraBusca.descricao,
-                //embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
-                //categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
+                embalagemId: dadosComponentesMonitorados.dadosBarraBusca.embalagem?.id,
+                categoriaId: dadosComponentesMonitorados.dadosBarraBusca.categoria?.id
             },
         };
         requisicaoPadraoBackend(configuracao).then((resposta) => {

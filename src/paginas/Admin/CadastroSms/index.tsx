@@ -1,30 +1,35 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { requisicaoPadraoBackend } from "../../../util/requisicao";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { AxiosRequestConfig } from "axios";
 import { toast } from "react-toastify";
 import historico from "../../../util/historico";
 import Swal from "sweetalert2";
 import { Sms } from "../../../tipos/Sms";
+import { useState } from "react";
 
 
 const CadastroSms = () => {
 
+    const [telefone, setTelefone] = useState<string>();
+    const [mensagem, setMensagem] = useState<string>();
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<Sms>();
+    const { register, handleSubmit, formState: { errors } } = useForm<Sms>();
 
     const rotaEnvioSms: string = '/admin/sms';
+
 
     function enviaSms(dadosFormularioSms: Sms) {
 
         const config: AxiosRequestConfig = {
             method: 'POST',
-            url: '/sms',
+            url: '/sms/enviar',
             data: dadosFormularioSms,
             withCredentials: true,
         };
 
-
+        console.log(telefone);
+        console.log(mensagem);
 
         requisicaoPadraoBackend(config)
             .then((response) => {
@@ -50,14 +55,24 @@ const CadastroSms = () => {
 
 
 
-
     function botaoCancelar(event: { preventDefault: () => void; }) {
         toast.info('Cancelada o envio de SMS', {
             theme: "colored",
         });
         event.preventDefault();
+        const vazia : string = "";
+        setTelefone(vazia);
         historico.push(rotaEnvioSms);
+        
     };
+
+    function handleTelefone(event: { target: { value: any; }; }) {
+        setTelefone(event.target.value);        
+    }
+
+    function handleMensagem(event: { target: { value: any; }; }) {
+        setMensagem(event.target.value);        
+    }
 
     return (
         <div className="cadastro-produto-form-container">
@@ -82,7 +97,8 @@ const CadastroSms = () => {
                                             message: 'Maximo de 15 caracteres'
                                         },
                                     })}
-
+                                    onChange={handleTelefone}
+                                    value={telefone}
                                     type='text'
                                     className={`form-control input-padrao
                                    ${errors.telefone ? 'is-invalid' : ''} `}
@@ -93,9 +109,9 @@ const CadastroSms = () => {
                                 </div>
                             </label>
                             <label className="cadastro-categoria-form-card">Mensagem Personalizada:
-                            
+
                                 <textarea rows={12}
-                                    {...register('mensagem', {                                       
+                                    {...register('mensagem', {
                                         minLength: {
                                             value: 10,
                                             message: 'Mínimo de 10 caracteres',
@@ -103,14 +119,16 @@ const CadastroSms = () => {
                                         maxLength: {
                                             value: 100,
                                             message: 'Máximo de 100 caracteres',
-                                        },                                    
+                                        },
                                     })}
+                                    value={mensagem}
+                                    onChange={handleMensagem}
                                     className={`form-control input-padrao h-auto
                                 ${errors.mensagem ? 'is-invalid' : ''} `}
                                     placeholder='mensagem personalizada'
                                     wrap="soft"
                                     name='mensagem' >
-                                        Visite o nosso catálogo virtual em melhoramentoshigieners.com.br
+                                    Visite o nosso catálogo virtual em https://melhoramentoshigieners.com.br/catalogo
                                 </textarea>
                             </label>
                         </div>
@@ -119,7 +137,8 @@ const CadastroSms = () => {
                         <button className="btn btn-outline-danger botao-cancelar"
                             onClick={botaoCancelar}
                         >CANCELAR</button>
-                        <button className="btn btn-outline-primary botao-salvar">ENVIAR SMS</button>
+                        <button className="btn btn-outline-primary botao-salvar">
+                            ENVIAR SMS</button>
                     </div>
                 </form>
             </div >
