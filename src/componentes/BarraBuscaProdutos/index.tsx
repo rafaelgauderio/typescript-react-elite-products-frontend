@@ -75,14 +75,18 @@ function BarraBuscaProdutos({onSubmitFormularioBusca} : PropsBarraBusca) {
     }
 
     useEffect(() => {
-        requisicaoPadraoBackend({ url: '/embalagens' })
+        requisicaoPadraoBackend({ url: '/embalagens', params: {
+            size:50
+        } })
             .then((resposta) => {
                 setSelectEmbalagens(resposta.data.content);
             });
     }, []);
 
     useEffect(() => {
-        requisicaoPadraoBackend({ url: '/categorias' })
+        requisicaoPadraoBackend({ url: '/categorias', params: {
+            size:50
+        } })
             .then((resposta) => {
                 setSelectCategorias(resposta.data.content);
             });
@@ -117,6 +121,7 @@ function BarraBuscaProdutos({onSubmitFormularioBusca} : PropsBarraBusca) {
                                     classNamePrefix={'barra-pesquisa-select'}
                                     placeholder='Embalagens'
                                     isClearable={true}
+                                    pageSize={30}
                                     //isMulti={true}
                                     onChange={embalagem => selectEmbalagemOnChange(embalagem as Embalagem)}
                                     getOptionLabel={(embalagem: Embalagem) => embalagem.descricao}
