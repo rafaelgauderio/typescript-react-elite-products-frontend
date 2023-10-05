@@ -216,7 +216,7 @@ function CadastroProdutos() {
                                     ...register('metragem')}
                                     type='number'
                                     min="0"
-                                    max="10000"
+                                    max="100000"
                                     className={`form-control input-padrao`}
                                     placeholder='Metragem total da embalagem em metros'
                                     name='metragem' />
