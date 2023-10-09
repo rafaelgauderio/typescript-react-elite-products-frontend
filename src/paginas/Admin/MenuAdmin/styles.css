@@ -59,7 +59,7 @@
 @media (min-width: 1200px) {
   .admin-menu-container {
     width: 320px;
-    height: 100% ;
+    height: calc(100% + 245px ) ;
     padding: 0;
     margin: 0;
     background-color: var(--primary-color);
