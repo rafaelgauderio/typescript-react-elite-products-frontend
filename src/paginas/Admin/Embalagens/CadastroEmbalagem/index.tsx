@@ -18,7 +18,7 @@ const CadastroEmbalagens = () => {
 
     const { embalagemId } = useParams<ParamentrosUrl>();
 
-    let editandoEmbalagem: boolean = embalagemId !=='inserir' ? true : false;
+    let editandoEmbalagem: boolean = embalagemId !== 'inserir' ? true : false;
 
     const rotaListagemEmbalagens: string = '/admin/embalagens';
 
@@ -129,8 +129,14 @@ const CadastroEmbalagens = () => {
                             onClick={botaoCancelar}>
                             CANCELAR
                         </button>
-                        <button className="btn btn-outline-primary botao-salvar">SALVAR
-                        </button>
+                        {
+                            editandoEmbalagem === false ? (<button className="btn btn-outline-primary botao-salvar">SALVAR</button>
+
+                            ) : (
+                                <button className="btn btn-outline-primary botao-salvar">ATUALIZAR</button>
+                            )
+                        }
+
                     </div>
                 </form>
             </div>

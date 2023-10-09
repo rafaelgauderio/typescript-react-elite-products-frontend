@@ -34,12 +34,12 @@ export default function CadastroUsuario() {
                 setSelectRegras(resposta.data);
             })
     }, []);
-    
+
 
     useEffect(() => {
         if (editingUser) {
             requisicaoPadraoBackend({
-                method:'GET',
+                method: 'GET',
                 url: `/usuarios/${usuarioId}`,
                 withCredentials: true,
             })
@@ -47,7 +47,7 @@ export default function CadastroUsuario() {
                     let user = response.data as Usuario;
                     setValue('nome', user.nome);
                     setValue('sobrenome', user.sobrenome);
-                    setValue('email', user.email);                                                                                               
+                    setValue('email', user.email);
                     setValue('regras', user.regras);
                 })
         }
@@ -69,9 +69,9 @@ export default function CadastroUsuario() {
             url: `/usuarios/${usuarioId}`,
             data: dadosFormularioUsuario,
             withCredentials: true,
-        };     
+        };
 
-        let config: AxiosRequestConfig = editingUser===false ? configInsertUser : configUpdateUser;
+        let config: AxiosRequestConfig = editingUser === false ? configInsertUser : configUpdateUser;
 
         requisicaoPadraoBackend(config)
             .then((response) => {
@@ -201,7 +201,7 @@ export default function CadastroUsuario() {
                                 }
                                     type='password'
                                     className={`form-control input-padrao
-                                ${errors.password? 'is-valid' : ''}`}
+                                ${errors.password ? 'is-valid' : ''}`}
                                     placeholder="Senha"
                                     name='password' />
                                 <div className="invalid-feedback alert-danger text-center d-block">
@@ -239,8 +239,15 @@ export default function CadastroUsuario() {
                             onClick={cancelButton}>
                             CANCELAR
                         </button>
-                        <button className="btn btn-outline-primary botao-salvar">SALVAR
-                        </button>
+                        {
+                            editingUser === false ? (
+                                <button className="btn btn-outline-primary botao-salvar">SALVAR
+                                </button>
+                            ) : (
+                                <button className="btn btn-outline-primary botao-salvar">ATUALIZAR
+                                </button>
+                            )
+                        }
                     </div>
                 </form>
             </div>
