@@ -10,7 +10,7 @@ import CardCadastroEmbalagem from "../../../../componentes/CardCadastroEmbalagem
 
 export default function ListagemEmbalagens() {
 
-    const [pagina, setPagina] = useState<PaginaSpring<Embalagem>>();
+    const [pagina, setPagina] = useState<PaginaSpring<Embalagem> | undefined>();
 
     const getEmbalagens = useCallback(requisicaoEmbalagens, []);
 
