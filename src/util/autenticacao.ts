@@ -2,7 +2,7 @@ import jwtDecode from "jwt-decode";
 
 export type Regra = 'ROLE_ADMIN_SISTEMA' |
     'ROLE_GERENTE_LOJA' |
-    'ROLE_CLIENTE' | [];
+    'ROLE_CONSULTOR' | [];
 
 export type DadosTokenJwt = {
     exp: number;

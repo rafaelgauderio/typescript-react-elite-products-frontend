@@ -99,7 +99,7 @@ const CadastroSms = () => {
                                     })}
                                     onChange={handleTelefone}
                                     value={telefone}
-                                    type='text'
+                                    type='number'
                                     className={`form-control input-padrao
                                    ${errors.telefone ? 'is-invalid' : ''} `}
                                     placeholder='Telefone'

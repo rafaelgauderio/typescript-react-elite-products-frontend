@@ -132,7 +132,14 @@ const CadastroCategorias = () => {
                         <button className="btn btn-outline-danger botao-cancelar"
                             onClick={botaoCancelar}
                         >CANCELAR</button>
-                        <button className="btn btn-outline-primary botao-salvar">SALVAR</button>
+                        {
+                            editandoCategoria === false ? (<button className="btn btn-outline-primary botao-salvar">SALVAR</button>
+
+                            ) : (
+                                <button className="btn btn-outline-primary botao-salvar">ATUALIZAR</button>
+                            )
+                        }
+
                     </div>
                 </form>
             </div>

@@ -16,6 +16,7 @@ export type ParametrosUrl = {
     produtoId: string;
 }
 
+
 function CadastroProdutos() {
 
     /*
@@ -38,7 +39,7 @@ function CadastroProdutos() {
     // Se for a sub rotao /produtos/:produtoId é uma edição de produto
     // ambas são requisição GET para buscar os dados
     // ao clicar em salvar para editar vai ser um requisição PUT e para salvar uma requisição POST
-    let editandoProduto: boolean = produtoId !== 'inserir' ? true : false;
+    let editandoProduto : boolean = produtoId !== 'inserir' ? true : false;
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<Produto>();
 
@@ -333,7 +334,13 @@ function CadastroProdutos() {
                         <button className="btn btn-outline-danger botao-cancelar"
                             onClick={botaoCancelar}
                         >CANCELAR</button>
-                        <button className="btn btn-outline-primary botao-salvar">SALVAR</button>
+                        {
+                            editandoProduto===false ?
+                                (<button className="btn btn-outline-primary botao-salvar">SALVAR</button>)
+                                :
+                                (<button className="btn btn-outline-primary botao-salvar">ATUALIZAR</button>)
+                        }
+                        
                     </div>
                 </form >
             </div >

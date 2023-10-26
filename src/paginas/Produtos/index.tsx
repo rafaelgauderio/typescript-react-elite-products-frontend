@@ -161,7 +161,7 @@ function Produtos() {
                                 return (
 
                                     <div className="col-xl-3 col-lg-4 col-sm-6">
-                                        <Link to={`/produtos/${produto.id}`}>
+                                        <Link to={`/produtos/${produto.id}`} target="_blanck" rel="noopener noreferrer">
                                             <CardProduto produto={produto} key={produto.id} />
                                         </Link>
                                     </div>
