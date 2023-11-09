@@ -50,7 +50,7 @@ function Contatos() {
 
                 {
                     pagina?.map((colaborador) => (
-                        <div className="col-lg-4 col-sm-12">
+                        <div className="col-xl-4 col-lg-6 col-sm-12">
                             <div key={colaborador.id}>
                                 <CardContato contato={colaborador}></CardContato>
                             </div>
