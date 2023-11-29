@@ -3,10 +3,9 @@
 #  Plataforma Web para Divulgação e Gerenciamento de Produtos
 
 ## link de hospedagem do frontend no netlify
-https://melhoramentoshigiene.netlify.app
-
+[https://melhoramentoshigiene.netlify.app](https://melhoramentoshigiene.netlify.app)
 ## link de hospedagem do backend no heroku
-https://melhoramentoshigiene-backend-db4f0999198c.herokuapp.com
+[https://melhoramentoshigiene-backend-db4f0999198c.herokuapp.com](https://melhoramentoshigiene-backend-db4f0999198c.herokuapp.com)
 
 # Tecnologias utilizadas
 ## Backend
