@@ -41,14 +41,3 @@ yarn install
 yarn start
 
 ## desenvolvido por Rafael de Luca
-
-
-
-
-
-
-
-
- 
-    
-    
