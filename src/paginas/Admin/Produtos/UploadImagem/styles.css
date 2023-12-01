@@ -1,0 +1,17 @@
+.botao-upload-container label {
+  font-size: 18px;
+  text-align: center;  
+  background-color: var(--botao-busca);
+  border-radius: 8px;
+  color: var(--white-color);
+  line-height: 20px;
+  padding: 10px 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aviso-upload {
+    font-size: 14px;    
+    letter-spacing: -0.020em; 
+      
+}

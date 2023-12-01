@@ -237,9 +237,8 @@ function CadastroProdutos() {
                                     placeholder='Fragrância do produto'
                                     name='fragrancia' />
                             </label>
-                            <div mb-20px>
-                                <UploadImagem />                              
-                                
+                            <div className="mt-20px">
+                                <UploadImagem /> 
                             </div>
 
                         </div>
