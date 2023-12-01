@@ -10,6 +10,7 @@ import Select from 'react-select';
 import { Embalagem } from '../../../../tipos/Embalgem';
 import { Categoria } from '../../../../tipos/Categoria';
 import { toast } from 'react-toastify';
+import UploadImagem from '../UploadImagem';
 
 
 export type ParametrosUrl = {
@@ -39,7 +40,7 @@ function CadastroProdutos() {
     // Se for a sub rotao /produtos/:produtoId é uma edição de produto
     // ambas são requisição GET para buscar os dados
     // ao clicar em salvar para editar vai ser um requisição PUT e para salvar uma requisição POST
-    let editandoProduto : boolean = produtoId !== 'inserir' ? true : false;
+    let editandoProduto: boolean = produtoId !== 'inserir' ? true : false;
 
     const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<Produto>();
 
@@ -236,32 +237,11 @@ function CadastroProdutos() {
                                     placeholder='Fragrância do produto'
                                     name='fragrancia' />
                             </label>
-                            <label>Imagem:
-                                <input {
-                                    ...register('imgUrl', {
-                                        required: 'Campo obrigatório',
-                                        minLength: {
-                                            value: 5,
-                                            message: 'Mínimo de 5 caracteres',
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message: 'Máximo de 100 caracteres',
-                                        },
-                                        pattern: {
-                                            value: regexUrlValidada,
-                                            message: "Informe um Url válida!",
-                                        }
-                                    })}
-                                    type='text'
-                                    className={`form-control input-padrao 
-                                    ${errors.descricao ? 'is-invalid' : ''} `}
-                                    placeholder='Link da imagem do produto'
-                                    name='imgUrl' />
-                                <div className="invalid-feedback alert-danger text-center d-block">
-                                    {errors.imgUrl?.message}
-                                </div>
-                            </label>
+                            <div mb-20px>
+                                <UploadImagem />                              
+                                
+                            </div>
+
                         </div>
                         <div className="col-lg-6">
                             <label>Categorias:
@@ -335,12 +315,12 @@ function CadastroProdutos() {
                             onClick={botaoCancelar}
                         >CANCELAR</button>
                         {
-                            editandoProduto===false ?
+                            editandoProduto === false ?
                                 (<button className="btn btn-outline-primary botao-salvar">SALVAR</button>)
                                 :
                                 (<button className="btn btn-outline-primary botao-salvar">ATUALIZAR</button>)
                         }
-                        
+
                     </div>
                 </form >
             </div >
