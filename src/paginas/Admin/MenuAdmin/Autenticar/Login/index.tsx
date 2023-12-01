@@ -131,6 +131,10 @@ return (
                             maxLength: {
                                 value: 18,
                                 message: "Máximo de 18 caracters"
+                            },
+                            pattern: {
+                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/i,
+                                message: "Pelo menos um caracter maíusculo, um numério e um alfa numérico."
                             }
                         })}
                         type="password"
