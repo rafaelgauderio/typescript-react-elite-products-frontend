@@ -11,6 +11,7 @@ import { Embalagem } from '../../../../tipos/Embalgem';
 import { Categoria } from '../../../../tipos/Categoria';
 import { toast } from 'react-toastify';
 import UploadImagem from '../UploadImagem';
+import React from 'react';
 
 
 export type ParametrosUrl = {
@@ -151,8 +152,8 @@ function CadastroProdutos() {
         historico.push(rotaListagemProdutos);
     };
 
-    const regexUrl = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi;
-    var regexUrlValidada = new RegExp(regexUrl);
+    //const regexUrl = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi;
+    //var regexUrlValidada = new RegExp(regexUrl);
 
     return (
         <div className="cadastro-produto-form-container">

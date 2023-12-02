@@ -54,9 +54,15 @@ function UploadImagem() {
                     <p>Imagens devem ter até <strong>15 mb</strong> e formato PNG ou JPG.</p>
                 </small>
             </div>
-            <div className="col-6">
+            <div className="col-6 upload-imagem">
                 <ImagemPlaceholder />
+                <div className="progresso-envio-container">
+                    <div className="progresso-envio">
+
+                    </div>
+                </div>
             </div>
+
         </div >
     );
 }

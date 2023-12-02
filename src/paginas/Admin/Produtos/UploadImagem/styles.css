@@ -1,17 +1,45 @@
 .botao-upload-container label {
   font-size: 18px;
-  text-align: center;  
+  text-align: center;
   background-color: var(--botao-busca);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--white-color);
   line-height: 20px;
   padding: 10px 30px;
   font-weight: 700;
   cursor: pointer;
+  
 }
 
 .aviso-upload {
-    font-size: 14px;    
-    letter-spacing: -0.020em; 
-      
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  line-height: 20px;
 }
+
+.aviso-upload p {
+  margin-top: 10px;
+}
+
+.upload-imagem {
+  position: relative;
+}
+
+.upload-imagem .progresso-envio-container {
+  height: 12px;
+  background-color: var(--light-color);
+  width: 185px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+}
+
+.upload-imagem .progresso-envio {
+  background-color: var(--barra-upload);
+  border-radius: 8px;
+  height: 12px;
+  width: 40%;
+}
+
+
