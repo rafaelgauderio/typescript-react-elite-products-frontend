@@ -60,7 +60,7 @@ export const requisicaoPadraoBackend = (configuracao: AxiosRequestConfig) => {
     return axios({
         ...configuracao,
         baseURL: BASE_URL,
-        headers: cabecalhos
+        headers: cabecalhos,        
     });
 
 }

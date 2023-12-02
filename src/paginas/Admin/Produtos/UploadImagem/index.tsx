@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import { ReactComponent as ImagemPlaceholder } from '../../../../assets/imagens/image-placeholder.svg';
 import { requisicaoPadraoBackend } from '../../../../util/requisicao';
+import { toast } from 'react-toastify';
 
 function UploadImagem() {
+
+    // inicio em zero o pgresso de envio
+    const[progessoEnvio, setProgressoEnvio] = useState(0);
+
+    // ProgressEvent é um tipo nativo do javaScript
+    function onProgressoEnvio  (eventoProgresso : ProgressEvent) {
+        const tamanhoArquivo = eventoProgresso.total;
+        const porgentagemEnvio = Math.round(eventoProgresso.loaded * 100 / tamanhoArquivo);
+        //console.log(porgentagemEnvio);
+        setProgressoEnvio(porgentagemEnvio);
+    }
 
     function enviarImagem(listaImagensSelecionadas: File) {
         const dados = new FormData();
@@ -12,14 +24,21 @@ function UploadImagem() {
         requisicaoPadraoBackend({
             url: '/produtos/imagem',
             method: 'POST',
-            data: dados,
-            withCredentials: true
+            data: dados,            
+            onUploadProgress: onProgressoEnvio,           
+            withCredentials: true,
         })
             .then(() => {
                 console.log("Imagem enviada com sucesso");
             })
             .catch(() => {
-                console.log("Erro ao tentar enviar imagem");
+                //console.log("Erro ao tentar enviar imagem");
+                toast.error("Erro ao tentar enviar imagem", {
+                    theme: "colored",
+                });
+            })
+            .finally (() => {
+                setProgressoEnvio(0);
             })
     }
 
@@ -57,7 +76,9 @@ function UploadImagem() {
             <div className="col-6 upload-imagem">
                 <ImagemPlaceholder />
                 <div className="progresso-envio-container">
-                    <div className="progresso-envio">
+                    <div className="progresso-envio" style={{
+                        width: `${progessoEnvio}%`
+                    }}>
 
                     </div>
                 </div>

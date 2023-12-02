@@ -38,8 +38,7 @@
 .upload-imagem .progresso-envio {
   background-color: var(--barra-upload);
   border-radius: 8px;
-  height: 12px;
-  width: 40%;
+  height: 12px; 
 }
 
 
