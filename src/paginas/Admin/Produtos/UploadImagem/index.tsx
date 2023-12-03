@@ -6,12 +6,15 @@ import { toast } from 'react-toastify';
 
 type Props = {
   onSucessoEnvioImagem: (imgUrl: string) => void;
+  imgUrlProduto: string;
 };
 
-function UploadImagem({ onSucessoEnvioImagem }: Props) {
+function UploadImagem({ onSucessoEnvioImagem, imgUrlProduto }: Props) {
   // inicio em zero o pgresso de envio
   const [progessoEnvio, setProgressoEnvio] = useState(0);
-  const [imgURlEnviada, setImgUrlEnviada] = useState('');
+  const [imgUrlEnviada, setImgUrlEnviada] = useState('');
+  // aparecer o imagem enviada, senão existir considerar a imgUrl passada como props
+  const imgUrl = imgUrlEnviada || imgUrlProduto;
 
   // ProgressEvent é um tipo nativo do javaScript
   function onProgressoEnvio(eventoProgresso: ProgressEvent) {
@@ -39,7 +42,7 @@ function UploadImagem({ onSucessoEnvioImagem }: Props) {
         setImgUrlEnviada(resposta.data.uri);
         //pegar o endereço da imagem quando fizalizar o envio com sucesso
         onSucessoEnvioImagem(resposta.data.uri)
-        console.log(resposta.data.uri)
+        //console.log(resposta.data.uri)
       })
       .catch(() => {
         //console.log("Erro ao tentar enviar imagem");
@@ -93,11 +96,11 @@ function UploadImagem({ onSucessoEnvioImagem }: Props) {
             </div>
           </>
         )}
-        {imgURlEnviada !== undefined && progessoEnvio === 0 && (
+        {imgUrl !== undefined && progessoEnvio === 0 && (
           <img
             className="imagem-enviada"
-            src={imgURlEnviada}
-            alt={imgURlEnviada}
+            src={imgUrl}
+            alt={imgUrl}
           ></img>
         )}
       </div>

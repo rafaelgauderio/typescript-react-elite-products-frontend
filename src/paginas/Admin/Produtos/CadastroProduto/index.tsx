@@ -56,6 +56,8 @@ function CadastroProdutos() {
 
   const [imgURlEnviada, setImgUrlEnviada] = useState('');
 
+  const [imgUrlProduto, setImgUrlProduto] = useState('');
+
   useEffect(() => {
     requisicaoPadraoBackend({
       url: '/embalagens',
@@ -92,9 +94,10 @@ function CadastroProdutos() {
         setValue('preco', produto.preco);
         setValue('largura', produto.largura);
         setValue('metragem', produto.metragem);
-        setValue('imgUrl', produto.imgUrl);
+        //setValue('imgUrl', produto.imgUrl); // não existe mais esse campo.
         setValue('categorias', produto.categorias);
         setValue('embalagens', produto.embalagens);
+        setImgUrlProduto(produto.imgUrl);
       });
     }
   }, [editandoProduto, setValue, produtoId]);
@@ -108,18 +111,17 @@ function CadastroProdutos() {
             imgUrl: editandoProduto === true ? dadosFormularioProduto.imgUrl : "https://melhoramentoshigieners.com.br/imagens/7127.jpg",
         };
         */
-   
 
     const carga = {
-        ...dadosFormularioProduto,
-        imgUrl: imgURlEnviada,
-        peso: String(dadosFormularioProduto.peso).replace(',', '.')         
-    }
+      ...dadosFormularioProduto,
+      imgUrl: imgURlEnviada || imgUrlProduto,
+      peso: String(dadosFormularioProduto.peso).replace(',', '.'),
+    };
 
     const configuracaoInsert: AxiosRequestConfig = {
       method: 'POST',
       url: '/produtos',
-      data:carga,
+      data: carga,
       // tem que estar autenticado para cadastrar ou editar produto
       withCredentials: true,
     };
@@ -147,7 +149,9 @@ function CadastroProdutos() {
         historico.push(rotaListagemProdutos);
       })
       .catch(() => {
-        toast.error('Erro ao tentar cadastrar Produto. A foto de uma imagem jpg ou png deve ser selecioanda.');
+        toast.error(
+          'Erro ao tentar cadastrar Produto. A foto de uma imagem jpg ou png deve ser selecioanda.'
+        );
       });
   }
 
@@ -162,7 +166,7 @@ function CadastroProdutos() {
   //const regexUrl = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi;
   //var regexUrlValidada = new RegExp(regexUrl);
 
-  function onSucessoEnvioImagem (imgUrl : string) {
+  function onSucessoEnvioImagem(imgUrl: string) {
     setImgUrlEnviada(imgUrl);
   }
   return (
@@ -256,7 +260,9 @@ function CadastroProdutos() {
               </label>
               <div className="mt-20px">
                 <UploadImagem
-                  onSucessoEnvioImagem={onSucessoEnvioImagem}/>
+                  onSucessoEnvioImagem={onSucessoEnvioImagem}
+                  imgUrlProduto={imgUrlProduto}
+                />
               </div>
             </div>
             <div className="col-lg-6">
