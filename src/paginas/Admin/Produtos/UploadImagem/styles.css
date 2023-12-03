@@ -41,4 +41,11 @@
   height: 12px; 
 }
 
+.upload-imagem .imagem-enviada {
+  width: 220px;
+  height: 220px;
+  border-radius: 5px; 
+  border: 2px solid var(--barra-upload);
+}
+
 
