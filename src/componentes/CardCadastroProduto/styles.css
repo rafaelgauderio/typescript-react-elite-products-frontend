@@ -22,7 +22,9 @@
 
 .produto-cadastro-container-superior img {
   width: 160px;
-  height: auto;
+  height: 160px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .produto-cadastro-container-inferior h4 {
@@ -93,6 +95,12 @@
     margin-left: 10px;
     padding-bottom: 0;
     padding-top: 0;
+  }
+
+  .produto-cadastro-container-superior img {    
+    margin-bottom: 0;
+    width: 180px;
+    height: 180px;
   }
 
   .produto-cadastro-botao {
