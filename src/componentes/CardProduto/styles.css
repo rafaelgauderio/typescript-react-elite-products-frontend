@@ -24,7 +24,8 @@
 
 .produto-container-superior img {
     width: 240px;
-    height: auto;        
+    height: 240px; 
+    border-radius: 5px;       
 }
 
 .produto-container-inferior h4 {
