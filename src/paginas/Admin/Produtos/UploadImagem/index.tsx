@@ -46,7 +46,7 @@ function UploadImagem({ onSucessoEnvioImagem, imgUrlProduto }: Props) {
       })
       .catch(() => {
         //console.log("Erro ao tentar enviar imagem");
-        toast.error('Erro ao tentar enviar imagem', {
+        toast.error('Erro ao tentar enviar imagem! A imagem deve ter no máximo 15 Mega e ser do formato JPEG ou PNG.', {
           theme: 'colored',
         });
       })
