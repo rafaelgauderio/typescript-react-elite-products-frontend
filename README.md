@@ -2,6 +2,12 @@
 
 #  Plataforma Web para Divulgação e Gerenciamento de Produtos
 
+usuário: gustavo@gmail.com
+senha: Gustavo123*
+
+usuário: tatiane@gmail.com
+senha: Tatiane123*
+
 ## link de hospedagem do frontend no netlify
 [https://melhoramentoshigiene.netlify.app](https://melhoramentoshigiene.netlify.app)
 ## link de hospedagem do backend no heroku
